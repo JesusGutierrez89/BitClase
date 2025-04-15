@@ -53,11 +53,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(138, 87);
+            this.label1.Location = new System.Drawing.Point(80, 87);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 29);
+            this.label1.Size = new System.Drawing.Size(154, 29);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Usuario";
+            this.label1.Text = "Usuario/NRP";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbUsuario
@@ -103,6 +103,7 @@
             this.btRegistro.TabIndex = 6;
             this.btRegistro.Text = "REGISTRO";
             this.btRegistro.UseVisualStyleBackColor = true;
+            this.btRegistro.Click += new System.EventHandler(this.btRegistro_Click);
             // 
             // Presentacion
             // 

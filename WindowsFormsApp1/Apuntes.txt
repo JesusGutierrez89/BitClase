@@ -1,0 +1,4 @@
+﻿#Validar el formulario de Registro de Profesores(Form2)
+#Controlar mediante las validaciones que sea obligatoria rellenar todos los campos.
+#Utilizar el evento Validating para validar los campos.(Mirarlo)
+#poner el password en el textbox password como asterisco y encriptarlo.
