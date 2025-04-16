@@ -40,6 +40,8 @@ namespace WindowsFormsApp1
                 string departamento = txtDepartamento.Text;
                 string password = EncriptarPassword(txtpassword.Text);
 
+                // Encriptar la contraseña con BCrypt
+                string hashedPassword = EncriptarPassword(password);
                 conection.Open();
                 comando.Connection = conection;
 
@@ -95,21 +97,10 @@ namespace WindowsFormsApp1
                 }
             }
         }
+        // Método para encriptar la contraseña con BCrypt
         public static string EncriptarPassword(string password)
         {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                // Convertir la cadena de texto en un array de bytes
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-                // Convertir el array de bytes en una cadena de texto
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
     }
 }

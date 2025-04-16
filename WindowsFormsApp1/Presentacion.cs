@@ -37,20 +37,31 @@ namespace WindowsFormsApp1
             try
             {
                 string nrp = tbUsuario.Text;
-                string password = EncriptarPassword(tbPassword.Text);
+                string password = tbPassword.Text;
 
                 conection.Open();
                 comando.Connection = conection;
-                comando.CommandText = "SELECT * FROM Profesores WHERE nrp = @nrp AND password = @password";
+                comando.CommandText = "SELECT password FROM Profesores WHERE nrp = @nrp";
                 comando.Parameters.Clear();
                 comando.Parameters.AddWithValue("@nrp", nrp);
-                comando.Parameters.AddWithValue("@password", password);
                 SqlDataReader reader = comando.ExecuteReader();
-                
+
                 if (reader.Read())
                 {
-                    MessageBox.Show("Inicio de sesión exitoso.");
-                    // Aquí puedes redirigir al usuario a la siguiente pantalla o realizar otras acciones necesarias
+                    string hashedPassword = reader.GetString(0);
+                    reader.Close();
+
+                    if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+                    {
+                        MessageBox.Show("Inicio de sesión exitoso.");
+                        Form3 form3 = new Form3();
+                        form3.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("NRP o contraseña incorrectos.");
+                    }
                 }
                 else
                 {
@@ -83,19 +94,7 @@ namespace WindowsFormsApp1
         }
         public static string EncriptarPassword(string password)
         {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                // Convertir la cadena de texto en un array de bytes
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-                // Convertir el array de bytes en una cadena de texto
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
     }
 }
