@@ -54,8 +54,8 @@ namespace WindowsFormsApp1
                     if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
                     {
                         MessageBox.Show("Inicio de sesión exitoso.");
-                        Form3 form3 = new Form3();
-                        form3.Show();
+                        Menu menu = new Menu();
+                        menu.Show();
                         this.Hide();
                     }
                     else

@@ -70,11 +70,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BitClase.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form3.cs">
+    <Compile Include="CreacionAula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <Compile Include="CreacionAula.Designer.cs">
+      <DependentUpon>CreacionAula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanosPorPlantas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanosPorPlantas.Designer.cs">
+      <DependentUpon>PlanosPorPlantas.cs</DependentUpon>
     </Compile>
     <Compile Include="Profesor.cs" />
     <Compile Include="Form2.cs">
@@ -91,11 +103,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreacionAula.resx">
+      <DependentUpon>CreacionAula.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanosPorPlantas.resx">
+      <DependentUpon>PlanosPorPlantas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion.resx">
       <DependentUpon>Presentacion.cs</DependentUpon>
