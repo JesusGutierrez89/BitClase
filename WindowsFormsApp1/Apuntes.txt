@@ -2,3 +2,4 @@
 #Controlar mediante las validaciones que sea obligatoria rellenar todos los campos.
 #Utilizar el evento Validating para validar los campos.(Mirarlo)
 #poner el password en el textbox password como asterisco y encriptarlo.
+#Comertar las dificultades que se ha tenido a la hora de diseñar los planos del aula(botones imposibles de ajustar)
