@@ -3,3 +3,6 @@
 #Utilizar el evento Validating para validar los campos.(Mirarlo)
 #poner el password en el textbox password como asterisco y encriptarlo.
 #Comertar las dificultades que se ha tenido a la hora de diseñar los planos del aula(botones imposibles de ajustar)
+#Hacer consulta en el ComboBox de las aulas que se traiga todos los datos de la base de datos en este orden(Aula, alumnos,mesas,material, asistencia)
+Seria consulta tipo JOin entre todas las tablas.
+#Creacion de tabla para unir Alumnos con Profesores mediante la Tabla Asignatura.

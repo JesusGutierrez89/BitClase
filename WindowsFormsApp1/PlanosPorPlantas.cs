@@ -17,14 +17,14 @@ namespace WindowsFormsApp1
         {
 
             InitializeComponent();
-            button5.Visible = false;
-            button6.Visible = false;
-            button7.Visible = false;
-            button8.Visible = false;
-            button9.Visible = false;
-            button10.Visible = false;
-            button11.Visible = false;
-            button12.Visible = false;
+            btAulaPrimeraPlanta1.Visible = false;
+            btAulaPrimeraPlanta2.Visible = false;
+            btAulaPrimeraPlanta3.Visible = false;
+            btAulaPrimeraPlanta4.Visible = false;
+            btAulaSegundaPlanta1.Visible = false;
+            btAulaSegundaPlanta2.Visible = false;
+            btAulaSegundaPlanta4.Visible = false;
+            btAulaSegundaPlanta3.Visible = false;
             this.ClientSize = new System.Drawing.Size(908, 573); // Tamaño fijo del formulario
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // Evitar redimensionamiento
             this.MaximizeBox = false; // Desactivar el botón de maximizar
@@ -48,50 +48,50 @@ namespace WindowsFormsApp1
             {
                 case "PLANTA BAJA":
                     this.BackgroundImage = Image.FromFile("C:\\Users\\Guty\\Documents\\TFS\\planoPlantaBaja1.jpg"); // Cambia la ruta a la imagen correspondiente
-                    button1.Visible = true;
-                    button2.Visible = true;
-                    button3.Visible = true;
-                    button4.Visible = true;
-                    button5.Visible = false;
-                    button6.Visible = false;
-                    button7.Visible = false;
-                    button8.Visible = false;
-                    button9.Visible = false;
-                    button10.Visible = false;
-                    button11.Visible = false;
-                    button12.Visible = false;
+                    btPlantaBj2.Visible = true;
+                    btAulaPlantaBj1.Visible = true;
+                    btAulaPlantaBj3.Visible = true;
+                    btAulaPlantaBj4.Visible = true;
+                    btAulaPrimeraPlanta1.Visible = false;
+                    btAulaPrimeraPlanta2.Visible = false;
+                    btAulaPrimeraPlanta3.Visible = false;
+                    btAulaPrimeraPlanta4.Visible = false;
+                    btAulaSegundaPlanta1.Visible = false;
+                    btAulaSegundaPlanta2.Visible = false;
+                    btAulaSegundaPlanta4.Visible = false;
+                    btAulaSegundaPlanta3.Visible = false;
                     break;
 
                 case "PRIMERA PLANTA":
                     this.BackgroundImage = Image.FromFile("C:\\Users\\Guty\\Documents\\TFS\\Imagenes\\planoPlantaPrimera1.jpg"); // Cambia la ruta a la imagen correspondiente
-                    button1.Visible = false;
-                    button2.Visible = false;
-                    button3.Visible = false;
-                    button4.Visible = false;
-                    button5.Visible = true;
-                    button6.Visible = true;
-                    button7.Visible = true;
-                    button8.Visible = true;
-                    button9.Visible = false;
-                    button10.Visible = false;
-                    button11.Visible = false;
-                    button12.Visible = false;
+                    btPlantaBj2.Visible = false;
+                    btAulaPlantaBj1.Visible = false;
+                    btAulaPlantaBj3.Visible = false;
+                    btAulaPlantaBj4.Visible = false;
+                    btAulaPrimeraPlanta1.Visible = true;
+                    btAulaPrimeraPlanta2.Visible = true;
+                    btAulaPrimeraPlanta3.Visible = true;
+                    btAulaPrimeraPlanta4.Visible = true;
+                    btAulaSegundaPlanta1.Visible = false;
+                    btAulaSegundaPlanta2.Visible = false;
+                    btAulaSegundaPlanta4.Visible = false;
+                    btAulaSegundaPlanta3.Visible = false;
                     break;
 
                 case "SEGUNDA PLANTA":
                     this.BackgroundImage = Image.FromFile("C:\\Users\\Guty\\Documents\\TFS\\Imagenes\\planoSegundaPlanta.jpg"); // Cambia la ruta a la imagen correspondiente
-                    button1.Visible = false;
-                    button2.Visible = false;
-                    button3.Visible = false;
-                    button4.Visible = false;
-                    button5.Visible = false;
-                    button6.Visible = false;
-                    button7.Visible = false;
-                    button8.Visible = false;
-                    button9.Visible = true;
-                    button10.Visible = true;
-                    button11.Visible = true;
-                    button12.Visible = true;
+                    btPlantaBj2.Visible = false;
+                    btAulaPlantaBj1.Visible = false;
+                    btAulaPlantaBj3.Visible = false;
+                    btAulaPlantaBj4.Visible = false;
+                    btAulaPrimeraPlanta1.Visible = false;
+                    btAulaPrimeraPlanta2.Visible = false;
+                    btAulaPrimeraPlanta3.Visible = false;
+                    btAulaPrimeraPlanta4.Visible = false;
+                    btAulaSegundaPlanta1.Visible = true;
+                    btAulaSegundaPlanta2.Visible = true;
+                    btAulaSegundaPlanta4.Visible = true;
+                    btAulaSegundaPlanta3.Visible = true;
                     break;
 
                 default:
@@ -103,6 +103,30 @@ namespace WindowsFormsApp1
             // Mantener visibles el Label y el ComboBox
             label1.Visible = true;
             comboBox1.Visible = true;
+        }
+
+        private void btAulaPlantaBj1_Click(object sender, EventArgs e)
+        {
+            AulaPb1 aulaPb1 = new AulaPb1();
+            aulaPb1.Show();
+            this.Hide();
+        }
+
+        private void btAulaSegundaPlanta3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btAulaSegundaPlanta1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btAulaPlantaBj3_Click(object sender, EventArgs e)
+        {
+            AulaPb3 aulaPb3 = new AulaPb3();
+            aulaPb3.Show();
+            this.Hide();
         }
     }
 }

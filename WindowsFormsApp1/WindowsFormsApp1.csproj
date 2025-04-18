@@ -62,6 +62,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AulaPb1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaPb1.Designer.cs">
+      <DependentUpon>AulaPb1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AulaPb3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaPb3.Designer.cs">
+      <DependentUpon>AulaPb3.cs</DependentUpon>
+    </Compile>
     <Compile Include="BitClase.cs">
       <DependentUpon>BitClase.xsd</DependentUpon>
     </Compile>
@@ -75,6 +87,12 @@
     </Compile>
     <Compile Include="CreacionAula.Designer.cs">
       <DependentUpon>CreacionAula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioMaterial.Designer.cs">
+      <DependentUpon>FormularioMaterial.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -103,11 +121,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AulaPb1.resx">
+      <DependentUpon>AulaPb1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaPb3.resx">
+      <DependentUpon>AulaPb3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreacionAula.resx">
       <DependentUpon>CreacionAula.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioMaterial.resx">
+      <DependentUpon>FormularioMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
