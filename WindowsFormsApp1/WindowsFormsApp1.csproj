@@ -68,11 +68,23 @@
     <Compile Include="AulaPb1.Designer.cs">
       <DependentUpon>AulaPb1.cs</DependentUpon>
     </Compile>
+    <Compile Include="AulaPb2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaPb2.Designer.cs">
+      <DependentUpon>AulaPb2.cs</DependentUpon>
+    </Compile>
     <Compile Include="AulaPb3.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AulaPb3.Designer.cs">
       <DependentUpon>AulaPb3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AulaPb4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaPb4.Designer.cs">
+      <DependentUpon>AulaPb4.cs</DependentUpon>
     </Compile>
     <Compile Include="BitClase.cs">
       <DependentUpon>BitClase.xsd</DependentUpon>
@@ -124,8 +136,14 @@
     <EmbeddedResource Include="AulaPb1.resx">
       <DependentUpon>AulaPb1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AulaPb2.resx">
+      <DependentUpon>AulaPb2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AulaPb3.resx">
       <DependentUpon>AulaPb3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaPb4.resx">
+      <DependentUpon>AulaPb4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreacionAula.resx">
       <DependentUpon>CreacionAula.cs</DependentUpon>

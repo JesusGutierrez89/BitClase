@@ -128,5 +128,19 @@ namespace WindowsFormsApp1
             aulaPb3.Show();
             this.Hide();
         }
+
+        private void btPlantaBj2_Click(object sender, EventArgs e)
+        {
+            AulaPb2 aulaPb2 = new AulaPb2();
+            aulaPb2.Show();
+            this.Hide();
+        }
+
+        private void btAulaPlantaBj4_Click(object sender, EventArgs e)
+        {
+            AulaPb4 aulaPb4 = new AulaPb4();
+            aulaPb4.Show();
+            this.Hide();
+        }
     }
 }

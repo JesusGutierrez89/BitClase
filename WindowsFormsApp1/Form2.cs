@@ -94,6 +94,10 @@ namespace WindowsFormsApp1
                     conection.Close();
                 }
             }
+            // Regresar al formulario Presentacion
+            Presentacion presentacion = new Presentacion();
+            presentacion.Show();
+            this.Hide();
         }
         // Método para encriptar la contraseña con BCrypt
         public static string EncriptarPassword(string password)

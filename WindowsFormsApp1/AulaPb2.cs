@@ -10,69 +10,83 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class AulaPb1 : Form
+    public partial class AulaPb2 : Form
     {
-        public AulaPb1()
+        public AulaPb2()
         {
             InitializeComponent();
             this.ClientSize = new System.Drawing.Size(750, 580);
         }
 
-        private void AulaPb1_Load(object sender, EventArgs e)
+        private void AulaPb2_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void pcFila2columna4_Click(object sender, EventArgs e)
-        {
-            FormularioMaterial formularioMaterial = new FormularioMaterial();
-            formularioMaterial.Show();
-            this.Hide();
-        }
-
-        private void pcFila2columna3_Click(object sender, EventArgs e)
+        private void PcFila1Columna1_Click(object sender, EventArgs e)
         {
             FormularioMaterial formularioMaterial = new FormularioMaterial();
             formularioMaterial.Show();
             this.Hide();
         }
 
-        private void pcFila2columna2_Click(object sender, EventArgs e)
+        private void PcFila1Columna2_Click(object sender, EventArgs e)
         {
             FormularioMaterial formularioMaterial = new FormularioMaterial();
             formularioMaterial.Show();
             this.Hide();
         }
 
-        private void pcFila2columna1_Click(object sender, EventArgs e)
+        private void PcFila1Columna3_Click(object sender, EventArgs e)
         {
             FormularioMaterial formularioMaterial = new FormularioMaterial();
             formularioMaterial.Show();
             this.Hide();
         }
 
-        private void pcFila1columna4_Click(object sender, EventArgs e)
+        private void PcFila2Columna1_Click(object sender, EventArgs e)
         {
             FormularioMaterial formularioMaterial = new FormularioMaterial();
             formularioMaterial.Show();
             this.Hide();
         }
 
-        private void pcFila1columna3_Click(object sender, EventArgs e)
+        private void PcFila3Columna2_Click(object sender, EventArgs e)
         {
             FormularioMaterial formularioMaterial = new FormularioMaterial();
             formularioMaterial.Show();
             this.Hide();
         }
 
-        private void pcFila1columna2_Click(object sender, EventArgs e)
+        private void PcFila3Columna3_Click(object sender, EventArgs e)
         {
             FormularioMaterial formularioMaterial = new FormularioMaterial();
             formularioMaterial.Show();
             this.Hide();
         }
 
-        private void pcFila1columna1_Click(object sender, EventArgs e)
+        private void PcFila3Columna4_Click(object sender, EventArgs e)
+        {
+            FormularioMaterial formularioMaterial = new FormularioMaterial();
+            formularioMaterial.Show();
+            this.Hide();
+        }
+
+        private void PcFila3Columna5_Click(object sender, EventArgs e)
+        {
+            FormularioMaterial formularioMaterial = new FormularioMaterial();
+            formularioMaterial.Show();
+            this.Hide();
+        }
+
+        private void PcFila2Columna6_Click(object sender, EventArgs e)
+        {
+            FormularioMaterial formularioMaterial = new FormularioMaterial();
+            formularioMaterial.Show();
+            this.Hide();
+        }
+
+        private void PcFila3Columna6_Click(object sender, EventArgs e)
         {
             FormularioMaterial formularioMaterial = new FormularioMaterial();
             formularioMaterial.Show();

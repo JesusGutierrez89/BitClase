@@ -56,6 +56,7 @@
             this.btPlantaBj2.TabIndex = 0;
             this.btPlantaBj2.Text = "Aula PB 2";
             this.btPlantaBj2.UseVisualStyleBackColor = false;
+            this.btPlantaBj2.Click += new System.EventHandler(this.btPlantaBj2_Click);
             // 
             // btAulaPlantaBj1
             // 
@@ -94,6 +95,7 @@
             this.btAulaPlantaBj4.TabIndex = 3;
             this.btAulaPlantaBj4.Text = "Aula PB 4";
             this.btAulaPlantaBj4.UseVisualStyleBackColor = false;
+            this.btAulaPlantaBj4.Click += new System.EventHandler(this.btAulaPlantaBj4_Click);
             // 
             // comboBox1
             // 
