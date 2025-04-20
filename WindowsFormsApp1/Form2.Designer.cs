@@ -37,8 +37,6 @@
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtDepartamento = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.btRegistro = new System.Windows.Forms.Button();
@@ -126,29 +124,11 @@
             this.txtEmail.Size = new System.Drawing.Size(175, 30);
             this.txtEmail.TabIndex = 8;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(154, 348);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(135, 25);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Departamento";
-            // 
-            // txtDepartamento
-            // 
-            this.txtDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDepartamento.Location = new System.Drawing.Point(323, 343);
-            this.txtDepartamento.Name = "txtDepartamento";
-            this.txtDepartamento.Size = new System.Drawing.Size(175, 30);
-            this.txtDepartamento.TabIndex = 10;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(175, 400);
+            this.label7.Location = new System.Drawing.Point(175, 354);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 25);
             this.label7.TabIndex = 11;
@@ -157,7 +137,7 @@
             // txtpassword
             // 
             this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpassword.Location = new System.Drawing.Point(323, 395);
+            this.txtpassword.Location = new System.Drawing.Point(323, 354);
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Size = new System.Drawing.Size(175, 30);
             this.txtpassword.TabIndex = 12;
@@ -165,7 +145,7 @@
             // btRegistro
             // 
             this.btRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btRegistro.Location = new System.Drawing.Point(323, 465);
+            this.btRegistro.Location = new System.Drawing.Point(323, 424);
             this.btRegistro.Name = "btRegistro";
             this.btRegistro.Size = new System.Drawing.Size(175, 31);
             this.btRegistro.TabIndex = 13;
@@ -181,8 +161,6 @@
             this.Controls.Add(this.btRegistro);
             this.Controls.Add(this.txtpassword);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtDepartamento);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtApellidos);
@@ -212,8 +190,6 @@
         private System.Windows.Forms.TextBox txtApellidos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtDepartamento;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtpassword;
         private System.Windows.Forms.Button btRegistro;

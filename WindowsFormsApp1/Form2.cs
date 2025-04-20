@@ -37,7 +37,6 @@ namespace WindowsFormsApp1
                 string nombre = txtNombre.Text;
                 string apellidos = txtApellidos.Text;
                 string email = txtEmail.Text;
-                string departamento = txtDepartamento.Text;
                 string password = EncriptarPassword(txtpassword.Text);
 
                 // Encriptar la contraseña con BCrypt
@@ -59,7 +58,7 @@ namespace WindowsFormsApp1
                 {
                     reader.Close();
                     // Verificar si el NRP ya está asociado a otro usuario con datos no vacíos
-                    comando.CommandText = "SELECT * FROM Profesores WHERE nrp = @nrp AND (nombre != '' OR apellidos != '' OR email != '' OR departamento != '' OR password != '')";
+                    comando.CommandText = "SELECT * FROM Profesores WHERE nrp = @nrp AND (nombre != '' OR apellidos != '' OR email != '' OR password != '')";
                     comando.Parameters.Clear();
                     comando.Parameters.AddWithValue("@nrp", nrp);
                     SqlDataReader readerDentro = comando.ExecuteReader();
@@ -72,12 +71,11 @@ namespace WindowsFormsApp1
                     {
                         readerDentro.Close();
                         // Actualizar el usuario existente con los nuevos datos
-                        comando.CommandText = "UPDATE Profesores SET nombre = @nombre, apellidos = @apellidos, email = @email, departamento = @departamento, password = @password WHERE nrp = @nrp";
+                        comando.CommandText = "UPDATE Profesores SET nombre = @nombre, apellidos = @apellidos, email = @email, password = @password WHERE nrp = @nrp";
                         comando.Parameters.Clear();
                         comando.Parameters.AddWithValue("@nombre", nombre);
                         comando.Parameters.AddWithValue("@apellidos", apellidos);
                         comando.Parameters.AddWithValue("@email", email);
-                        comando.Parameters.AddWithValue("@departamento", departamento);
                         comando.Parameters.AddWithValue("@password", password);
                         comando.Parameters.AddWithValue("@nrp", nrp);
                         comando.ExecuteNonQuery();

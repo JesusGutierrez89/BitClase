@@ -6,3 +6,4 @@
 #Hacer consulta en el ComboBox de las aulas que se traiga todos los datos de la base de datos en este orden(Aula, alumnos,mesas,material, asistencia)
 Seria consulta tipo JOin entre todas las tablas.
 #Creacion de tabla para unir Alumnos con Profesores mediante la Tabla Asignatura.
+#Recordar en el Form 2 a la hora de registrar un profesor poner que se cierre y vuelva a mostrarse el FormPresentacion
