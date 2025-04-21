@@ -41,20 +41,37 @@ namespace WindowsFormsApp1
 
                 conection.Open();
                 comando.Connection = conection;
-                comando.CommandText = "SELECT password FROM Profesores WHERE nrp = @nrp";
+                comando.CommandText = @"
+            SELECT 
+                p.nombre AS NombreProfesor,
+                p.apellidos AS ApellidosProfesor,
+                a.Nombre AS NombreAsignatura,
+                p.password AS contraseña
+            FROM Profesores p
+            INNER JOIN Asignatura a ON p.Id = a.id_profesor
+            WHERE p.nrp = @nrp";
                 comando.Parameters.Clear();
                 comando.Parameters.AddWithValue("@nrp", nrp);
                 SqlDataReader reader = comando.ExecuteReader();
 
                 if (reader.Read())
                 {
-                    string hashedPassword = reader.GetString(0);
+                    string hashedPassword = reader["contraseña"].ToString();
+                    string nombreProfesor = reader["NombreProfesor"].ToString();
+                    string apellidosProfesor = reader["ApellidosProfesor"].ToString();
+                    string nombreAsignatura = reader["NombreAsignatura"].ToString();
                     reader.Close();
 
                     if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
                     {
                         MessageBox.Show("Inicio de sesión exitoso.");
-                        Menu menu = new Menu();
+                        // Pasar los datos al formulario Menu
+                        Menu menu = new Menu
+                        {
+                            NombreProfesor = nombreProfesor,
+                            ApellidosProfesor = apellidosProfesor,
+                            NombreAsignatura = nombreAsignatura
+                        };
                         menu.Show();
                         this.Hide();
                     }

@@ -12,6 +12,10 @@ namespace WindowsFormsApp1
 {
     public partial class Menu : Form
     {
+        public string NombreProfesor { get; set; }
+        public string ApellidosProfesor { get; set; }
+        public string NombreAsignatura { get; set; }
+
         public Menu()
         {
             InitializeComponent();
@@ -22,7 +26,12 @@ namespace WindowsFormsApp1
 
         private void btPlanos_Click(object sender, EventArgs e)
         {
-            PlanosPorPlantas planos = new PlanosPorPlantas();
+            PlanosPorPlantas planos = new PlanosPorPlantas
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
             planos.Show();
             this.Hide();
         }

@@ -12,6 +12,9 @@ namespace WindowsFormsApp1
 {
     public partial class AulaPb4 : Form
     {
+        public string NombreProfesor { get; set; }
+        public string ApellidosProfesor { get; set; }
+        public string NombreAsignatura { get; set; }
         public AulaPb4()
         {
             InitializeComponent();
@@ -20,6 +23,9 @@ namespace WindowsFormsApp1
 
         private void AulaPb4_Load(object sender, EventArgs e)
         {
+            // Mostrar el nombre, apellidos del profesor y la asignatura en un TextBox o Label
+            txNombreApellidoProfesor.Text = $"{NombreProfesor} {ApellidosProfesor}";
+            txNombreAsignatura.Text = $"Asignatura: {NombreAsignatura}";
 
         }
 

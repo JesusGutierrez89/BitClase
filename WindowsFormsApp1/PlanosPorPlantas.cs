@@ -12,6 +12,9 @@ namespace WindowsFormsApp1
 {
     public partial class PlanosPorPlantas : Form
     {
+        public string NombreProfesor { get; set; }
+        public string ApellidosProfesor { get; set; }
+        public string NombreAsignatura { get; set; }
 
         public PlanosPorPlantas()
         {
@@ -107,7 +110,12 @@ namespace WindowsFormsApp1
 
         private void btAulaPlantaBj1_Click(object sender, EventArgs e)
         {
-            AulaPb1 aulaPb1 = new AulaPb1();
+            AulaPb1 aulaPb1 = new AulaPb1
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
             aulaPb1.Show();
             this.Hide();
         }
@@ -124,21 +132,36 @@ namespace WindowsFormsApp1
 
         private void btAulaPlantaBj3_Click(object sender, EventArgs e)
         {
-            AulaPb3 aulaPb3 = new AulaPb3();
+            AulaPb3 aulaPb3 = new AulaPb3
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
             aulaPb3.Show();
             this.Hide();
         }
 
         private void btPlantaBj2_Click(object sender, EventArgs e)
         {
-            AulaPb2 aulaPb2 = new AulaPb2();
+            AulaPb2 aulaPb2 = new AulaPb2
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
             aulaPb2.Show();
             this.Hide();
         }
 
         private void btAulaPlantaBj4_Click(object sender, EventArgs e)
         {
-            AulaPb4 aulaPb4 = new AulaPb4();
+            AulaPb4 aulaPb4 = new AulaPb4
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
             aulaPb4.Show();
             this.Hide();
         }

@@ -7,3 +7,4 @@
 Seria consulta tipo JOin entre todas las tablas.
 #Creacion de tabla para unir Alumnos con Profesores mediante la Tabla Asignatura.
 #Recordar en el Form 2 a la hora de registrar un profesor poner que se cierre y vuelva a mostrarse el FormPresentacion
+#Mirar la herencia de la clase AulaBase para poder utilizar los metodos comunes en todas las aulas, para reutilizar codigo.

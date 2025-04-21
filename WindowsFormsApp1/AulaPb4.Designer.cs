@@ -37,6 +37,8 @@
             this.Pcfila2Columna2 = new System.Windows.Forms.PictureBox();
             this.Pcfila2Columna4 = new System.Windows.Forms.PictureBox();
             this.Pcfila2Columna3 = new System.Windows.Forms.PictureBox();
+            this.txNombreApellidoProfesor = new System.Windows.Forms.TextBox();
+            this.txNombreAsignatura = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna3)).BeginInit();
@@ -135,6 +137,22 @@
             this.Pcfila2Columna3.TabStop = false;
             this.Pcfila2Columna3.Click += new System.EventHandler(this.Pcfila2Columna3_Click);
             // 
+            // txNombreApellidoProfesor
+            // 
+            this.txNombreApellidoProfesor.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txNombreApellidoProfesor.Location = new System.Drawing.Point(71, 40);
+            this.txNombreApellidoProfesor.Name = "txNombreApellidoProfesor";
+            this.txNombreApellidoProfesor.Size = new System.Drawing.Size(230, 39);
+            this.txNombreApellidoProfesor.TabIndex = 7;
+            // 
+            // txNombreAsignatura
+            // 
+            this.txNombreAsignatura.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txNombreAsignatura.Location = new System.Drawing.Point(71, 84);
+            this.txNombreAsignatura.Name = "txNombreAsignatura";
+            this.txNombreAsignatura.Size = new System.Drawing.Size(230, 39);
+            this.txNombreAsignatura.TabIndex = 8;
+            // 
             // AulaPb4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -142,6 +160,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1021, 692);
+            this.Controls.Add(this.txNombreAsignatura);
+            this.Controls.Add(this.txNombreApellidoProfesor);
             this.Controls.Add(this.Pcfila2Columna3);
             this.Controls.Add(this.Pcfila2Columna4);
             this.Controls.Add(this.Pcfila2Columna2);
@@ -151,6 +171,7 @@
             this.Controls.Add(this.Pcfila1Columna2);
             this.Controls.Add(this.Pcfila1Columna1);
             this.Name = "AulaPb4";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AulaPb4";
             this.Load += new System.EventHandler(this.AulaPb4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna1)).EndInit();
@@ -162,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pcfila2Columna4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pcfila2Columna3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -174,5 +196,7 @@
         private System.Windows.Forms.PictureBox Pcfila2Columna2;
         private System.Windows.Forms.PictureBox Pcfila2Columna4;
         private System.Windows.Forms.PictureBox Pcfila2Columna3;
+        private System.Windows.Forms.TextBox txNombreApellidoProfesor;
+        private System.Windows.Forms.TextBox txNombreAsignatura;
     }
 }

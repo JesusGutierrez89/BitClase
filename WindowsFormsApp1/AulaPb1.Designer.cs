@@ -37,6 +37,8 @@
             this.pcFila2columna2 = new System.Windows.Forms.PictureBox();
             this.pcFila2columna3 = new System.Windows.Forms.PictureBox();
             this.pcFila2columna4 = new System.Windows.Forms.PictureBox();
+            this.txNombreApellidoProfesor = new System.Windows.Forms.TextBox();
+            this.txNombreAsignatura = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcFila1columna1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcFila1columna2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcFila1columna3)).BeginInit();
@@ -135,6 +137,23 @@
             this.pcFila2columna4.TabStop = false;
             this.pcFila2columna4.Click += new System.EventHandler(this.pcFila2columna4_Click);
             // 
+            // txNombreApellidoProfesor
+            // 
+            this.txNombreApellidoProfesor.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txNombreApellidoProfesor.Location = new System.Drawing.Point(12, 578);
+            this.txNombreApellidoProfesor.Name = "txNombreApellidoProfesor";
+            this.txNombreApellidoProfesor.Size = new System.Drawing.Size(238, 31);
+            this.txNombreApellidoProfesor.TabIndex = 8;
+            this.txNombreApellidoProfesor.TextChanged += new System.EventHandler(this.txNombreApellidoProfesor_TextChanged);
+            // 
+            // txNombreAsignatura
+            // 
+            this.txNombreAsignatura.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txNombreAsignatura.Location = new System.Drawing.Point(256, 578);
+            this.txNombreAsignatura.Name = "txNombreAsignatura";
+            this.txNombreAsignatura.Size = new System.Drawing.Size(201, 31);
+            this.txNombreAsignatura.TabIndex = 9;
+            // 
             // AulaPb1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -142,6 +161,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(979, 681);
+            this.Controls.Add(this.txNombreAsignatura);
+            this.Controls.Add(this.txNombreApellidoProfesor);
             this.Controls.Add(this.pcFila2columna4);
             this.Controls.Add(this.pcFila2columna3);
             this.Controls.Add(this.pcFila2columna2);
@@ -163,6 +184,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcFila2columna3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcFila2columna4)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -176,5 +198,7 @@
         private System.Windows.Forms.PictureBox pcFila2columna2;
         private System.Windows.Forms.PictureBox pcFila2columna3;
         private System.Windows.Forms.PictureBox pcFila2columna4;
+        private System.Windows.Forms.TextBox txNombreApellidoProfesor;
+        private System.Windows.Forms.TextBox txNombreAsignatura;
     }
 }
