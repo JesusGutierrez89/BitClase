@@ -7,15 +7,15 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public class AulaBase : Form
+    public class AulaBaseHelper
     {
-        protected Dictionary<ComboBox, PictureBox> comboBoxPictureBoxMap;
-
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
         public string NombreAsignatura { get; set; }
 
-        protected void LlenarComboBox()
+        public Dictionary<ComboBox, PictureBox> ComboBoxPictureBoxMap { get; set; }
+
+        public void LlenarComboBox()
         {
             string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
             string query = @"
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
                             foreach (DataRow row in dataTable.Rows)
                             {
                                 string nombreCompleto = $"{row["NombreAlumno"]} {row["ApellidosAlumno"]}";
-                                foreach (var comboBox in comboBoxPictureBoxMap.Keys)
+                                foreach (var comboBox in ComboBoxPictureBoxMap.Keys)
                                 {
                                     comboBox.Items.Add(nombreCompleto);
                                 }
@@ -59,11 +59,13 @@ namespace WindowsFormsApp1
             }
         }
 
-        protected bool EsDuplicado(string valorSeleccionado, ComboBox currentComboBox)
+        public bool EsDuplicado(string valorSeleccionado, ComboBox currentComboBox)
         {
-            foreach (var comboBox in comboBoxPictureBoxMap.Keys)
+            foreach (var comboBox in ComboBoxPictureBoxMap.Keys)
             {
-                if (comboBox != currentComboBox && comboBox.SelectedItem != null && comboBox.SelectedItem.ToString() == valorSeleccionado)
+                if (comboBox != currentComboBox &&
+                    comboBox.SelectedItem != null &&
+                    comboBox.SelectedItem.ToString() == valorSeleccionado)
                 {
                     return true;
                 }
@@ -71,11 +73,11 @@ namespace WindowsFormsApp1
             return false;
         }
 
-        protected void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        public void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (sender is ComboBox comboBox && comboBoxPictureBoxMap.ContainsKey(comboBox))
+            if (sender is ComboBox comboBox && ComboBoxPictureBoxMap.ContainsKey(comboBox))
             {
-                PictureBox pictureBox = comboBoxPictureBoxMap[comboBox];
+                PictureBox pictureBox = ComboBoxPictureBoxMap[comboBox];
 
                 if (comboBox.SelectedItem != null)
                 {
@@ -96,13 +98,14 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        protected void guardarAula_Click(object sender, EventArgs e)
+
+        public void GuardarAula_Click()
         {
-            foreach (var comboBox in comboBoxPictureBoxMap.Keys)
+            foreach (var comboBox in ComboBoxPictureBoxMap.Keys)
             {
                 if (comboBox.SelectedItem == null)
                 {
-                    comboBoxPictureBoxMap[comboBox].Image = Image.FromFile("C:\\Users\\Guty\\Documents\\TFS\\Imagenes\\pcCasa.jpg");
+                    ComboBoxPictureBoxMap[comboBox].Image = Image.FromFile("C:\\Users\\Guty\\Documents\\TFS\\Imagenes\\pcCasa.jpg");
                 }
             }
             MessageBox.Show("Todos los alumnos han sido seleccionados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -3,92 +3,112 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class AulaPb1 : Form
     {
+        private Dictionary<ComboBox, PictureBox> comboBoxPictureBoxMap;
+        private AulaBaseHelper helper;
+
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
         public string NombreAsignatura { get; set; }
+
         public AulaPb1()
         {
             InitializeComponent();
-
-            this.ClientSize = new System.Drawing.Size(750, 580);
+            this.ClientSize = new Size(750, 580);
         }
 
         private void AulaPb1_Load(object sender, EventArgs e)
         {
-            // Mostrar el nombre, apellidos del profesor y la asignatura en un TextBox o Label
+            comboBoxPictureBoxMap = new Dictionary<ComboBox, PictureBox>
+            {
+                { comboBox1, ptbF1C1 },
+                { comboBox2, ptbF1C2 },
+                { comboBox3, ptbF1C3 },
+                { comboBox4, ptbF1C4 },
+                { comboBox5, ptbF2C1 },
+                { comboBox6, ptbF2C2 },
+                { comboBox7, ptbF2C3 },
+                { comboBox8, ptbF2C4 }
+            };
+
+            helper = new AulaBaseHelper
+            {
+                NombreProfesor = NombreProfesor,
+                ApellidosProfesor = ApellidosProfesor,
+                NombreAsignatura = NombreAsignatura,
+                ComboBoxPictureBoxMap = comboBoxPictureBoxMap
+            };
+
+            foreach (var comboBox in comboBoxPictureBoxMap.Keys)
+            {
+                comboBox.SelectedIndexChanged += helper.ComboBox_SelectedIndexChanged;
+            }
+
+            helper.LlenarComboBox();
+
             txNombreApellidoProfesor.Text = $"{NombreProfesor} {ApellidosProfesor}";
             txNombreAsignatura.Text = $"Asignatura: {NombreAsignatura}";
-
         }
 
         private void pcFila2columna4_Click(object sender, EventArgs e)
         {
-            FormularioMaterial formularioMaterial = new FormularioMaterial();
-            formularioMaterial.Show();
-            this.Hide();
+            AbrirFormularioMaterial();
         }
 
         private void pcFila2columna3_Click(object sender, EventArgs e)
         {
-            FormularioMaterial formularioMaterial = new FormularioMaterial();
-            formularioMaterial.Show();
-            this.Hide();
+            AbrirFormularioMaterial();
         }
 
         private void pcFila2columna2_Click(object sender, EventArgs e)
         {
-            FormularioMaterial formularioMaterial = new FormularioMaterial();
-            formularioMaterial.Show();
-            this.Hide();
+            AbrirFormularioMaterial();
         }
 
         private void pcFila2columna1_Click(object sender, EventArgs e)
         {
-            FormularioMaterial formularioMaterial = new FormularioMaterial();
-            formularioMaterial.Show();
-            this.Hide();
+            AbrirFormularioMaterial();
         }
 
         private void pcFila1columna4_Click(object sender, EventArgs e)
         {
-            FormularioMaterial formularioMaterial = new FormularioMaterial();
-            formularioMaterial.Show();
-            this.Hide();
+            AbrirFormularioMaterial();
         }
 
         private void pcFila1columna3_Click(object sender, EventArgs e)
         {
-            FormularioMaterial formularioMaterial = new FormularioMaterial();
-            formularioMaterial.Show();
-            this.Hide();
+            AbrirFormularioMaterial();
         }
 
         private void pcFila1columna2_Click(object sender, EventArgs e)
         {
-            FormularioMaterial formularioMaterial = new FormularioMaterial();
-            formularioMaterial.Show();
-            this.Hide();
+            AbrirFormularioMaterial();
         }
 
         private void pcFila1columna1_Click(object sender, EventArgs e)
         {
+            AbrirFormularioMaterial();
+        }
+
+        private void txNombreApellidoProfesor_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void AbrirFormularioMaterial()
+        {
             FormularioMaterial formularioMaterial = new FormularioMaterial();
             formularioMaterial.Show();
             this.Hide();
         }
 
-        private void txNombreApellidoProfesor_TextChanged(object sender, EventArgs e)
+        private void btGuardarAula_Click(object sender, EventArgs e)
         {
-
+            helper.GuardarAula_Click();
         }
     }
 }

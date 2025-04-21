@@ -29,120 +29,129 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AulaPb4));
-            this.Pcfila1Columna1 = new System.Windows.Forms.PictureBox();
-            this.Pcfila1Columna2 = new System.Windows.Forms.PictureBox();
-            this.Pcfila1Columna3 = new System.Windows.Forms.PictureBox();
-            this.Pcfila1Columna4 = new System.Windows.Forms.PictureBox();
-            this.Pcfila2Columna1 = new System.Windows.Forms.PictureBox();
-            this.Pcfila2Columna2 = new System.Windows.Forms.PictureBox();
-            this.Pcfila2Columna4 = new System.Windows.Forms.PictureBox();
-            this.Pcfila2Columna3 = new System.Windows.Forms.PictureBox();
+            this.ptbF1C1 = new System.Windows.Forms.PictureBox();
+            this.ptbF1C2 = new System.Windows.Forms.PictureBox();
+            this.ptbF1C3 = new System.Windows.Forms.PictureBox();
+            this.ptbF1C4 = new System.Windows.Forms.PictureBox();
+            this.ptbF2C1 = new System.Windows.Forms.PictureBox();
+            this.ptbF2C2 = new System.Windows.Forms.PictureBox();
+            this.ptbF2C4 = new System.Windows.Forms.PictureBox();
+            this.ptbF2C3 = new System.Windows.Forms.PictureBox();
             this.txNombreApellidoProfesor = new System.Windows.Forms.TextBox();
             this.txNombreAsignatura = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila2Columna1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila2Columna2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila2Columna4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila2Columna3)).BeginInit();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.btGuardarAula = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF1C1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF1C3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF1C4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C3)).BeginInit();
             this.SuspendLayout();
             // 
-            // Pcfila1Columna1
+            // ptbF1C1
             // 
-            this.Pcfila1Columna1.Image = ((System.Drawing.Image)(resources.GetObject("Pcfila1Columna1.Image")));
-            this.Pcfila1Columna1.Location = new System.Drawing.Point(148, 210);
-            this.Pcfila1Columna1.Name = "Pcfila1Columna1";
-            this.Pcfila1Columna1.Size = new System.Drawing.Size(57, 108);
-            this.Pcfila1Columna1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pcfila1Columna1.TabIndex = 0;
-            this.Pcfila1Columna1.TabStop = false;
-            this.Pcfila1Columna1.Click += new System.EventHandler(this.Pcfila1Columna1_Click);
+            this.ptbF1C1.Image = ((System.Drawing.Image)(resources.GetObject("ptbF1C1.Image")));
+            this.ptbF1C1.Location = new System.Drawing.Point(148, 210);
+            this.ptbF1C1.Name = "ptbF1C1";
+            this.ptbF1C1.Size = new System.Drawing.Size(57, 108);
+            this.ptbF1C1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF1C1.TabIndex = 0;
+            this.ptbF1C1.TabStop = false;
+            this.ptbF1C1.Click += new System.EventHandler(this.Pcfila1Columna1_Click);
             // 
-            // Pcfila1Columna2
+            // ptbF1C2
             // 
-            this.Pcfila1Columna2.Image = ((System.Drawing.Image)(resources.GetObject("Pcfila1Columna2.Image")));
-            this.Pcfila1Columna2.Location = new System.Drawing.Point(341, 210);
-            this.Pcfila1Columna2.Name = "Pcfila1Columna2";
-            this.Pcfila1Columna2.Size = new System.Drawing.Size(57, 108);
-            this.Pcfila1Columna2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pcfila1Columna2.TabIndex = 1;
-            this.Pcfila1Columna2.TabStop = false;
-            this.Pcfila1Columna2.Click += new System.EventHandler(this.Pcfila1Columna2_Click);
+            this.ptbF1C2.Image = ((System.Drawing.Image)(resources.GetObject("ptbF1C2.Image")));
+            this.ptbF1C2.Location = new System.Drawing.Point(341, 210);
+            this.ptbF1C2.Name = "ptbF1C2";
+            this.ptbF1C2.Size = new System.Drawing.Size(57, 108);
+            this.ptbF1C2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF1C2.TabIndex = 1;
+            this.ptbF1C2.TabStop = false;
+            this.ptbF1C2.Click += new System.EventHandler(this.Pcfila1Columna2_Click);
             // 
-            // Pcfila1Columna3
+            // ptbF1C3
             // 
-            this.Pcfila1Columna3.Image = ((System.Drawing.Image)(resources.GetObject("Pcfila1Columna3.Image")));
-            this.Pcfila1Columna3.Location = new System.Drawing.Point(618, 210);
-            this.Pcfila1Columna3.Name = "Pcfila1Columna3";
-            this.Pcfila1Columna3.Size = new System.Drawing.Size(57, 108);
-            this.Pcfila1Columna3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pcfila1Columna3.TabIndex = 2;
-            this.Pcfila1Columna3.TabStop = false;
-            this.Pcfila1Columna3.Click += new System.EventHandler(this.Pcfila1Columna3_Click);
+            this.ptbF1C3.Image = ((System.Drawing.Image)(resources.GetObject("ptbF1C3.Image")));
+            this.ptbF1C3.Location = new System.Drawing.Point(618, 210);
+            this.ptbF1C3.Name = "ptbF1C3";
+            this.ptbF1C3.Size = new System.Drawing.Size(57, 108);
+            this.ptbF1C3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF1C3.TabIndex = 2;
+            this.ptbF1C3.TabStop = false;
+            this.ptbF1C3.Click += new System.EventHandler(this.Pcfila1Columna3_Click);
             // 
-            // Pcfila1Columna4
+            // ptbF1C4
             // 
-            this.Pcfila1Columna4.Image = ((System.Drawing.Image)(resources.GetObject("Pcfila1Columna4.Image")));
-            this.Pcfila1Columna4.Location = new System.Drawing.Point(835, 210);
-            this.Pcfila1Columna4.Name = "Pcfila1Columna4";
-            this.Pcfila1Columna4.Size = new System.Drawing.Size(57, 108);
-            this.Pcfila1Columna4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pcfila1Columna4.TabIndex = 3;
-            this.Pcfila1Columna4.TabStop = false;
-            this.Pcfila1Columna4.Click += new System.EventHandler(this.Pcfila1Columna4_Click);
+            this.ptbF1C4.Image = ((System.Drawing.Image)(resources.GetObject("ptbF1C4.Image")));
+            this.ptbF1C4.Location = new System.Drawing.Point(835, 210);
+            this.ptbF1C4.Name = "ptbF1C4";
+            this.ptbF1C4.Size = new System.Drawing.Size(57, 108);
+            this.ptbF1C4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF1C4.TabIndex = 3;
+            this.ptbF1C4.TabStop = false;
+            this.ptbF1C4.Click += new System.EventHandler(this.Pcfila1Columna4_Click);
             // 
-            // Pcfila2Columna1
+            // ptbF2C1
             // 
-            this.Pcfila2Columna1.Image = ((System.Drawing.Image)(resources.GetObject("Pcfila2Columna1.Image")));
-            this.Pcfila2Columna1.Location = new System.Drawing.Point(148, 417);
-            this.Pcfila2Columna1.Name = "Pcfila2Columna1";
-            this.Pcfila2Columna1.Size = new System.Drawing.Size(57, 108);
-            this.Pcfila2Columna1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pcfila2Columna1.TabIndex = 4;
-            this.Pcfila2Columna1.TabStop = false;
-            this.Pcfila2Columna1.Click += new System.EventHandler(this.Pcfila2Columna1_Click);
+            this.ptbF2C1.Image = ((System.Drawing.Image)(resources.GetObject("ptbF2C1.Image")));
+            this.ptbF2C1.Location = new System.Drawing.Point(148, 417);
+            this.ptbF2C1.Name = "ptbF2C1";
+            this.ptbF2C1.Size = new System.Drawing.Size(57, 108);
+            this.ptbF2C1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF2C1.TabIndex = 4;
+            this.ptbF2C1.TabStop = false;
+            this.ptbF2C1.Click += new System.EventHandler(this.Pcfila2Columna1_Click);
             // 
-            // Pcfila2Columna2
+            // ptbF2C2
             // 
-            this.Pcfila2Columna2.Image = ((System.Drawing.Image)(resources.GetObject("Pcfila2Columna2.Image")));
-            this.Pcfila2Columna2.Location = new System.Drawing.Point(341, 417);
-            this.Pcfila2Columna2.Name = "Pcfila2Columna2";
-            this.Pcfila2Columna2.Size = new System.Drawing.Size(57, 108);
-            this.Pcfila2Columna2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pcfila2Columna2.TabIndex = 5;
-            this.Pcfila2Columna2.TabStop = false;
-            this.Pcfila2Columna2.Click += new System.EventHandler(this.Pcfila2Columna2_Click);
+            this.ptbF2C2.Image = ((System.Drawing.Image)(resources.GetObject("ptbF2C2.Image")));
+            this.ptbF2C2.Location = new System.Drawing.Point(341, 417);
+            this.ptbF2C2.Name = "ptbF2C2";
+            this.ptbF2C2.Size = new System.Drawing.Size(57, 108);
+            this.ptbF2C2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF2C2.TabIndex = 5;
+            this.ptbF2C2.TabStop = false;
+            this.ptbF2C2.Click += new System.EventHandler(this.Pcfila2Columna2_Click);
             // 
-            // Pcfila2Columna4
+            // ptbF2C4
             // 
-            this.Pcfila2Columna4.Image = ((System.Drawing.Image)(resources.GetObject("Pcfila2Columna4.Image")));
-            this.Pcfila2Columna4.Location = new System.Drawing.Point(835, 417);
-            this.Pcfila2Columna4.Name = "Pcfila2Columna4";
-            this.Pcfila2Columna4.Size = new System.Drawing.Size(57, 108);
-            this.Pcfila2Columna4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pcfila2Columna4.TabIndex = 6;
-            this.Pcfila2Columna4.TabStop = false;
-            this.Pcfila2Columna4.Click += new System.EventHandler(this.Pcfila2Columna4_Click);
+            this.ptbF2C4.Image = ((System.Drawing.Image)(resources.GetObject("ptbF2C4.Image")));
+            this.ptbF2C4.Location = new System.Drawing.Point(835, 417);
+            this.ptbF2C4.Name = "ptbF2C4";
+            this.ptbF2C4.Size = new System.Drawing.Size(57, 108);
+            this.ptbF2C4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF2C4.TabIndex = 6;
+            this.ptbF2C4.TabStop = false;
+            this.ptbF2C4.Click += new System.EventHandler(this.Pcfila2Columna4_Click);
             // 
-            // Pcfila2Columna3
+            // ptbF2C3
             // 
-            this.Pcfila2Columna3.Image = ((System.Drawing.Image)(resources.GetObject("Pcfila2Columna3.Image")));
-            this.Pcfila2Columna3.Location = new System.Drawing.Point(618, 417);
-            this.Pcfila2Columna3.Name = "Pcfila2Columna3";
-            this.Pcfila2Columna3.Size = new System.Drawing.Size(57, 108);
-            this.Pcfila2Columna3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pcfila2Columna3.TabIndex = 6;
-            this.Pcfila2Columna3.TabStop = false;
-            this.Pcfila2Columna3.Click += new System.EventHandler(this.Pcfila2Columna3_Click);
+            this.ptbF2C3.Image = ((System.Drawing.Image)(resources.GetObject("ptbF2C3.Image")));
+            this.ptbF2C3.Location = new System.Drawing.Point(618, 417);
+            this.ptbF2C3.Name = "ptbF2C3";
+            this.ptbF2C3.Size = new System.Drawing.Size(57, 108);
+            this.ptbF2C3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF2C3.TabIndex = 6;
+            this.ptbF2C3.TabStop = false;
+            this.ptbF2C3.Click += new System.EventHandler(this.Pcfila2Columna3_Click);
             // 
             // txNombreApellidoProfesor
             // 
             this.txNombreApellidoProfesor.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txNombreApellidoProfesor.Location = new System.Drawing.Point(71, 40);
             this.txNombreApellidoProfesor.Name = "txNombreApellidoProfesor";
-            this.txNombreApellidoProfesor.Size = new System.Drawing.Size(230, 39);
+            this.txNombreApellidoProfesor.Size = new System.Drawing.Size(230, 31);
             this.txNombreApellidoProfesor.TabIndex = 7;
             // 
             // txNombreAsignatura
@@ -150,8 +159,82 @@
             this.txNombreAsignatura.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txNombreAsignatura.Location = new System.Drawing.Point(71, 84);
             this.txNombreAsignatura.Name = "txNombreAsignatura";
-            this.txNombreAsignatura.Size = new System.Drawing.Size(230, 39);
+            this.txNombreAsignatura.Size = new System.Drawing.Size(230, 31);
             this.txNombreAsignatura.TabIndex = 8;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(148, 146);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(151, 24);
+            this.comboBox1.TabIndex = 9;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(341, 146);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(151, 24);
+            this.comboBox2.TabIndex = 10;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(618, 146);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(151, 24);
+            this.comboBox3.TabIndex = 11;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(835, 146);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(151, 24);
+            this.comboBox4.TabIndex = 12;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(148, 353);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(151, 24);
+            this.comboBox5.TabIndex = 13;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(341, 353);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(151, 24);
+            this.comboBox6.TabIndex = 14;
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Location = new System.Drawing.Point(618, 353);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(151, 24);
+            this.comboBox7.TabIndex = 15;
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Location = new System.Drawing.Point(835, 353);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(151, 24);
+            this.comboBox8.TabIndex = 16;
+            // 
+            // btGuardarAula
+            // 
+            this.btGuardarAula.Location = new System.Drawing.Point(446, 562);
+            this.btGuardarAula.Name = "btGuardarAula";
+            this.btGuardarAula.Size = new System.Drawing.Size(159, 74);
+            this.btGuardarAula.TabIndex = 17;
+            this.btGuardarAula.Text = "GUARDAR AULA";
+            this.btGuardarAula.UseVisualStyleBackColor = true;
+            this.btGuardarAula.Click += new System.EventHandler(this.btGuardarAula_Click);
             // 
             // AulaPb4
             // 
@@ -160,43 +243,61 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1021, 692);
+            this.Controls.Add(this.btGuardarAula);
+            this.Controls.Add(this.comboBox8);
+            this.Controls.Add(this.comboBox7);
+            this.Controls.Add(this.comboBox6);
+            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.txNombreAsignatura);
             this.Controls.Add(this.txNombreApellidoProfesor);
-            this.Controls.Add(this.Pcfila2Columna3);
-            this.Controls.Add(this.Pcfila2Columna4);
-            this.Controls.Add(this.Pcfila2Columna2);
-            this.Controls.Add(this.Pcfila2Columna1);
-            this.Controls.Add(this.Pcfila1Columna4);
-            this.Controls.Add(this.Pcfila1Columna3);
-            this.Controls.Add(this.Pcfila1Columna2);
-            this.Controls.Add(this.Pcfila1Columna1);
+            this.Controls.Add(this.ptbF2C3);
+            this.Controls.Add(this.ptbF2C4);
+            this.Controls.Add(this.ptbF2C2);
+            this.Controls.Add(this.ptbF2C1);
+            this.Controls.Add(this.ptbF1C4);
+            this.Controls.Add(this.ptbF1C3);
+            this.Controls.Add(this.ptbF1C2);
+            this.Controls.Add(this.ptbF1C1);
             this.Name = "AulaPb4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AulaPb4";
             this.Load += new System.EventHandler(this.AulaPb4_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila1Columna4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila2Columna1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila2Columna2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila2Columna4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pcfila2Columna3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF1C1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF1C3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF1C4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox Pcfila1Columna1;
-        private System.Windows.Forms.PictureBox Pcfila1Columna2;
-        private System.Windows.Forms.PictureBox Pcfila1Columna3;
-        private System.Windows.Forms.PictureBox Pcfila1Columna4;
-        private System.Windows.Forms.PictureBox Pcfila2Columna1;
-        private System.Windows.Forms.PictureBox Pcfila2Columna2;
-        private System.Windows.Forms.PictureBox Pcfila2Columna4;
-        private System.Windows.Forms.PictureBox Pcfila2Columna3;
+        private System.Windows.Forms.PictureBox ptbF1C1;
+        private System.Windows.Forms.PictureBox ptbF1C2;
+        private System.Windows.Forms.PictureBox ptbF1C3;
+        private System.Windows.Forms.PictureBox ptbF1C4;
+        private System.Windows.Forms.PictureBox ptbF2C1;
+        private System.Windows.Forms.PictureBox ptbF2C2;
+        private System.Windows.Forms.PictureBox ptbF2C4;
+        private System.Windows.Forms.PictureBox ptbF2C3;
         private System.Windows.Forms.TextBox txNombreApellidoProfesor;
         private System.Windows.Forms.TextBox txNombreAsignatura;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.Button btGuardarAula;
     }
 }

@@ -62,9 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AulaBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="AulaBaseHelper.cs" />
     <Compile Include="AulaPb1.cs">
       <SubType>Form</SubType>
     </Compile>
