@@ -48,6 +48,7 @@
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.btGuardarAula = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C3)).BeginInit();
@@ -83,7 +84,7 @@
             this.txNombreApellidoProfesor.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txNombreApellidoProfesor.Location = new System.Drawing.Point(432, 35);
             this.txNombreApellidoProfesor.Name = "txNombreApellidoProfesor";
-            this.txNombreApellidoProfesor.Size = new System.Drawing.Size(199, 31);
+            this.txNombreApellidoProfesor.Size = new System.Drawing.Size(253, 31);
             this.txNombreApellidoProfesor.TabIndex = 3;
             // 
             // txNombreAsignatura
@@ -91,7 +92,7 @@
             this.txNombreAsignatura.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txNombreAsignatura.Location = new System.Drawing.Point(432, 80);
             this.txNombreAsignatura.Name = "txNombreAsignatura";
-            this.txNombreAsignatura.Size = new System.Drawing.Size(199, 31);
+            this.txNombreAsignatura.Size = new System.Drawing.Size(253, 31);
             this.txNombreAsignatura.TabIndex = 4;
             this.txNombreAsignatura.TextChanged += new System.EventHandler(this.txNombreAsignatura_TextChanged);
             // 
@@ -231,6 +232,16 @@
             this.btGuardarAula.UseVisualStyleBackColor = true;
             this.btGuardarAula.Click += new System.EventHandler(this.btGuardarAula_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(135, 143);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 33);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Prueba Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AulaPb3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,6 +249,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(934, 604);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btGuardarAula);
             this.Controls.Add(this.comboBox8);
             this.Controls.Add(this.comboBox7);
@@ -295,5 +307,6 @@
         private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.ComboBox comboBox8;
         private System.Windows.Forms.Button btGuardarAula;
+        private System.Windows.Forms.Button button1;
     }
 }

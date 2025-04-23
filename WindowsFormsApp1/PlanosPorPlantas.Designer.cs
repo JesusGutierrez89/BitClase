@@ -133,6 +133,7 @@
             this.btAulaPrimeraPlanta1.TabIndex = 6;
             this.btAulaPrimeraPlanta1.Text = "Aula PP 1";
             this.btAulaPrimeraPlanta1.UseVisualStyleBackColor = false;
+            this.btAulaPrimeraPlanta1.Click += new System.EventHandler(this.btAulaPrimeraPlanta1_Click);
             // 
             // btAulaPrimeraPlanta2
             // 
@@ -188,7 +189,7 @@
             this.btAulaSegundaPlanta2.BackColor = System.Drawing.Color.Transparent;
             this.btAulaSegundaPlanta2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btAulaSegundaPlanta2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAulaSegundaPlanta2.Location = new System.Drawing.Point(506, 112);
+            this.btAulaSegundaPlanta2.Location = new System.Drawing.Point(508, 112);
             this.btAulaSegundaPlanta2.Name = "btAulaSegundaPlanta2";
             this.btAulaSegundaPlanta2.Size = new System.Drawing.Size(319, 253);
             this.btAulaSegundaPlanta2.TabIndex = 11;

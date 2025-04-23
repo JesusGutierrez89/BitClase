@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using ClosedXML.Excel;
 
 namespace WindowsFormsApp1
 {
@@ -79,6 +80,15 @@ namespace WindowsFormsApp1
         private void btGuardarAula_Click(object sender, EventArgs e)
         {
             helper.GuardarAula_Click();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Hoja1");
+            worksheet.Cell(1, 1).Value = "Hola, Excel!";
+            workbook.SaveAs("Ejemplo.xlsx");
+
         }
     }
 }

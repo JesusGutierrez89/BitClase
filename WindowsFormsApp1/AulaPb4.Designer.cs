@@ -149,17 +149,17 @@
             // txNombreApellidoProfesor
             // 
             this.txNombreApellidoProfesor.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txNombreApellidoProfesor.Location = new System.Drawing.Point(71, 40);
+            this.txNombreApellidoProfesor.Location = new System.Drawing.Point(61, 35);
             this.txNombreApellidoProfesor.Name = "txNombreApellidoProfesor";
-            this.txNombreApellidoProfesor.Size = new System.Drawing.Size(230, 31);
+            this.txNombreApellidoProfesor.Size = new System.Drawing.Size(327, 31);
             this.txNombreApellidoProfesor.TabIndex = 7;
             // 
             // txNombreAsignatura
             // 
             this.txNombreAsignatura.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txNombreAsignatura.Location = new System.Drawing.Point(71, 84);
+            this.txNombreAsignatura.Location = new System.Drawing.Point(61, 84);
             this.txNombreAsignatura.Name = "txNombreAsignatura";
-            this.txNombreAsignatura.Size = new System.Drawing.Size(230, 31);
+            this.txNombreAsignatura.Size = new System.Drawing.Size(327, 31);
             this.txNombreAsignatura.TabIndex = 8;
             // 
             // comboBox1

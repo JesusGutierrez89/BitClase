@@ -165,5 +165,17 @@ namespace WindowsFormsApp1
             aulaPb4.Show();
             this.Hide();
         }
+      
+        private void btAulaPrimeraPlanta1_Click(object sender, EventArgs e)
+        {
+            AulaPP1 aulaPP1 = new AulaPP1
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
+            aulaPP1.Show();
+            this.Hide();
+        }
     }
 }
