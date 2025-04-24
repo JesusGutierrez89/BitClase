@@ -21,6 +21,11 @@ namespace WindowsFormsApp1
         public Form2()
         {
             InitializeComponent();
+            txtNRP.TextChanged += txtNRP_TextChanged;
+            txtNombre.TextChanged += txtNombre_TextChanged;
+            txtApellidos.TextChanged += txtApellidos_TextChanged;
+            txtEmail.TextChanged += txtEmail_TextChanged;
+            txtpassword.TextChanged += txtpassword_TextChanged;
 
         }
 
@@ -104,5 +109,77 @@ namespace WindowsFormsApp1
         {
             return BCrypt.Net.BCrypt.HashPassword(password);
         }
+        private void txtNRP_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNRP.Text.Length != 11)
+            {
+                errorProvider1.SetError(txtNRP, "El NRP debe tener exactamente 11 caracteres.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtNRP, string.Empty); // Elimina el error si es válido
+            }
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                errorProvider1.SetError(txtNombre, "El campo Nombre no puede estar vacío.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtNombre, string.Empty); // Elimina el error si es válido
+            }
+        }
+
+        private void txtApellidos_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtApellidos.Text))
+            {
+                errorProvider1.SetError(txtApellidos, "El campo Apellidos no puede estar vacío.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtApellidos, string.Empty); // Elimina el error si es válido
+            }
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            if (!EsCorreoValido(txtEmail.Text))
+            {
+                errorProvider1.SetError(txtEmail, "El correo electrónico no es válido.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtEmail, string.Empty); // Elimina el error si es válido
+            }
+        }
+
+        private void txtpassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtpassword.Text.Length < 4)
+            {
+                errorProvider1.SetError(txtpassword, "La contraseña debe tener al menos 4 caracteres.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtpassword, string.Empty); // Elimina el error si es válido
+            }
+        }
+        private bool EsCorreoValido(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

@@ -1,7 +1,10 @@
 ﻿namespace WindowsFormsApp1
 {
+
     partial class Form2
     {
+
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -20,6 +23,7 @@
             base.Dispose(disposing);
         }
 
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -28,6 +32,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNRP = new System.Windows.Forms.TextBox();
@@ -40,6 +45,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.btRegistro = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -69,6 +76,7 @@
             this.txtNRP.Name = "txtNRP";
             this.txtNRP.Size = new System.Drawing.Size(175, 30);
             this.txtNRP.TabIndex = 2;
+            this.txtNRP.TextChanged += new System.EventHandler(this.Form2_Load);
             // 
             // label3
             // 
@@ -87,6 +95,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(175, 30);
             this.txtNombre.TabIndex = 4;
+            this.txtNombre.TextChanged += new System.EventHandler(this.Form2_Load);
             // 
             // label4
             // 
@@ -105,6 +114,7 @@
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(175, 30);
             this.txtApellidos.TabIndex = 6;
+            this.txtApellidos.TextChanged += new System.EventHandler(this.Form2_Load);
             // 
             // label5
             // 
@@ -123,6 +133,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(175, 30);
             this.txtEmail.TabIndex = 8;
+            this.txtEmail.TextChanged += new System.EventHandler(this.Form2_Load);
             // 
             // label7
             // 
@@ -141,6 +152,7 @@
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Size = new System.Drawing.Size(175, 30);
             this.txtpassword.TabIndex = 12;
+            this.txtpassword.TextChanged += new System.EventHandler(this.Form2_Load);
             // 
             // btRegistro
             // 
@@ -152,6 +164,10 @@
             this.btRegistro.Text = "REGISTRAR";
             this.btRegistro.UseVisualStyleBackColor = true;
             this.btRegistro.Click += new System.EventHandler(this.btRegistro_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // Form2
             // 
@@ -174,6 +190,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +210,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtpassword;
         private System.Windows.Forms.Button btRegistro;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
