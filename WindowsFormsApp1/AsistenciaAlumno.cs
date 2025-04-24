@@ -16,7 +16,6 @@ namespace WindowsFormsApp1
         public string Pabellon { get; set; }
         public int FilaMesa { get; set; }
         public int ColumnaMesa { get; set; }
-        public string TipoMaterial { get; set; }
-        public string DescripcionMaterial { get; set; }
+        
     }
 }

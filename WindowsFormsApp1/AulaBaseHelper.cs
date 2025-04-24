@@ -126,11 +126,11 @@ namespace WindowsFormsApp1
             // Ejemplo: datos del profesor y asignatura
             string profesorNombre = NombreProfesor;
             string profesorApellidos = ApellidosProfesor;
-            string asignaturaNombre = NombreAsignatura;   
+            string asignaturaNombre = NombreAsignatura;
 
             // Ejemplo: lista de alumnos asistentes
             var listaAlumnos = new List<AsistenciaAlumno>();
-            foreach (var alumno in RecuperarAlumnosAsistentes())  // tu método de BD
+            foreach (var alumno in RecuperarAlumnosAsistentes())
             {
                 listaAlumnos.Add(new AsistenciaAlumno
                 {
@@ -142,20 +142,29 @@ namespace WindowsFormsApp1
                     Pabellon = alumno.Pabellon,
                     FilaMesa = alumno.FilaMesa,
                     ColumnaMesa = alumno.ColumnaMesa,
-                    TipoMaterial = alumno.TipoMaterial,
-                    DescripcionMaterial = alumno.DescripcionMaterial
+
                 });
             }
 
             // Ejemplo: estado del aula (equipos por mesa)
             var estadoAula = new List<EquipoMesa>();
-            foreach (var mesa in RecuperarEstadoAula())  // tu método de BD
+            foreach (var mesa in RecuperarEstadoAula())
             {
                 estadoAula.Add(new EquipoMesa
                 {
                     FilaMesa = mesa.FilaMesa,
                     ColumnaMesa = mesa.ColumnaMesa,
                     Equipo = mesa.Equipo // List<string>
+                });
+            }
+
+            var materialesAlumnos = new List<MaterialAlumno>();
+            foreach (var material in RecuperarMaterialesAlumnos())
+            {
+                materialesAlumnos.Add(new MaterialAlumno
+                {
+                    TipoMaterial = material.TipoMaterial,
+                    DescripcionMaterial = material.DescripcionMaterial
                 });
             }
 
@@ -172,6 +181,7 @@ namespace WindowsFormsApp1
                     asignaturaNombre,
                     listaAlumnos,
                     estadoAula,
+                    materialesAlumnos,
                     rutaExcel);
 
                 MessageBox.Show(
@@ -188,7 +198,7 @@ namespace WindowsFormsApp1
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-      
+
         }
         public List<AsistenciaAlumno> RecuperarAlumnosAsistentes()
         {
@@ -197,20 +207,17 @@ namespace WindowsFormsApp1
         SELECT 
             al.nombre AS Nombre,
             al.apellidos AS Apellidos,
-            al.num_expediente AS NumExpediente,
+            al.nre AS NumExpediente,
             au.nombre AS NombreAula,
             au.planta AS Planta,
             au.pabellon AS Pabellon,
             me.fila AS FilaMesa,
-            me.columna AS ColumnaMesa,
-            mat.tipo AS TipoMaterial,
-            mat.descripcion AS DescripcionMaterial
+            me.columna AS ColumnaMesa
         FROM 
             Alumnos al
         INNER JOIN Asistencias asi ON asi.alumno_id = al.id
         INNER JOIN Aulas au ON asi.aula_id = au.id
-        INNER JOIN Mesas me ON asi.mesa_id = me.id
-        LEFT JOIN Material mat ON mat.mesa_id = me.id;";
+        INNER JOIN Mesas me ON asi.mesa_id = me.id;";
 
             var listaAlumnos = new List<AsistenciaAlumno>();
 
@@ -235,8 +242,6 @@ namespace WindowsFormsApp1
                                     Pabellon = reader["Pabellon"].ToString(),
                                     FilaMesa = Convert.ToInt32(reader["FilaMesa"]),
                                     ColumnaMesa = Convert.ToInt32(reader["ColumnaMesa"]),
-                                    TipoMaterial = reader["TipoMaterial"]?.ToString(),
-                                    DescripcionMaterial = reader["DescripcionMaterial"]?.ToString()
                                 };
 
                                 listaAlumnos.Add(alumno);
@@ -318,36 +323,194 @@ namespace WindowsFormsApp1
 
             return estadoAula;
         }
+        public List<MaterialAlumno> RecuperarMaterialesAlumnos()
+        {
+            string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
+            string query = @"
+        SELECT 
+            al.nombre AS NombreAlumno,
+            al.apellidos AS ApellidosAlumno,
+            mat.tipo AS TipoMaterial,
+            mat.descripcion AS DescripcionMaterial
+        FROM 
+            Alumnos al
+        INNER JOIN Asistencias asi ON asi.alumno_id = al.id
+        INNER JOIN Mesas me ON asi.mesa_id = me.id
+        LEFT JOIN Material mat ON mat.mesa_id = me.id;";
 
-        public void GuardarYExportarExcel(string profesorNombre,
-                    string profesorApellidos,
-                    string asignaturaNombre,
-                    List<AsistenciaAlumno>listaAlumnos,
-                    List<EquipoMesa> estadoAula, 
-                    string rutaExcel)
+            var materialesAlumnos = new List<MaterialAlumno>();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var materialAlumno = new MaterialAlumno
+                                {
+                                    TipoMaterial = reader["TipoMaterial"]?.ToString(),
+                                    DescripcionMaterial = reader["DescripcionMaterial"]?.ToString()
+                                };
+
+                                materialesAlumnos.Add(materialAlumno);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al recuperar los materiales de los alumnos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return materialesAlumnos;
+        }
+
+        public void GuardarYExportarExcel(
+    string profesorNombre,
+    string profesorApellidos,
+    string asignaturaNombre,
+    List<AsistenciaAlumno> listaAlumnos,
+    List<EquipoMesa> estadoAula,
+    List<MaterialAlumno> materialesAlumnos,
+    string rutaExcel)
         {
             var workbook = new XLWorkbook();
-            var worksheet = workbook.Worksheets.Add("Estado del Aula");
+            var ws = workbook.Worksheets.Add("Estado del Aula");
+            int row = 1;
 
-            // Encabezados
-            worksheet.Cell(1, 1).Value = "Fila";
-            worksheet.Cell(1, 2).Value = "Columna";
-            worksheet.Cell(1, 3).Value = "Equipos";
+            // ------------------------------------
+            // 1) Cabecera general con estilo
+            // ------------------------------------
+            var headerRange = ws.Range(row, 1, row, 5);
+            headerRange.Style.Font.SetBold()
+                                  .Font.FontSize = 12;
+            headerRange.Style.Alignment.SetVertical(XLAlignmentVerticalValues.Center);
+            headerRange.Style.Fill.BackgroundColor = XLColor.LightGray;
 
-            int fila = 2;
+            ws.Cell(row, 1).Value = "Nombre profesor:";
+            ws.Cell(row, 2).Value = profesorNombre;
+            ws.Cell(row, 4).Value = "Apellidos profesor:";
+            ws.Cell(row, 5).Value = profesorApellidos;
+            row++;
+
+            var subHeaderRange = ws.Range(row, 1, row, 5);
+            subHeaderRange.Style.Font.SetBold()
+                                      .Font.FontSize = 12;
+            subHeaderRange.Style.Alignment.SetVertical(XLAlignmentVerticalValues.Center);
+            subHeaderRange.Style.Fill.BackgroundColor = XLColor.LightGray;
+
+            ws.Cell(row, 1).Value = "Nombre asignatura:";
+            ws.Cell(row, 2).Value = asignaturaNombre;
+            ws.Cell(row, 4).Value = "FECHA (Hoy):";
+            ws.Cell(row, 5).Value = DateTime.Today.ToString("dd/MM/yyyy");
+            row += 2;
+
+            // ------------------------------------
+            // 2) Lista de alumnos existentes
+            // ------------------------------------
+            ws.Cell(row, 1).Value = "ALUMNOS EXISTENTES";
+            ws.Cell(row, 1).Style.Font.SetBold()
+                                       .Font.FontColor = XLColor.DarkOrange;
+            ws.Cell(row, 1).Style.Font.SetBold().Font.FontSize = 14;
+            row++;
+
+            // Sub-encabezados alumnos
+            var alumnosHeader = ws.Range(row, 1, row, 6);
+            alumnosHeader.Style.Font.SetBold()
+                                     .Fill.BackgroundColor = XLColor.RedRyb;
+            alumnosHeader.Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+            alumnosHeader.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+
+            ws.Cell(row, 1).Value = "Nombre Al.";
+            ws.Cell(row, 2).Value = "Apellidos Al.";
+            ws.Cell(row, 3).Value = "Nre";
+            ws.Cell(row, 4).Value = materialesAlumnos[0].TipoMaterial;
+            ws.Cell(row, 5).Value = materialesAlumnos[1].TipoMaterial;
+            ws.Cell(row, 6).Value = materialesAlumnos[2].TipoMaterial;
+            row++;
+
+            var firstDataRow = row;
+            foreach (var a in listaAlumnos)
+            {
+                ws.Cell(row, 1).Value = a.Nombre;
+                ws.Cell(row, 2).Value = a.Apellidos;
+                ws.Cell(row, 3).Value = a.NumExpediente;
+                // Alternar color de fila
+                if ((row - firstDataRow) % 2 == 1)
+                {
+                    ws.Row(row).Style.Fill.BackgroundColor = XLColor.FromArgb(242, 242, 242);
+                }
+                row++;
+            }
+            row = firstDataRow;
+
+            int materialCounter = 0;
+            foreach (var material in materialesAlumnos)
+            {
+                int column = 4 + (materialCounter % 3);
+                ws.Cell(row, column).Value = material.DescripcionMaterial;
+                // Centrar texto de materiales
+                ws.Cell(row, column).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                materialCounter++;
+                if (materialCounter % 3 == 0) row++;
+            }
+            if (materialCounter % 3 != 0) row++;
+            row += 2;
+
+            // ------------------------------------
+            // 3) Estado del aula (mesas y equipos)
+            // ------------------------------------
+            ws.Cell(row, 1).Value = "AULA";
+            ws.Cell(row, 1).Style.Font.SetBold()
+                                       .Font.FontColor = XLColor.DarkBlue;
+            ws.Cell(row, 1).Style.Font.SetBold().Font.FontSize = 14;
+            ws.Cell(row, 2).Value = listaAlumnos[0].NombreAula;
+            ws.Cell(row, 3).Value = $"{listaAlumnos[0].Planta} - {listaAlumnos[0].Pabellon}";
+            row++;
+
+            // Encabezados de tabla
+            var aulaHeader = ws.Range(row, 1, row, 3);
+            aulaHeader.Style.Font.SetBold()
+                                 .Fill.BackgroundColor = XLColor.MediumPurple;
+            aulaHeader.Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+            aulaHeader.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+
+            ws.Cell(row, 1).Value = "Fila";
+            ws.Cell(row, 2).Value = "Columna";
+            ws.Cell(row, 3).Value = "Equipos";
+            row++;
 
             foreach (var mesa in estadoAula)
             {
-                worksheet.Cell(fila, 1).Value = mesa.FilaMesa;
-                worksheet.Cell(fila, 2).Value = mesa.ColumnaMesa;
-                worksheet.Cell(fila, 3).Value = string.Join(", ", mesa.Equipo);
-                fila++;
+                ws.Cell(row, 1).Value = mesa.FilaMesa;
+                ws.Cell(row, 2).Value = mesa.ColumnaMesa;
+                ws.Cell(row, 3).Value = string.Join(", ", mesa.Equipo);
+                // Borde en la fila
+                ws.Range(row, 1, row, 6).Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                row++;
             }
 
-            workbook.SaveAs(rutaExcel);
-            MessageBox.Show($"Archivo Excel guardado en: {rutaExcel}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+            // ------------------------------------
+            // 4) Ajustes finales de formato
+            // ------------------------------------
+            ws.Columns().AdjustToContents();
+            ws.Column(3).Width = 20;
+            ws.SheetView.FreezeRows(1);
 
+            workbook.SaveAs(rutaExcel);
+            MessageBox.Show(
+                $"Archivo Excel guardado en: {rutaExcel}",
+                "Éxito",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
     }
 
-}
+    }

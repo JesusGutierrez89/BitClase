@@ -140,6 +140,7 @@
     <Compile Include="FormularioMaterial.Designer.cs">
       <DependentUpon>FormularioMaterial.cs</DependentUpon>
     </Compile>
+    <Compile Include="MaterialAlumno.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
