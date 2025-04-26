@@ -48,7 +48,6 @@
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.btGuardarAula = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C3)).BeginInit();
@@ -105,6 +104,7 @@
             this.ptbF1C2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbF1C2.TabIndex = 5;
             this.ptbF1C2.TabStop = false;
+            this.ptbF1C2.Click += new System.EventHandler(this.ptbF1C2_Click);
             // 
             // ptbF2C3
             // 
@@ -115,6 +115,7 @@
             this.ptbF2C3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbF2C3.TabIndex = 6;
             this.ptbF2C3.TabStop = false;
+            this.ptbF2C3.Click += new System.EventHandler(this.ptbF2C3_Click);
             // 
             // ptbF3C2
             // 
@@ -125,6 +126,7 @@
             this.ptbF3C2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbF3C2.TabIndex = 7;
             this.ptbF3C2.TabStop = false;
+            this.ptbF3C2.Click += new System.EventHandler(this.ptbF3C2_Click);
             // 
             // ptbF3C4
             // 
@@ -145,6 +147,7 @@
             this.ptbF4C1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbF4C1.TabIndex = 9;
             this.ptbF4C1.TabStop = false;
+            this.ptbF4C1.Click += new System.EventHandler(this.ptbF4C1_Click);
             // 
             // ptbF4C3
             // 
@@ -155,6 +158,7 @@
             this.ptbF4C3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbF4C3.TabIndex = 10;
             this.ptbF4C3.TabStop = false;
+            this.ptbF4C3.Click += new System.EventHandler(this.ptbF4C3_Click);
             // 
             // ptbF4C4
             // 
@@ -165,6 +169,7 @@
             this.ptbF4C4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbF4C4.TabIndex = 11;
             this.ptbF4C4.TabStop = false;
+            this.ptbF4C4.Click += new System.EventHandler(this.ptbF4C4_Click);
             // 
             // comboBox2
             // 
@@ -173,6 +178,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(161, 24);
             this.comboBox2.TabIndex = 12;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox3
             // 
@@ -232,16 +238,6 @@
             this.btGuardarAula.UseVisualStyleBackColor = true;
             this.btGuardarAula.Click += new System.EventHandler(this.btGuardarAula_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(135, 143);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 33);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Prueba Excel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // AulaPb3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -249,7 +245,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(934, 604);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btGuardarAula);
             this.Controls.Add(this.comboBox8);
             this.Controls.Add(this.comboBox7);
@@ -307,6 +302,5 @@
         private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.ComboBox comboBox8;
         private System.Windows.Forms.Button btGuardarAula;
-        private System.Windows.Forms.Button button1;
     }
 }

@@ -14,7 +14,8 @@ namespace WindowsFormsApp1
     {
         private Dictionary<ComboBox, PictureBox> comboBoxPictureBoxMap;
         private AulaBaseHelper helper;
-
+        private int idAula = 5;
+        private string nombreMesa = "";
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
         public string NombreAsignatura { get; set; }
@@ -71,14 +72,14 @@ namespace WindowsFormsApp1
         // Método para abrir el formulario de material
         private void AbrirFormularioMaterial()
         {
-            FormularioMaterial formularioMaterial = new FormularioMaterial();
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.Show();
             this.Hide();
         }
 
         private void btGuardarAula_Click(object sender, EventArgs e)
         {
-            helper.GuardarAula_Click();
+            helper.GuardarAula_Click(idAula);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,18 @@ namespace WindowsFormsApp1
 {
     public partial class FormularioMaterial : Form
     {
-        public FormularioMaterial()
+        public List<MaterialAlumno> MaterialesSeleccionados { get; private set; } = new List<MaterialAlumno>();
+        private string nombreMesa = "";
+        public FormularioMaterial(string nombreMesa)
         {
             InitializeComponent();
+            if (string.IsNullOrEmpty(nombreMesa))
+            {
+                MessageBox.Show("El nombre de la mesa no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close(); // Cerrar el formulario si el valor es inválido
+                return;
+            }
+            this.nombreMesa = nombreMesa;
             this.ClientSize = new System.Drawing.Size(550, 450);
 
             // Crear los paneles
@@ -64,7 +74,81 @@ namespace WindowsFormsApp1
 
         private void btGuardarMaterial_Click(object sender, EventArgs e)
         {
-            //Aptualizar la base de datos segundo lo guardado, por defecto todo lo que se guarda es aula
+            // 1. Determinar el valor de retorno según los RadioButton seleccionados
+            bool pantallaResul = !rbPantallaCasa.Checked;
+            bool ratonResul = !rbRatonCasa.Checked;
+            bool tecladoResul = !rbTecladoCasa.Checked;
+
+            MessageBox.Show(nombreMesa);
+
+            // Limpiar la lista antes de agregar nuevos materiales
+            MaterialesSeleccionados.Clear();
+
+            // 2. Realizar la consulta a la tabla de materiales
+            string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
+            string query = @"
+        SELECT 
+            mat.tipo AS TipoMaterial,
+            mat.descripcion AS DescripcionMaterial
+        FROM 
+            Material mat
+        INNER JOIN
+            Mesas mes ON mat.mesa_id = mes.Id
+        WHERE 
+            mes.nombre = @NombreMesa;";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@NombreMesa", nombreMesa);
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string tipoMaterial = reader["TipoMaterial"].ToString();
+                            string descripcionMaterial = reader["DescripcionMaterial"].ToString();
+
+                            // Crear el objeto MaterialAlumno según el tipo
+                            if (tipoMaterial == "Pantalla")
+                            {
+                                MaterialesSeleccionados.Add(new MaterialAlumno
+                                {
+                                    TipoMaterial = tipoMaterial,
+                                    DescripcionMaterial = pantallaResul ? descripcionMaterial : "Pantalla Casa"
+                                });
+                            }
+                            else if (tipoMaterial == "Raton")
+                            {
+                                MaterialesSeleccionados.Add(new MaterialAlumno
+                                {
+                                    TipoMaterial = tipoMaterial,
+                                    DescripcionMaterial = ratonResul ? descripcionMaterial : "Raton Casa"
+                                });
+                            }
+                            else if (tipoMaterial == "Teclado")
+                            {
+                                MaterialesSeleccionados.Add(new MaterialAlumno
+                                {
+                                    TipoMaterial = tipoMaterial,
+                                    DescripcionMaterial = tecladoResul ? descripcionMaterial : "Teclado Casa"
+                                });
+                            }
+                        }
+                    }
+                }
+
+                // (Opcional) Mostrar confirmación
+                MessageBox.Show("Materiales guardados en la lista.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al consultar los materiales: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            this.Close(); 
         }
     }
 }

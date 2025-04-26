@@ -16,6 +16,8 @@ namespace WindowsFormsApp1
         public string Pabellon { get; set; }
         public int FilaMesa { get; set; }
         public int ColumnaMesa { get; set; }
-        
+        public string NombreMesa { get; set; }
+        public string NombreCompleto => $"{Nombre} {Apellidos}";
+
     }
 }

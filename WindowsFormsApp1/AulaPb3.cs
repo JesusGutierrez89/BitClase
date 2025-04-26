@@ -11,12 +11,16 @@ namespace WindowsFormsApp1
 {
     public partial class AulaPb3 : Form
     {
-        private new Dictionary<ComboBox, PictureBox> comboBoxPictureBoxMap;
+        private Dictionary<ComboBox, PictureBox> comboBoxPictureBoxMap;
+        public List<MaterialAlumno> materialesSeleccionados;
         private AulaBaseHelper helper;
+        
+        public string nombreMesa = "";
 
-        public new string NombreProfesor { get; set; }
-        public new string ApellidosProfesor { get; set; }
-        public new string NombreAsignatura { get; set; }
+        private int idAula = 2;//Recordar poner esto en todas las aulas
+        public  string NombreProfesor { get; set; }
+        public  string ApellidosProfesor { get; set; }
+        public  string NombreAsignatura { get; set; }
 
         public AulaPb3()
         {
@@ -26,6 +30,7 @@ namespace WindowsFormsApp1
 
         private void AulaPb3_Load(object sender, EventArgs e)
         {
+            
             comboBoxPictureBoxMap = new Dictionary<ComboBox, PictureBox>
             {
                 { comboBox1, ptbF2C1 },
@@ -62,9 +67,11 @@ namespace WindowsFormsApp1
 
         private void ptbF1C1_Click(object sender, EventArgs e)
         {
-            FormularioMaterial formularioMaterial = new FormularioMaterial();
+            nombreMesa = "ptbF2C1"; 
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.Show();
-            this.Hide();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            helper.materialesSeleccionados = materialesSeleccionados;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,16 +86,114 @@ namespace WindowsFormsApp1
 
         private void btGuardarAula_Click(object sender, EventArgs e)
         {
-            helper.GuardarAula_Click();
+            helper.GuardarAula_Click(idAula);
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var workbook = new XLWorkbook();
-            var worksheet = workbook.Worksheets.Add("Hoja1");
-            worksheet.Cell(1, 1).Value = "Hola, Excel!";
-            workbook.SaveAs("Ejemplo.xlsx");
 
+        }
+
+        private void ptbF1C2_Click(object sender, EventArgs e)
+        {
+            
+            nombreMesa = "ptbF1C2";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.Show();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
+        }
+
+        private void ptbF2C3_Click(object sender, EventArgs e)
+        {
+            nombreMesa = "ptbF2C3";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.Show();
+           
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
+        }
+
+        private void ptbF3C2_Click(object sender, EventArgs e)
+        {
+            nombreMesa = "ptbF3C2";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.Show();
+           
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
+        }
+
+        private void ptbF4C1_Click(object sender, EventArgs e)
+        {
+            nombreMesa = "ptbF4C1";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.Show();
+            
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
+        }
+
+        private void ptbF4C3_Click(object sender, EventArgs e)
+        {
+            nombreMesa = "ptbF4C3";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.Show();
+           
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
+        }
+
+        private void ptbF4C4_Click(object sender, EventArgs e)
+        {
+            nombreMesa = "ptbF4C4";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.Show();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
     }
 }
