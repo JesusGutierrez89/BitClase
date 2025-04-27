@@ -8,7 +8,7 @@ namespace WindowsFormsApp1
 {
     public class MaterialAlumno
     {
-        public string NombreAlumno { get; set; }
+        public string NombreM { get; set; }
         public string TipoMaterial { get; set; }
         public string DescripcionMaterial { get; set; }
     }

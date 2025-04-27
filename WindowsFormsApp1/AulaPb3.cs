@@ -69,9 +69,20 @@ namespace WindowsFormsApp1
         {
             nombreMesa = "ptbF2C1"; 
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
-            formularioMaterial.Show();
+            formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
-            helper.materialesSeleccionados = materialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,6 +98,16 @@ namespace WindowsFormsApp1
         private void btGuardarAula_Click(object sender, EventArgs e)
         {
             helper.GuardarAula_Click(idAula);
+            // Mostrar los detalles de los materiales seleccionados
+            foreach (var material in helper.materialesSeleccionados)
+            {
+                MessageBox.Show(
+                    $"Mesa: {material.NombreM}\nMaterial: {material.TipoMaterial}\nDescripción: {material.DescripcionMaterial}",
+                    "Detalles del Material",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+            }
 
         }
 
@@ -100,10 +121,14 @@ namespace WindowsFormsApp1
             
             nombreMesa = "ptbF1C2";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
-            formularioMaterial.Show();
+            formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
             if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
             {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
                 if (helper.materialesSeleccionados == null)
                 {
                     helper.materialesSeleccionados = new List<MaterialAlumno>();
@@ -116,11 +141,14 @@ namespace WindowsFormsApp1
         {
             nombreMesa = "ptbF2C3";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
-            formularioMaterial.Show();
-           
+            formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
             if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
             {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
                 if (helper.materialesSeleccionados == null)
                 {
                     helper.materialesSeleccionados = new List<MaterialAlumno>();
@@ -133,11 +161,14 @@ namespace WindowsFormsApp1
         {
             nombreMesa = "ptbF3C2";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
-            formularioMaterial.Show();
-           
+            formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
             if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
             {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
                 if (helper.materialesSeleccionados == null)
                 {
                     helper.materialesSeleccionados = new List<MaterialAlumno>();
@@ -150,11 +181,14 @@ namespace WindowsFormsApp1
         {
             nombreMesa = "ptbF4C1";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
-            formularioMaterial.Show();
-            
+            formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
             if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
             {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
                 if (helper.materialesSeleccionados == null)
                 {
                     helper.materialesSeleccionados = new List<MaterialAlumno>();
@@ -167,11 +201,14 @@ namespace WindowsFormsApp1
         {
             nombreMesa = "ptbF4C3";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
-            formularioMaterial.Show();
-           
+            formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
             if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
             {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
                 if (helper.materialesSeleccionados == null)
                 {
                     helper.materialesSeleccionados = new List<MaterialAlumno>();
@@ -184,10 +221,35 @@ namespace WindowsFormsApp1
         {
             nombreMesa = "ptbF4C4";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
-            formularioMaterial.Show();
+            formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
             if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
             {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
+
+        }
+
+        private void ptbF3C4_Click(object sender, EventArgs e)
+        {
+            nombreMesa = "ptbF3C4";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.ShowDialog();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
                 if (helper.materialesSeleccionados == null)
                 {
                     helper.materialesSeleccionados = new List<MaterialAlumno>();

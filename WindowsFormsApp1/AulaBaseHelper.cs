@@ -451,11 +451,10 @@ namespace WindowsFormsApp1
                 int row = 1;
 
                 // ------------------------------------
-                // 1) Cabecera general con estilo
+                // 1) Cabecera general
                 // ------------------------------------
                 var headerRange = ws.Range(row, 1, row, 5);
-                headerRange.Style.Font.SetBold()
-                                      .Font.FontSize = 12;
+                headerRange.Style.Font.SetBold().Font.FontSize = 12;
                 headerRange.Style.Alignment.SetVertical(XLAlignmentVerticalValues.Center);
                 headerRange.Style.Fill.BackgroundColor = XLColor.LightGray;
 
@@ -466,67 +465,55 @@ namespace WindowsFormsApp1
                 row++;
 
                 var subHeaderRange = ws.Range(row, 1, row, 5);
-                subHeaderRange.Style.Font.SetBold()
-                                          .Font.FontSize = 12;
+                subHeaderRange.Style.Font.SetBold().Font.FontSize = 12;
                 subHeaderRange.Style.Alignment.SetVertical(XLAlignmentVerticalValues.Center);
                 subHeaderRange.Style.Fill.BackgroundColor = XLColor.LightGray;
 
                 ws.Cell(row, 1).Value = "N. asignatura:";
                 ws.Cell(row, 2).Value = asignaturaNombre;
                 ws.Cell(row, 4).Value = "FECHA (Hoy):";
-                ws.Cell(row, 5).Value = DateTime.Today.ToString("dd/MM/yyyy");
+                ws.Cell(row, 5).Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
                 row += 2;
 
                 // ------------------------------------
-                // 2) Lista de alumnos seleccionados
+                // 2) Lista de alumnos
                 // ------------------------------------
                 ws.Cell(row, 1).Value = "AL. SELEC.";
-                ws.Cell(row, 1).Style.Font.SetBold()
-                                           .Font.FontColor = XLColor.DarkOrange;
+                ws.Cell(row, 1).Style.Font.SetBold().Font.FontColor = XLColor.DarkOrange;
                 ws.Cell(row, 1).Style.Font.SetBold().Font.FontSize = 14;
                 row++;
 
-                // Sub-encabezados alumnos
-                var alumnosHeader = ws.Range(row, 1, row, 7); // Cambiar a 7 columnas
-                alumnosHeader.Style.Font.SetBold()
-                                         .Fill.BackgroundColor = XLColor.RedRyb;
-                alumnosHeader.Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                // Sub-encabezado de alumnos
+                var alumnosHeader = ws.Range(row, 1, row, 7);
+                alumnosHeader.Style.Font.SetBold().Fill.BackgroundColor = XLColor.RedRyb;
+                alumnosHeader.Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
                 alumnosHeader.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
 
                 ws.Cell(row, 1).Value = "Nombre Al.";
                 ws.Cell(row, 2).Value = "Apellidos Al.";
                 ws.Cell(row, 3).Value = "Nre";
                 ws.Cell(row, 4).Value = "Mesa";
-                if (materialesSeleccionados.Count > 0)
-                {
-                    ws.Cell(row, 5).Value = materialesSeleccionados[0].TipoMaterial;
-                }
-                if (materialesSeleccionados.Count > 1)
-                {
-                    ws.Cell(row, 6).Value = materialesSeleccionados[1].TipoMaterial;
-                }
-                if (materialesSeleccionados.Count > 2)
-                {
-                    ws.Cell(row, 7).Value = materialesSeleccionados[2].TipoMaterial;
-                }
+                if (materialesSeleccionados.Count > 0) ws.Cell(row, 5).Value = materialesSeleccionados[0].TipoMaterial;
+                if (materialesSeleccionados.Count > 1) ws.Cell(row, 6).Value = materialesSeleccionados[1].TipoMaterial;
+                if (materialesSeleccionados.Count > 2) ws.Cell(row, 7).Value = materialesSeleccionados[2].TipoMaterial;
                 row++;
 
-                // Validar que listaAlumnos no esté vacía
+                // Validación
                 if (listaAlumnos == null || listaAlumnos.Count == 0)
                 {
                     MessageBox.Show("No hay alumnos seleccionados para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                // Agregar datos de los alumnos seleccionados
-                var firstDataRow = row;
+                var rowAux = row; 
+                // Datos de los alumnos
                 foreach (var a in listaAlumnos)
                 {
                     ws.Cell(row, 1).Value = a.Nombre;
                     ws.Cell(row, 2).Value = a.Apellidos;
                     ws.Cell(row, 3).Value = a.NumExpediente;
 
-                    
+
                     var nombreAlumno = $"{a.Nombre} {a.Apellidos}";
                     foreach (PictureBox pictureBox in ComboBoxPictureBoxMap.Values)
                     {
@@ -535,50 +522,112 @@ namespace WindowsFormsApp1
                             ws.Cell(row, 4).Value = pictureBox.Name;
                         }
                     }
-                    // Mostrar el nombre de la mesa
-
-                    // Alternar color de fila
-                    if ((row - firstDataRow) % 2 == 1)
-                    {
+                    // Alternar color filas
+                    if ((row % 2) == 0)
                         ws.Row(row).Style.Fill.BackgroundColor = XLColor.FromArgb(242, 242, 242);
-                    }
+
                     row++;
                 }
-                row = firstDataRow;
-                // ------------------------------------
-                // 3) Lista materiales
-                // ------------------------------------
 
-                int materialCounter = 0;
-                foreach (var material in materialesSeleccionados)
-                {
-                    int column = 5 + (materialCounter % 3);
-                    ws.Cell(row, column).Value = material.DescripcionMaterial;
-                    // Centrar texto de materiales
-                    ws.Cell(row, column).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
-                    materialCounter++;
-                    if (materialCounter % 3 == 0) row++;
-                }
-                if (materialCounter % 3 != 0) row++;
+                // Ahora estamos después de los alumnos -> agregar 2 filas de espacio
                 row += 2;
 
+                // ------------------------------------
+                // 3) Materiales (separados y ordenados)
+                // ------------------------------------
+                row = rowAux;
+                if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+                {
+                    // Crear listas separadas
+                    var pantallas = materialesSeleccionados
+                        .Where(m => m.TipoMaterial != null && m.TipoMaterial.Equals("Pantalla", StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+
+                    var ratones = materialesSeleccionados
+                        .Where(m => m.TipoMaterial != null && m.TipoMaterial.Equals("Raton", StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+
+                    var teclados = materialesSeleccionados
+                        .Where(m => m.TipoMaterial != null && m.TipoMaterial.Equals("Teclado", StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+
+                    // Máximo número de filas que necesitaremos
+                    int maxFilas = Math.Max(pantallas.Count, Math.Max(ratones.Count, teclados.Count));
+
+                    // Rellenar materiales
+                    for (int i = 0; i < maxFilas; i++)
+                    {
+                        // Leer el valor de la celda en la columna 4 (NombreMesa) de la fila actual
+                        var nombreMesaCelda = ws.Cell(row, 4).Value.ToString();
+
+                        // Comprobar en la lista de pantallas
+                        if (i < pantallas.Count && pantallas[i].DescripcionMaterial != null)
+                        {
+                            for (int j = 0; j < pantallas.Count; j++)
+                            {
+                                if (pantallas[j].NombreM.Equals(nombreMesaCelda, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    ws.Cell(row, 5).Value = pantallas[j].DescripcionMaterial;
+                                    MessageBox.Show($"Pantalla encontrada: {pantallas[j].DescripcionMaterial}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                                
+                        }
+
+                        // Comprobar en la lista de ratones
+                        if (i < ratones.Count && ratones[i].DescripcionMaterial != null)
+                        {
+                            for (int j = 0; j < ratones.Count; j++)
+                            {
+                                if (ratones[j].NombreM.Equals(nombreMesaCelda, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    ws.Cell(row, 6).Value = ratones[j].DescripcionMaterial;
+                                    MessageBox.Show($"Ratón encontrado: {ratones[j].DescripcionMaterial}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                               
+                        }
+
+                        // Comprobar en la lista de teclados
+                        if (i < teclados.Count && teclados[i].DescripcionMaterial != null)
+                        {
+                            for (int j = 0; j < teclados.Count; j++)
+                            {
+                                if (teclados[j].NombreM.Equals(nombreMesaCelda, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    ws.Cell(row, 7).Value = teclados[j].DescripcionMaterial;
+                                    MessageBox.Show($"Teclado encontrado: {teclados[j].DescripcionMaterial}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                                
+                        }
+
+                        row++;
+                    }
+
+                    row += 2; // Salto de espacio
+                }
+                else
+                {
+                    MessageBox.Show("No hay materiales seleccionados para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
 
                 // ------------------------------------
-                // 4) Estado del aula (mesas y equipos)
+                // 4) Estado del aula
                 // ------------------------------------
                 ws.Cell(row, 1).Value = "AULA";
-                ws.Cell(row, 1).Style.Font.SetBold()
-                                           .Font.FontColor = XLColor.DarkBlue;
+                ws.Cell(row, 1).Style.Font.SetBold().Font.FontColor = XLColor.DarkBlue;
                 ws.Cell(row, 1).Style.Font.SetBold().Font.FontSize = 14;
-                ws.Cell(row, 2).Value = listaAlumnos[0].NombreAula;
-                ws.Cell(row, 3).Value = $"{listaAlumnos[0].Planta} - {listaAlumnos[0].Pabellon}";
+                if (listaAlumnos.Count > 0)
+                {
+                    ws.Cell(row, 2).Value = listaAlumnos[0].NombreAula;
+                    ws.Cell(row, 3).Value = $"{listaAlumnos[0].Planta} - {listaAlumnos[0].Pabellon}";
+                }
                 row++;
 
-                // Encabezados de tabla
                 var aulaHeader = ws.Range(row, 1, row, 3);
-                aulaHeader.Style.Font.SetBold()
-                                     .Fill.BackgroundColor = XLColor.MediumPurple;
-                aulaHeader.Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                aulaHeader.Style.Font.SetBold().Fill.BackgroundColor = XLColor.MediumPurple;
+                aulaHeader.Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
                 aulaHeader.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
 
                 ws.Cell(row, 1).Value = "Fila";
@@ -591,32 +640,26 @@ namespace WindowsFormsApp1
                     ws.Cell(row, 1).Value = mesa.FilaMesa;
                     ws.Cell(row, 2).Value = mesa.ColumnaMesa;
                     ws.Cell(row, 3).Value = string.Join(", ", mesa.Equipo);
-                    // Borde en la fila
                     ws.Range(row, 1, row, 6).Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
                     row++;
                 }
 
                 // ------------------------------------
-                // 5) Ajustes finales de formato
+                // 5) Ajustes finales
                 // ------------------------------------
                 ws.Columns().AdjustToContents();
                 ws.Column(3).Width = 20;
                 ws.SheetView.FreezeRows(1);
 
                 workbook.SaveAs(rutaExcel);
-                MessageBox.Show(
-                    $"Archivo Excel guardado en: {rutaExcel}",
-                    "Éxito",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                MessageBox.Show($"Archivo Excel guardado en: {rutaExcel}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al generar el archivo Excel: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private AsistenciaAlumno RecuperarInformacionAlumno(string nombreCompleto, int idAula)
         {
             string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
@@ -626,6 +669,8 @@ namespace WindowsFormsApp1
             al.apellidos AS Apellidos,
             al.nre AS NumExpediente,
             au.nombre AS NombreAula,
+            au.planta AS Planta,
+            au.pabellon AS Pabellon,
             me.fila AS FilaMesa,
             me.columna AS ColumnaMesa,
             me.nombre AS NombreMesa
@@ -656,6 +701,8 @@ namespace WindowsFormsApp1
                                 Apellidos = reader["Apellidos"].ToString(),
                                 NumExpediente = reader["NumExpediente"].ToString(),
                                 NombreAula = reader["NombreAula"].ToString(),
+                                Planta = reader["Planta"].ToString(),
+                                Pabellon = reader["Pabellon"].ToString(),
                                 FilaMesa = Convert.ToInt32(reader["FilaMesa"]),
                                 ColumnaMesa = Convert.ToInt32(reader["ColumnaMesa"]),
                                NombreMesa = reader["NombreMesa"].ToString()

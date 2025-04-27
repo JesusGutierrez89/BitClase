@@ -137,6 +137,7 @@
             this.ptbF3C4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbF3C4.TabIndex = 8;
             this.ptbF3C4.TabStop = false;
+            this.ptbF3C4.Click += new System.EventHandler(this.ptbF3C4_Click);
             // 
             // ptbF4C1
             // 

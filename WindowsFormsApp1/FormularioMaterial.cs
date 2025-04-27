@@ -13,11 +13,12 @@ namespace WindowsFormsApp1
 {
     public partial class FormularioMaterial : Form
     {
-        public List<MaterialAlumno> MaterialesSeleccionados { get; private set; } = new List<MaterialAlumno>();
-        private string nombreMesa = "";
+        public List<MaterialAlumno> MaterialesSeleccionados { get; private set; } //cambio aqui para probar
+        private string nombreMesa;
         public FormularioMaterial(string nombreMesa)
         {
             InitializeComponent();
+            MaterialesSeleccionados = new List<MaterialAlumno>();
             if (string.IsNullOrEmpty(nombreMesa))
             {
                 MessageBox.Show("El nombre de la mesa no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -74,6 +75,10 @@ namespace WindowsFormsApp1
 
         private void btGuardarMaterial_Click(object sender, EventArgs e)
         {
+            if (MaterialesSeleccionados == null)
+            {
+                MaterialesSeleccionados = new List<MaterialAlumno>();
+            }
             // 1. Determinar el valor de retorno según los RadioButton seleccionados
             bool pantallaResul = !rbPantallaCasa.Checked;
             bool ratonResul = !rbRatonCasa.Checked;
@@ -89,7 +94,8 @@ namespace WindowsFormsApp1
             string query = @"
         SELECT 
             mat.tipo AS TipoMaterial,
-            mat.descripcion AS DescripcionMaterial
+            mat.descripcion AS DescripcionMaterial,
+            mes.nombre AS NombreM
         FROM 
             Material mat
         INNER JOIN
@@ -109,6 +115,7 @@ namespace WindowsFormsApp1
                     {
                         while (reader.Read())
                         {
+                            string NombreM = reader["NombreM"].ToString(); 
                             string tipoMaterial = reader["TipoMaterial"].ToString();
                             string descripcionMaterial = reader["DescripcionMaterial"].ToString();
 
@@ -117,6 +124,7 @@ namespace WindowsFormsApp1
                             {
                                 MaterialesSeleccionados.Add(new MaterialAlumno
                                 {
+                                    NombreM = NombreM,
                                     TipoMaterial = tipoMaterial,
                                     DescripcionMaterial = pantallaResul ? descripcionMaterial : "Pantalla Casa"
                                 });
@@ -125,6 +133,7 @@ namespace WindowsFormsApp1
                             {
                                 MaterialesSeleccionados.Add(new MaterialAlumno
                                 {
+                                    NombreM = NombreM,
                                     TipoMaterial = tipoMaterial,
                                     DescripcionMaterial = ratonResul ? descripcionMaterial : "Raton Casa"
                                 });
@@ -133,6 +142,7 @@ namespace WindowsFormsApp1
                             {
                                 MaterialesSeleccionados.Add(new MaterialAlumno
                                 {
+                                    NombreM = NombreM,
                                     TipoMaterial = tipoMaterial,
                                     DescripcionMaterial = tecladoResul ? descripcionMaterial : "Teclado Casa"
                                 });
