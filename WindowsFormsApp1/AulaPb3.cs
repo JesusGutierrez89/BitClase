@@ -101,12 +101,12 @@ namespace WindowsFormsApp1
             // Mostrar los detalles de los materiales seleccionados
             foreach (var material in helper.materialesSeleccionados)
             {
-                MessageBox.Show(
-                    $"Mesa: {material.NombreM}\nMaterial: {material.TipoMaterial}\nDescripción: {material.DescripcionMaterial}",
-                    "Detalles del Material",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                //MessageBox.Show(
+                //    $"Mesa: {material.NombreM}\nMaterial: {material.TipoMaterial}\nDescripción: {material.DescripcionMaterial}",
+                //    "Detalles del Material",
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Information
+                //);
             }
 
         }

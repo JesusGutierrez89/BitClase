@@ -146,6 +146,7 @@
             this.btAulaPrimeraPlanta2.TabIndex = 7;
             this.btAulaPrimeraPlanta2.Text = "Aula PP 2";
             this.btAulaPrimeraPlanta2.UseVisualStyleBackColor = false;
+            this.btAulaPrimeraPlanta2.Click += new System.EventHandler(this.btAulaPrimeraPlanta2_Click);
             // 
             // btAulaPrimeraPlanta3
             // 

@@ -11,3 +11,6 @@ Seria consulta tipo JOin entre todas las tablas.
 #Recordar que hemos utilizado dos importaciones de Nuget para el proyecto.
 # 1. bytecrypt
 # 2. ClosedXML
+#Revisar e la hora de la creacion del archivo Excel porque se muestrasn todos los alumnos con sus combinaciones.
+++Mirar Consultas, control en el metodo de creacion de archivo, etc.
+#Modificar estructura de Aulas para que se corresponda con 2 filas y 4 Columnas.

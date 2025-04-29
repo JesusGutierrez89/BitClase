@@ -10,6 +10,7 @@ namespace WindowsFormsApp1
     public partial class AulaPb1 : Form
     {
         private Dictionary<ComboBox, PictureBox> comboBoxPictureBoxMap;
+        public List<MaterialAlumno> materialesSeleccionados;
         private AulaBaseHelper helper;
         private int idAula = 3;
         private string nombreMesa = "";
@@ -58,58 +59,220 @@ namespace WindowsFormsApp1
 
         private void pcFila2columna4_Click(object sender, EventArgs e)
         {
-            AbrirFormularioMaterial();
+            nombreMesa = "ptbF2C4";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.ShowDialog();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
 
         private void pcFila2columna3_Click(object sender, EventArgs e)
         {
-            AbrirFormularioMaterial();
+            nombreMesa = "ptbF2C3";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.ShowDialog();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
 
         private void pcFila2columna2_Click(object sender, EventArgs e)
         {
-            AbrirFormularioMaterial();
+            nombreMesa = "ptbF2C2";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.ShowDialog();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
 
         private void pcFila2columna1_Click(object sender, EventArgs e)
         {
-            AbrirFormularioMaterial();
+            nombreMesa = "ptbF2C1";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.ShowDialog();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
 
         private void pcFila1columna4_Click(object sender, EventArgs e)
         {
-            AbrirFormularioMaterial();
+            nombreMesa = "ptbF1C4";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.ShowDialog();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
 
         private void pcFila1columna3_Click(object sender, EventArgs e)
         {
-            AbrirFormularioMaterial();
+            nombreMesa = "ptbF1C3";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.ShowDialog();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
 
         private void pcFila1columna2_Click(object sender, EventArgs e)
         {
-            AbrirFormularioMaterial();
+            nombreMesa = "ptbF1C2";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.ShowDialog();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
 
         private void pcFila1columna1_Click(object sender, EventArgs e)
         {
-            AbrirFormularioMaterial();
+            nombreMesa = "ptbF1C1";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.ShowDialog();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
 
         private void txNombreApellidoProfesor_TextChanged(object sender, EventArgs e)
         {
         }
 
-        private void AbrirFormularioMaterial()
-        {
-            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
-            formularioMaterial.Show();
-            this.Hide();
-        }
-
         private void btGuardarAula_Click(object sender, EventArgs e)
         {
             helper.GuardarAula_Click(idAula);
+            foreach (var material in helper.materialesSeleccionados)
+            {
+                //MessageBox.Show(
+                //    $"Mesa: {material.NombreM}\nMaterial: {material.TipoMaterial}\nDescripción: {material.DescripcionMaterial}",
+                //    "Detalles del Material",
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Information
+                //);
+            }
+        }
+
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox8_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

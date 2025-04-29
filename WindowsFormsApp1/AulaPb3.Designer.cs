@@ -83,7 +83,7 @@
             this.txNombreApellidoProfesor.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txNombreApellidoProfesor.Location = new System.Drawing.Point(432, 35);
             this.txNombreApellidoProfesor.Name = "txNombreApellidoProfesor";
-            this.txNombreApellidoProfesor.Size = new System.Drawing.Size(253, 31);
+            this.txNombreApellidoProfesor.Size = new System.Drawing.Size(300, 31);
             this.txNombreApellidoProfesor.TabIndex = 3;
             // 
             // txNombreAsignatura
@@ -91,7 +91,7 @@
             this.txNombreAsignatura.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txNombreAsignatura.Location = new System.Drawing.Point(432, 80);
             this.txNombreAsignatura.Name = "txNombreAsignatura";
-            this.txNombreAsignatura.Size = new System.Drawing.Size(253, 31);
+            this.txNombreAsignatura.Size = new System.Drawing.Size(300, 31);
             this.txNombreAsignatura.TabIndex = 4;
             this.txNombreAsignatura.TextChanged += new System.EventHandler(this.txNombreAsignatura_TextChanged);
             // 

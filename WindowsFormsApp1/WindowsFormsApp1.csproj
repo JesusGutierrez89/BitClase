@@ -119,6 +119,12 @@
     <Compile Include="AulaPP1.Designer.cs">
       <DependentUpon>AulaPP1.cs</DependentUpon>
     </Compile>
+    <Compile Include="AulaPP2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaPP2.Designer.cs">
+      <DependentUpon>AulaPP2.cs</DependentUpon>
+    </Compile>
     <Compile Include="BitClase.cs">
       <DependentUpon>BitClase.xsd</DependentUpon>
     </Compile>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AulaPP1.resx">
       <DependentUpon>AulaPP1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaPP2.resx">
+      <DependentUpon>AulaPP2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreacionAula.resx">
       <DependentUpon>CreacionAula.cs</DependentUpon>

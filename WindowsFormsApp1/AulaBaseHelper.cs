@@ -125,6 +125,19 @@ namespace WindowsFormsApp1
 
         public void GuardarAula_Click(int idAula)
         {
+            //Depurar si viene la misma informacion
+            foreach (var comboBox in ComboBoxPictureBoxMap.Keys)
+            {
+                if (comboBox.SelectedItem != null)
+                {
+                    string nombreCompleto = comboBox.SelectedItem.ToString();
+                    MessageBox.Show($"Valor seleccionado en {comboBox.Name}: {nombreCompleto}", "Depuración", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"El ComboBox {comboBox.Name} no tiene un valor seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
             // 1) Lógica actual: asignar imágenes si no hay selección
             foreach (var comboBox in ComboBoxPictureBoxMap.Keys)
             {
@@ -165,21 +178,21 @@ namespace WindowsFormsApp1
             // Mostrar información de los alumnos seleccionados
             foreach (var alumno in listaAlumnos)
             {
-                MessageBox.Show(
-                    $"Alumno: {alumno.Nombre} {alumno.Apellidos}\n" +
-                    $"Aula: {alumno.NombreAula}\n" +
-                    $"Mesa: Fila {alumno.FilaMesa}, Columna {alumno.ColumnaMesa}",
-                    "Información del Alumno",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                //MessageBox.Show(
+                //    $"Alumno: {alumno.Nombre} {alumno.Apellidos}\n" +
+                //    $"Aula: {alumno.NombreAula}\n" +
+                //    $"Mesa: Fila {alumno.FilaMesa}, Columna {alumno.ColumnaMesa}",
+                //    "Información del Alumno",
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Information
+                //);
             }
 
-            MessageBox.Show(
-                "Todos los alumnos seleccionados han sido procesados correctamente.",
-                "Éxito",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            //MessageBox.Show(
+            //    "Todos los alumnos seleccionados han sido procesados correctamente.",
+            //    "Éxito",
+            //    MessageBoxButtons.OK,
+            //    MessageBoxIcon.Information);
             MessageBox.Show(
                 "Todos los alumnos han sido seleccionados correctamente.",
                 "Éxito",
@@ -707,6 +720,10 @@ namespace WindowsFormsApp1
                                 ColumnaMesa = Convert.ToInt32(reader["ColumnaMesa"]),
                                NombreMesa = reader["NombreMesa"].ToString()
                             };
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se encontró información para el alumno: {nombreCompleto}", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
