@@ -1,0 +1,23 @@
+CREATE TABLE [dbo].[Aulas] (
+    [Id]       INT           IDENTITY (1, 1) NOT NULL,
+    [nombre]   NVARCHAR (50) NOT NULL,
+    [planta]   INT           NOT NULL,
+    [pabellon] NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+SET IDENTITY_INSERT [dbo].[Aulas] ON
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (2, N'3', 0, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (3, N'1', 0, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (4, N'2', 0, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (5, N'4', 0, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (6, N'3', 1, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (9, N'1', 1, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (10, N'2', 1, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (11, N'4', 1, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (12, N'1', 2, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (13, N'2', 2, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (14, N'3', 2, N'C')
+INSERT INTO [dbo].[Aulas] ([Id], [nombre], [planta], [pabellon]) VALUES (15, N'4', 2, N'C')
+SET IDENTITY_INSERT [dbo].[Aulas] OFF

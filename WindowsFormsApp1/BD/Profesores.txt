@@ -1,0 +1,19 @@
+CREATE TABLE [dbo].[Profesores] (
+    [Id]        INT            IDENTITY (1, 1) NOT NULL,
+    [nrp]       NVARCHAR (50)  NOT NULL,
+    [nombre]    NVARCHAR (100) NOT NULL,
+    [apellidos] NVARCHAR (100) NOT NULL,
+    [email]     NVARCHAR (100) NOT NULL,
+    [password]  NVARCHAR (256) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    UNIQUE NONCLUSTERED ([nrp] ASC)
+);
+
+SET IDENTITY_INSERT [dbo].[Profesores] ON
+INSERT INTO [dbo].[Profesores] ([Id], [nrp], [nombre], [apellidos], [email], [password]) VALUES (1, N'123456789PA', N'Agustin', N'Donate', N'agustin@pr.es', N'$2a$11$stXSvLe5FKAKgibVh755v.ojxXL0hPcEfVje1OlG7fzjYXlcZEnly')
+INSERT INTO [dbo].[Profesores] ([Id], [nrp], [nombre], [apellidos], [email], [password]) VALUES (2, N'345678912PC', N'Rodolfo', N'Martinez', N'Rofo@gmail.com', N'$2a$11$QsQQyX5Xa2d1mrFGHG8s0.yxsST0glQEe8vsPxS82goyNFx5BpTLO')
+INSERT INTO [dbo].[Profesores] ([Id], [nrp], [nombre], [apellidos], [email], [password]) VALUES (3, N'567891234PE', N'', N'', N'', N'')
+INSERT INTO [dbo].[Profesores] ([Id], [nrp], [nombre], [apellidos], [email], [password]) VALUES (4, N'112233456PC', N'', N'', N'', N'')
+INSERT INTO [dbo].[Profesores] ([Id], [nrp], [nombre], [apellidos], [email], [password]) VALUES (5, N'11122245PA', N'Pepe', N'Marin', N'pepe@gmail.com', N'$2a$11$IpEdsA9WUwMhaakBSFbMf.4faL9O6jsjsZKB9LLs0IRRWgqZzcbq6')
+INSERT INTO [dbo].[Profesores] ([Id], [nrp], [nombre], [apellidos], [email], [password]) VALUES (6, N'987654321PE', N'', N'', N'', N'')
+SET IDENTITY_INSERT [dbo].[Profesores] OFF

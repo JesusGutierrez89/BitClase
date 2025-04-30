@@ -43,19 +43,19 @@
             this.ptbF1C2 = new System.Windows.Forms.PictureBox();
             this.ptbF1C3 = new System.Windows.Forms.PictureBox();
             this.ptbF1C4 = new System.Windows.Forms.PictureBox();
+            this.ptbF1C1 = new System.Windows.Forms.PictureBox();
             this.ptbF2C1 = new System.Windows.Forms.PictureBox();
-            this.ptbF3C1 = new System.Windows.Forms.PictureBox();
-            this.ptbF4C2 = new System.Windows.Forms.PictureBox();
-            this.ptbF4C3 = new System.Windows.Forms.PictureBox();
-            this.ptbF4C4 = new System.Windows.Forms.PictureBox();
+            this.ptbF2C2 = new System.Windows.Forms.PictureBox();
+            this.ptbF2C3 = new System.Windows.Forms.PictureBox();
+            this.ptbF2C4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF1C1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbF3C1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbF4C2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbF4C3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbF4C4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C4)).BeginInit();
             this.SuspendLayout();
             // 
             // txNombreApellidoProfesor
@@ -87,7 +87,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(159, 35);
+            this.comboBox1.Location = new System.Drawing.Point(41, 129);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(151, 24);
             this.comboBox1.TabIndex = 3;
@@ -95,7 +95,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(326, 35);
+            this.comboBox2.Location = new System.Drawing.Point(159, 24);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(151, 24);
             this.comboBox2.TabIndex = 4;
@@ -103,7 +103,7 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(495, 35);
+            this.comboBox3.Location = new System.Drawing.Point(326, 24);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(151, 24);
             this.comboBox3.TabIndex = 5;
@@ -111,7 +111,7 @@
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(41, 129);
+            this.comboBox4.Location = new System.Drawing.Point(495, 24);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(151, 24);
             this.comboBox4.TabIndex = 6;
@@ -181,60 +181,60 @@
             this.ptbF1C4.TabStop = false;
             this.ptbF1C4.Click += new System.EventHandler(this.ptbF1C4_Click);
             // 
+            // ptbF1C1
+            // 
+            this.ptbF1C1.Image = ((System.Drawing.Image)(resources.GetObject("ptbF1C1.Image")));
+            this.ptbF1C1.Location = new System.Drawing.Point(87, 170);
+            this.ptbF1C1.Name = "ptbF1C1";
+            this.ptbF1C1.Size = new System.Drawing.Size(46, 88);
+            this.ptbF1C1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF1C1.TabIndex = 14;
+            this.ptbF1C1.TabStop = false;
+            this.ptbF1C1.Click += new System.EventHandler(this.ptbF1C1_Click);
+            // 
             // ptbF2C1
             // 
             this.ptbF2C1.Image = ((System.Drawing.Image)(resources.GetObject("ptbF2C1.Image")));
-            this.ptbF2C1.Location = new System.Drawing.Point(95, 171);
+            this.ptbF2C1.Location = new System.Drawing.Point(87, 464);
             this.ptbF2C1.Name = "ptbF2C1";
             this.ptbF2C1.Size = new System.Drawing.Size(46, 88);
             this.ptbF2C1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbF2C1.TabIndex = 14;
+            this.ptbF2C1.TabIndex = 15;
             this.ptbF2C1.TabStop = false;
             this.ptbF2C1.Click += new System.EventHandler(this.ptbF2C1_Click);
             // 
-            // ptbF3C1
+            // ptbF2C2
             // 
-            this.ptbF3C1.Image = ((System.Drawing.Image)(resources.GetObject("ptbF3C1.Image")));
-            this.ptbF3C1.Location = new System.Drawing.Point(95, 464);
-            this.ptbF3C1.Name = "ptbF3C1";
-            this.ptbF3C1.Size = new System.Drawing.Size(46, 88);
-            this.ptbF3C1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbF3C1.TabIndex = 15;
-            this.ptbF3C1.TabStop = false;
-            this.ptbF3C1.Click += new System.EventHandler(this.ptbF3C1_Click);
+            this.ptbF2C2.Image = ((System.Drawing.Image)(resources.GetObject("ptbF2C2.Image")));
+            this.ptbF2C2.Location = new System.Drawing.Point(213, 606);
+            this.ptbF2C2.Name = "ptbF2C2";
+            this.ptbF2C2.Size = new System.Drawing.Size(46, 88);
+            this.ptbF2C2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF2C2.TabIndex = 16;
+            this.ptbF2C2.TabStop = false;
+            this.ptbF2C2.Click += new System.EventHandler(this.ptbF2C2_Click);
             // 
-            // ptbF4C2
+            // ptbF2C3
             // 
-            this.ptbF4C2.Image = ((System.Drawing.Image)(resources.GetObject("ptbF4C2.Image")));
-            this.ptbF4C2.Location = new System.Drawing.Point(213, 594);
-            this.ptbF4C2.Name = "ptbF4C2";
-            this.ptbF4C2.Size = new System.Drawing.Size(46, 88);
-            this.ptbF4C2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbF4C2.TabIndex = 16;
-            this.ptbF4C2.TabStop = false;
-            this.ptbF4C2.Click += new System.EventHandler(this.ptbF4C2_Click);
+            this.ptbF2C3.Image = ((System.Drawing.Image)(resources.GetObject("ptbF2C3.Image")));
+            this.ptbF2C3.Location = new System.Drawing.Point(387, 606);
+            this.ptbF2C3.Name = "ptbF2C3";
+            this.ptbF2C3.Size = new System.Drawing.Size(46, 88);
+            this.ptbF2C3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF2C3.TabIndex = 17;
+            this.ptbF2C3.TabStop = false;
+            this.ptbF2C3.Click += new System.EventHandler(this.ptbF2C3_Click);
             // 
-            // ptbF4C3
+            // ptbF2C4
             // 
-            this.ptbF4C3.Image = ((System.Drawing.Image)(resources.GetObject("ptbF4C3.Image")));
-            this.ptbF4C3.Location = new System.Drawing.Point(387, 594);
-            this.ptbF4C3.Name = "ptbF4C3";
-            this.ptbF4C3.Size = new System.Drawing.Size(46, 88);
-            this.ptbF4C3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbF4C3.TabIndex = 17;
-            this.ptbF4C3.TabStop = false;
-            this.ptbF4C3.Click += new System.EventHandler(this.ptbF4C3_Click);
-            // 
-            // ptbF4C4
-            // 
-            this.ptbF4C4.Image = ((System.Drawing.Image)(resources.GetObject("ptbF4C4.Image")));
-            this.ptbF4C4.Location = new System.Drawing.Point(549, 594);
-            this.ptbF4C4.Name = "ptbF4C4";
-            this.ptbF4C4.Size = new System.Drawing.Size(46, 88);
-            this.ptbF4C4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbF4C4.TabIndex = 18;
-            this.ptbF4C4.TabStop = false;
-            this.ptbF4C4.Click += new System.EventHandler(this.ptbF4C4_Click);
+            this.ptbF2C4.Image = ((System.Drawing.Image)(resources.GetObject("ptbF2C4.Image")));
+            this.ptbF2C4.Location = new System.Drawing.Point(549, 606);
+            this.ptbF2C4.Name = "ptbF2C4";
+            this.ptbF2C4.Size = new System.Drawing.Size(46, 88);
+            this.ptbF2C4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbF2C4.TabIndex = 18;
+            this.ptbF2C4.TabStop = false;
+            this.ptbF2C4.Click += new System.EventHandler(this.ptbF2C4_Click);
             // 
             // AulaPP2
             // 
@@ -243,11 +243,11 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(944, 760);
-            this.Controls.Add(this.ptbF4C4);
-            this.Controls.Add(this.ptbF4C3);
-            this.Controls.Add(this.ptbF4C2);
-            this.Controls.Add(this.ptbF3C1);
+            this.Controls.Add(this.ptbF2C4);
+            this.Controls.Add(this.ptbF2C3);
+            this.Controls.Add(this.ptbF2C2);
             this.Controls.Add(this.ptbF2C1);
+            this.Controls.Add(this.ptbF1C1);
             this.Controls.Add(this.ptbF1C4);
             this.Controls.Add(this.ptbF1C3);
             this.Controls.Add(this.ptbF1C2);
@@ -269,11 +269,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF1C1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbF3C1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbF4C2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbF4C3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbF4C4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbF2C4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,10 +295,10 @@
         private System.Windows.Forms.PictureBox ptbF1C2;
         private System.Windows.Forms.PictureBox ptbF1C3;
         private System.Windows.Forms.PictureBox ptbF1C4;
+        private System.Windows.Forms.PictureBox ptbF1C1;
         private System.Windows.Forms.PictureBox ptbF2C1;
-        private System.Windows.Forms.PictureBox ptbF3C1;
-        private System.Windows.Forms.PictureBox ptbF4C2;
-        private System.Windows.Forms.PictureBox ptbF4C3;
-        private System.Windows.Forms.PictureBox ptbF4C4;
+        private System.Windows.Forms.PictureBox ptbF2C2;
+        private System.Windows.Forms.PictureBox ptbF2C3;
+        private System.Windows.Forms.PictureBox ptbF2C4;
     }
 }

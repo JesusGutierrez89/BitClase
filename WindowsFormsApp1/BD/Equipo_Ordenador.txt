@@ -1,0 +1,44 @@
+CREATE TABLE [dbo].[Equipo_Ordenador] (
+    [Id]          INT           IDENTITY (1, 1) NOT NULL,
+    [tipo]        NVARCHAR (50) NOT NULL,
+    [nombre]      NVARCHAR (50) NOT NULL,
+    [descripcion] NVARCHAR (50) NOT NULL,
+    [mesa_id]     INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+SET IDENTITY_INSERT [dbo].[Equipo_Ordenador] ON
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (1, N'Procesador', N'Intel Core i9-13900K', N'24 núcleos (8P+16E), 5.8 GHz Turbo', 2)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (2, N'Tarjeta grafica', N'NVIDIA RTX 4090', N'24 GB GDDR6X, 21 TFLOPS FP32', 2)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (3, N'Memoria ram', N'Corsair Vengeance LPX', N'2×16 GB DDR4-3200 MHz CL16', 2)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (4, N'Fuente Alimentacion', N'Seasonic Prime TX-850', N'850 W, 80+ Titanium, modular completa', 2)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (5, N'Procesador', N'AMD Ryzen 9 7950X', N'16 núcleos/32 hilos, 5.7 GHz Boost, 105 W TDP', 3)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (6, N'Tarjeta grafica', N'AMD Radeon RX 7900 XTX', N'24 GB GDDR6, 22.6 TFLOPS FP32', 3)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (7, N'Memoria ram', N'G.Skill Trident Z5', N'2×32 GB DDR5-6000 MHz CL30', 3)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (8, N'Fuente Alimentacion', N'Corsair RM1000x', N'1000 W, 80+ Gold, semimodular', 3)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (9, N'Procesador', N'Intel Core i7-13700K', N'16 núcleos (8P+8E), 5.4 GHz Turbo, 125 W TDP', 4)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (10, N'Tarjeta grafica', N'NVIDIA RTX 4080', N'16 GB GDDR6X, 49 TFLOPS FP32', 4)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (11, N'Memoria ram', N'Kingston Fury Renegade', N'2×16 GB DDR5-5200 MHz CL38', 4)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (12, N'Fuente Alimentacion', N'EVGA SuperNOVA 850 P2', N'850 W, 80+ Platinum, totalmente modular', 4)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (13, N'Procesador', N'AMD Ryzen 7 7800X3D', N'8 núcleos/16 hilos, 5.0 GHz Boost, chip 3D V-Cache', 5)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (14, N'Tarjeta grafica', N'NVIDIA RTX 4070 Ti', N'12 GB GDDR6X, 40 TFLOPS FP32', 5)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (15, N'Memoria ram', N'Patriot Viper Steel', N'2×16 GB DDR4-3600 MHz CL18', 5)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (16, N'Fuente Alimentacion', N'Be Quiet! Dark Power Pro 12', N'1200 W, 80+ Titanium, modular', 5)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (17, N'Procesador', N'Intel Core i5-13600K', N'14 núcleos (6P+8E), 5.1 GHz Turbo, 125 W TDP', 6)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (18, N'Tarjeta grafica', N'AMD Radeon RX 7800 XT', N'16 GB GDDR6, 21 TFLOPS FP32', 6)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (19, N'Memoria ram', N'Crucial Ballistix', N'2×16 GB DDR4-3200 MHz CL16', 6)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (20, N'Fuente Alimentacion', N'Thermaltake Toughpw GF1 750', N'750 W, 80+ Gold, modular', 6)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (21, N'Procesador', N'AMD Ryzen 5 7600X', N'6 núcleos/12 hilos, 5.3 GHz Boost, 105 W TDP', 7)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (22, N'Tarjeta grafica', N'NVIDIA RTX 4060 Ti', N'8 GB GDDR6, 16 TFLOPS FP32', 7)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (23, N'Memoria ram', N'TeamGroup T-Force Delta', N'2×16 GB DDR5-5600 MHz CL36', 7)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (24, N'Fuente Alimentacion', N'NZXT C Series 650', N'650 W, 80+ Bronze, semimodular', 7)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (25, N'Procesador', N'Intel Core i3-13100F', N'4 núcleos/8 hilos, 4.5 GHz Turbo, 60 W TDP', 8)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (26, N'Tarjeta grafica', N'AMD Radeon RX 7600', N'8 GB GDDR6, 14.5 TFLOPS FP32', 8)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (27, N'Memoria ram', N'ADATA XPG Spectrix', N'2×16 GB DDR4-3600 MHz CL18', 8)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (28, N'Fuente Alimentacion', N'FSP Hydro G PRO 750', N'750 W, 80+ Gold, totalmente modular', 8)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (29, N'Procesador', N'AMD Ryzen Threadripper 3970X', N'32 núcleos/64 hilos, 4.5 GHz Boost, 280 W TDP', 9)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (30, N'Tarjeta grafica', N'NVIDIA RTX A6000', N'48 GB GDDR6 ECC, 38.7 TFLOPS FP32', 9)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (31, N'Memoria ram', N'Samsung DDR4 ECC', N'4×16 GB DDR4-2666 MHz ECC', 9)
+INSERT INTO [dbo].[Equipo_Ordenador] ([Id], [tipo], [nombre], [descripcion], [mesa_id]) VALUES (32, N'Fuente Alimentacion', N'Seasonic PRIME TX-1600', N'1600 W, 80+ Titanium, modular', 9)
+SET IDENTITY_INSERT [dbo].[Equipo_Ordenador] OFF

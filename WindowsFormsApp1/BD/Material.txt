@@ -1,0 +1,35 @@
+CREATE TABLE [dbo].[Material] (
+    [Id]          INT           IDENTITY (1, 1) NOT NULL,
+    [tipo]        NVARCHAR (50) NOT NULL,
+    [descripcion] NVARCHAR (50) NOT NULL,
+    [mesa_id]     INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+SET IDENTITY_INSERT [dbo].[Material] ON
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (21, N'Pantalla', N'Dell U2720Q', 2)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (22, N'Raton', N'Logitech MX Master 3', 2)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (23, N'Teclado', N'Keychron K2', 2)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (24, N'Pantalla', N'ASUS ProArt PA278QV', 3)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (25, N'Raton', N'Razer DeathAdder V2', 3)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (26, N'Teclado', N'Corsair K70 RGB', 3)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (27, N'Pantalla', N'LG 27GL850-B', 4)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (28, N'Raton', N'SteelSeries Rival 600', 4)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (29, N'Teclado', N'Razer BlackWidow V3', 4)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (30, N'Pantalla', N'Samsung Odyssey G7', 5)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (31, N'Raton', N'Zowie EC2-B', 5)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (32, N'Teclado', N'Logitech G915', 5)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (33, N'Pantalla', N'Acer Predator XB273U', 6)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (34, N'Raton', N'Corsair M65 RGB', 6)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (35, N'Teclado', N'HyperX Alloy FPS Pro', 6)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (36, N'Pantalla', N'BenQ PD2700U', 7)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (37, N'Raton', N'Mad Catz R.A.T. 8+', 7)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (38, N'Teclado', N'SteelSeries Apex Pro', 7)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (39, N'Pantalla', N'ViewSonic VP2768', 8)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (40, N'Raton', N'Microsoft Surface', 8)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (41, N'Teclado', N'Microsoft Sculpt', 8)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (42, N'Pantalla', N'HP Z27n G2', 9)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (43, N'Raton', N'Apple Magic Mouse 2', 9)
+INSERT INTO [dbo].[Material] ([Id], [tipo], [descripcion], [mesa_id]) VALUES (44, N'Teclado', N'Apple Magic Keyboard', 9)
+SET IDENTITY_INSERT [dbo].[Material] OFF

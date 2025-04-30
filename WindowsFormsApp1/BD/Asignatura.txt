@@ -1,0 +1,60 @@
+CREATE TABLE [dbo].[Asignatura] (
+    [Id]          INT           IDENTITY (1, 1) NOT NULL,
+    [Nombre]      NVARCHAR (50) NOT NULL,
+    [id_alumno]   INT           NOT NULL,
+    [id_profesor] INT           NOT NULL
+);
+
+
+
+SET IDENTITY_INSERT [dbo].[Asignatura] ON
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (1, N'Base de Datos', 3, 1)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (2, N'Base de Datos', 5, 1)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (5, N'Base de Datos', 6, 1)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (6, N'Base de Datos', 7, 1)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (7, N'Base de Datos', 8, 1)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (8, N'Base de Datos', 9, 1)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (9, N'Base de Datos', 10, 1)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (11, N'Redes', 11, 2)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (14, N'Redes', 12, 2)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (15, N'Redes', 13, 2)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (16, N'Redes', 14, 2)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (17, N'Redes', 15, 2)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (18, N'Redes', 16, 2)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (19, N'Redes', 17, 2)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (20, N'Redes', 18, 2)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (21, N'PSP', 19, 3)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (22, N'PSP', 20, 3)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (23, N'PSP', 21, 3)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (24, N'PSP', 22, 3)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (25, N'PSP', 23, 3)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (27, N'PSP', 24, 3)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (28, N'PSP', 25, 3)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (29, N'PSP', 26, 3)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (30, N'PSP', 27, 3)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (32, N'Android', 28, 4)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (34, N'Android', 29, 4)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (35, N'Android', 30, 4)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (36, N'Android', 31, 4)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (37, N'Android', 32, 4)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (38, N'Android', 33, 4)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (39, N'Android', 34, 4)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (40, N'Android', 35, 4)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (42, N'Programacion', 36, 5)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (43, N'Programacion', 37, 5)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (44, N'Programacion', 38, 5)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (45, N'Programacion', 39, 5)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (46, N'Programacion', 40, 5)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (47, N'Programacion', 41, 5)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (48, N'Programacion', 42, 5)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (50, N'Programacion', 43, 5)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (52, N'Entornos de Desarrollo', 44, 6)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (53, N'Entornos de Desarrollo', 45, 6)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (54, N'Entornos de Desarrollo', 46, 6)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (55, N'Entornos de Desarrollo', 47, 6)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (56, N'Entornos de Desarrollo', 48, 6)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (57, N'Entornos de Desarrollo', 49, 6)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (58, N'Entornos de Desarrollo', 50, 6)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (59, N'Entornos de Desarrollo', 51, 6)
+INSERT INTO [dbo].[Asignatura] ([Id], [Nombre], [id_alumno], [id_profesor]) VALUES (60, N'Entornos de Desarrollo', 52, 6)
+SET IDENTITY_INSERT [dbo].[Asignatura] OFF

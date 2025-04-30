@@ -1,0 +1,61 @@
+CREATE TABLE [dbo].[Alumnos] (
+    [Id]        INT           IDENTITY (1, 1) NOT NULL,
+    [nre]       NVARCHAR (50) NOT NULL,
+    [nombre]    NVARCHAR (50) NOT NULL,
+    [apellidos] NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    UNIQUE NONCLUSTERED ([nre] ASC)
+);
+
+
+
+SET IDENTITY_INSERT [dbo].[Alumnos] ON
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (3, N'19866448', N'Juan', N'Perez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (5, N'19866449', N'Ana', N'Gómez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (6, N'19866450', N'Luis', N'Martínez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (7, N'19866451', N'Maria', N'López')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (8, N'19866452', N'Carlos', N'Sánchez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (9, N'19866453', N'Sofia', N'Rodríguez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (10, N'19866454', N'Pedro', N'Fernández')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (11, N'19866455', N'Laura', N'González')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (12, N'19866456', N'Raúl', N'Díaz')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (13, N'19866457', N'Eva', N'Hernández')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (14, N'19866458', N'Antonio', N'Martín')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (15, N'19866459', N'Isabel', N'Serrano')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (16, N'19866460', N'David', N'Ruiz')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (17, N'19866461', N'Carmen', N'Moreno')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (18, N'19866462', N'José', N'Álvarez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (19, N'19866463', N'Teresa', N'Jiménez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (20, N'19866464', N'Miguel', N'Mendoza')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (21, N'19866465', N'Patricia', N'Vázquez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (22, N'19866466', N'Francisco', N'Gutiérrez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (23, N'19866467', N'Beatriz', N'Castro')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (24, N'19866468', N'Raquel', N'Morales')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (25, N'19866469', N'Javier', N'Ruiz')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (26, N'19866470', N'Cristina', N'Paredes')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (27, N'19866471', N'Felipe', N'Gil')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (28, N'19866472', N'María', N'Cano')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (29, N'19866473', N'Esteban', N'Navarro')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (30, N'19866474', N'Sandra', N'Cordero')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (31, N'19866475', N'Ricardo', N'Lara')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (32, N'19866476', N'Laura', N'Bravo')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (33, N'19866477', N'Javier', N'Ortega')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (35, N'19866478', N'Rosa', N'Santos')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (36, N'19866479', N'Antonio', N'Gómez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (37, N'19866480', N'Julia', N'Romero')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (38, N'19866481', N'Santiago', N'García')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (39, N'19866482', N'María', N'López')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (40, N'19866483', N'Iván', N'Hernández')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (41, N'19866484', N'Pablo', N'Martín')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (42, N'19866485', N'Gloria', N'Serrano')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (43, N'19866486', N'Carlos', N'Vega')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (44, N'19866487', N'Eva', N'Fernández')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (45, N'19866488', N'Daniel', N'Pérez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (46, N'19866489', N'Victoria', N'González')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (47, N'19866490', N'José', N'Torres')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (48, N'19866491', N'Susana', N'Blanco')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (49, N'19866492', N'Ricardo', N'Díaz')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (50, N'19866493', N'Sara', N'Jiménez')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (51, N'19866494', N'Juan', N'López')
+INSERT INTO [dbo].[Alumnos] ([Id], [nre], [nombre], [apellidos]) VALUES (52, N'19866495', N'Patricia', N'Álvarez')
+SET IDENTITY_INSERT [dbo].[Alumnos] OFF
