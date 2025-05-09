@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,12 +46,15 @@ namespace WindowsFormsApp1
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+            string plantaBaja = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "Imagenes", "planoPlantaBaja1.jpg");
+            string plantaPrimeraPlanta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "Imagenes", "planoPlantaPrimera1.jpg");
+            string plantaSegundaPlanta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "Imagenes", "planoSegundaPlanta.jpg");
+
             // Cambiar el fondo del formulario y ocultar los botones según la opción seleccionada
             switch (comboBox1.SelectedItem.ToString())
             {
                 case "PLANTA BAJA":
-                    this.BackgroundImage = Image.FromFile("C:\\Users\\Guty\\Documents\\TFS\\planoPlantaBaja1.jpg"); // Cambia la ruta a la imagen correspondiente
+                    this.BackgroundImage = Image.FromFile(plantaBaja); 
                     btPlantaBj2.Visible = true;
                     btAulaPlantaBj1.Visible = true;
                     btAulaPlantaBj3.Visible = true;
@@ -66,7 +70,7 @@ namespace WindowsFormsApp1
                     break;
 
                 case "PRIMERA PLANTA":
-                    this.BackgroundImage = Image.FromFile("C:\\Users\\Guty\\Documents\\TFS\\Imagenes\\planoPlantaPrimera1.jpg"); // Cambia la ruta a la imagen correspondiente
+                    this.BackgroundImage = Image.FromFile(plantaPrimeraPlanta); 
                     btPlantaBj2.Visible = false;
                     btAulaPlantaBj1.Visible = false;
                     btAulaPlantaBj3.Visible = false;
@@ -82,7 +86,7 @@ namespace WindowsFormsApp1
                     break;
 
                 case "SEGUNDA PLANTA":
-                    this.BackgroundImage = Image.FromFile("C:\\Users\\Guty\\Documents\\TFS\\Imagenes\\planoSegundaPlanta.jpg"); // Cambia la ruta a la imagen correspondiente
+                    this.BackgroundImage = Image.FromFile(plantaSegundaPlanta); 
                     btPlantaBj2.Visible = false;
                     btAulaPlantaBj1.Visible = false;
                     btAulaPlantaBj3.Visible = false;

@@ -8,6 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using ClosedXML.Excel;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace WindowsFormsApp1
 {
@@ -100,18 +102,20 @@ namespace WindowsFormsApp1
                     string nombreAlumno = comboBox.SelectedItem.ToString();
                     pictureBox.Tag = nombreAlumno; // Asociar el nombre del alumno al PictureBox
                     MessageBox.Show($"El PictureBox {pictureBox.Name} está relacionado con el alumno: {nombreAlumno}");
-
+                    
+                    string pcRojo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "Imagenes", "pcCasa.jpg");
+                    string pcVerde = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "Imagenes", "pcInstituto.jpg");
                     // Verificar si el valor seleccionado ya está en otro ComboBox
                     if (EsDuplicado(nombreAlumno, comboBox))
                     {
                         MessageBox.Show($"El valor '{nombreAlumno}' ya está seleccionado en otro ComboBox.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         comboBox.SelectedIndex = -1;
-                        pictureBox.Image = Image.FromFile("C:\\Users\\Guty\\Documents\\TFS\\Imagenes\\pcCasa.jpg");
+                        pictureBox.Image = Image.FromFile(pcRojo);
                     }
                     else
                     {
                         // Cambiar la imagen del PictureBox según la selección
-                        pictureBox.Image = Image.FromFile("C:\\Users\\Guty\\Documents\\TFS\\Imagenes\\pcInstituto.jpg");
+                        pictureBox.Image = Image.FromFile(pcVerde);
                     }
                 }
                 else
@@ -131,20 +135,17 @@ namespace WindowsFormsApp1
                 if (comboBox.SelectedItem != null)
                 {
                     string nombreCompleto = comboBox.SelectedItem.ToString();
-                    MessageBox.Show($"Valor seleccionado en {comboBox.Name}: {nombreCompleto}", "Depuración", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show($"El ComboBox {comboBox.Name} no tiene un valor seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                   
                 }
             }
             // 1) Lógica actual: asignar imágenes si no hay selección
+            string pcRojo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "Imagenes", "pcCasa.jpg");
             foreach (var comboBox in ComboBoxPictureBoxMap.Keys)
             {
                 if (comboBox.SelectedItem == null)
                 {
                     ComboBoxPictureBoxMap[comboBox].Image =
-                        Image.FromFile(@"C:\Users\Guty\Documents\TFS\Imagenes\pcCasa.jpg");
+                        Image.FromFile(pcRojo);
                 }
             }
             // 2) Mostrar información del alumno seleccionado
@@ -175,24 +176,6 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            // Mostrar información de los alumnos seleccionados
-            foreach (var alumno in listaAlumnos)
-            {
-                //MessageBox.Show(
-                //    $"Alumno: {alumno.Nombre} {alumno.Apellidos}\n" +
-                //    $"Aula: {alumno.NombreAula}\n" +
-                //    $"Mesa: Fila {alumno.FilaMesa}, Columna {alumno.ColumnaMesa}",
-                //    "Información del Alumno",
-                //    MessageBoxButtons.OK,
-                //    MessageBoxIcon.Information
-                //);
-            }
-
-            //MessageBox.Show(
-            //    "Todos los alumnos seleccionados han sido procesados correctamente.",
-            //    "Éxito",
-            //    MessageBoxButtons.OK,
-            //    MessageBoxIcon.Information);
             MessageBox.Show(
                 "Todos los alumnos han sido seleccionados correctamente.",
                 "Éxito",
@@ -249,7 +232,10 @@ namespace WindowsFormsApp1
             // 4) Llamamos al método que crea el Excel
             string rutaExcel = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                $"Asistencia_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx");
+                $"Excel_Asistencia_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx");
+            string rutaJson = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                $"Json_Asistencia_{DateTime.Now:yyyyMMdd_HHmmss}.json");
 
             try
             {
@@ -261,11 +247,13 @@ namespace WindowsFormsApp1
                     estadoAula,
                     rutaExcel);
 
-                MessageBox.Show(
-                    $"Informe Excel generado correctamente:\n{rutaExcel}",
-                    "Excel Creado",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                GuardarYExportarJson(
+                    profesorNombre,
+                    profesorApellidos,
+                    asignaturaNombre,
+                    listaAlumnos,
+                    estadoAula,
+                    rutaJson);
             }
             catch (Exception ex)
             {
@@ -581,7 +569,7 @@ namespace WindowsFormsApp1
                                 if (pantallas[j].NombreM.Equals(nombreMesaCelda, StringComparison.OrdinalIgnoreCase))
                                 {
                                     ws.Cell(row, 5).Value = pantallas[j].DescripcionMaterial;
-                                    MessageBox.Show($"Pantalla encontrada: {pantallas[j].DescripcionMaterial}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                   
                                 }
                             }
                                 
@@ -595,7 +583,7 @@ namespace WindowsFormsApp1
                                 if (ratones[j].NombreM.Equals(nombreMesaCelda, StringComparison.OrdinalIgnoreCase))
                                 {
                                     ws.Cell(row, 6).Value = ratones[j].DescripcionMaterial;
-                                    MessageBox.Show($"Ratón encontrado: {ratones[j].DescripcionMaterial}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                   
                                 }
                             }
                                
@@ -609,7 +597,7 @@ namespace WindowsFormsApp1
                                 if (teclados[j].NombreM.Equals(nombreMesaCelda, StringComparison.OrdinalIgnoreCase))
                                 {
                                     ws.Cell(row, 7).Value = teclados[j].DescripcionMaterial;
-                                    MessageBox.Show($"Teclado encontrado: {teclados[j].DescripcionMaterial}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    
                                 }
                             }
                                 
@@ -670,6 +658,102 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al generar el archivo Excel: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void GuardarYExportarJson(
+        string profesorNombre,
+        string profesorApellidos,
+        string asignaturaNombre,
+        List<AsistenciaAlumno> listaAlumnos,
+        List<EquipoMesa> estadoAula,
+        string rutaJson)
+        {
+            try
+            {
+                if (listaAlumnos == null || listaAlumnos.Count == 0)
+                {
+                    MessageBox.Show("No hay alumnos seleccionados para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (materialesSeleccionados == null || materialesSeleccionados.Count == 0)
+                {
+                    MessageBox.Show("No hay materiales seleccionados para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var jsonData = new
+                {
+                    Profesor = new
+                    {
+                        Nombre = profesorNombre,
+                        Apellidos = profesorApellidos
+                    },
+                    Asignatura = new
+                    {
+                        Nombre = asignaturaNombre,
+                        Fecha = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
+                    },
+                    Alumnos = listaAlumnos.Select(a =>
+                    {
+                        var nombreCompleto = $"{a.Nombre} {a.Apellidos}".Trim();
+                        var pictureBox = ComboBoxPictureBoxMap.Values
+                            .OfType<PictureBox>()
+                            .FirstOrDefault(pb => pb.Tag != null &&
+                                                  pb.Tag.ToString().Trim().Equals(nombreCompleto, StringComparison.OrdinalIgnoreCase));
+
+                        var mesa = pictureBox?.Name ?? "Sin mesa";
+
+                        return new
+                        {
+                            a.Nombre,
+                            a.Apellidos,
+                            a.NumExpediente,
+                            Mesa = mesa
+                        };
+                    }).ToList(),
+                    Materiales = new
+                    {
+                        Pantallas = materialesSeleccionados
+                            .Where(m => m.TipoMaterial.Equals("Pantalla", StringComparison.OrdinalIgnoreCase))
+                            .Select(m => new { m.NombreM, m.DescripcionMaterial })
+                            .ToList(),
+                        Ratones = materialesSeleccionados
+                            .Where(m => m.TipoMaterial.Equals("Raton", StringComparison.OrdinalIgnoreCase))
+                            .Select(m => new { m.NombreM, m.DescripcionMaterial })
+                            .ToList(),
+                        Teclados = materialesSeleccionados
+                            .Where(m => m.TipoMaterial.Equals("Teclado", StringComparison.OrdinalIgnoreCase))
+                            .Select(m => new { m.NombreM, m.DescripcionMaterial })
+                            .ToList()
+                    },
+                    Aula = new
+                    {
+                        Nombre = listaAlumnos.First().NombreAula,
+                        Ubicacion = $"{listaAlumnos.First().Planta} - {listaAlumnos.First().Pabellon}",
+                        Distribucion = estadoAula.Select(m => new
+                        {
+                            m.FilaMesa,
+                            m.ColumnaMesa,
+                            Equipos = m.Equipo
+                        }).ToList()
+                    }
+                };
+
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                };
+
+                var jsonString = JsonSerializer.Serialize(jsonData, options);
+                File.WriteAllText(rutaJson, jsonString);
+
+                MessageBox.Show($"Archivo JSON guardado en: {rutaJson}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al generar el archivo JSON: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

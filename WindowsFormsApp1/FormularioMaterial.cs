@@ -84,7 +84,6 @@ namespace WindowsFormsApp1
             bool ratonResul = !rbRatonCasa.Checked;
             bool tecladoResul = !rbTecladoCasa.Checked;
 
-            MessageBox.Show(nombreMesa);
 
             // Limpiar la lista antes de agregar nuevos materiales
             MaterialesSeleccionados.Clear();

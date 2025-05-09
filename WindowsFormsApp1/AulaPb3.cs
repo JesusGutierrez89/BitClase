@@ -98,16 +98,7 @@ namespace WindowsFormsApp1
         private void btGuardarAula_Click(object sender, EventArgs e)
         {
             helper.GuardarAula_Click(idAula);
-            // Mostrar los detalles de los materiales seleccionados
-            foreach (var material in helper.materialesSeleccionados)
-            {
-                //MessageBox.Show(
-                //    $"Mesa: {material.NombreM}\nMaterial: {material.TipoMaterial}\nDescripción: {material.DescripcionMaterial}",
-                //    "Detalles del Material",
-                //    MessageBoxButtons.OK,
-                //    MessageBoxIcon.Information
-                //);
-            }
+            
 
         }
 
