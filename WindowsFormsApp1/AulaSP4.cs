@@ -2,35 +2,34 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using ClosedXML.Excel;
 
 namespace WindowsFormsApp1
 {
-    public partial class AulaPb3 : Form
+    public partial class AulaSP4 : Form
     {
         private Dictionary<ComboBox, PictureBox> comboBoxPictureBoxMap;
         public List<MaterialAlumno> materialesSeleccionados;
         private AulaBaseHelper helper;
-        
+
         public string nombreMesa = "";
 
-        private int idAula = 2;//Recordar poner esto en todas las aulas
-        public  string NombreProfesor { get; set; }
-        public  string ApellidosProfesor { get; set; }
-        public  string NombreAsignatura { get; set; }
-
-        public AulaPb3()
+        private int idAula = 15;//Recordar poner esto en todas las aulas
+        public string NombreProfesor { get; set; }
+        public string ApellidosProfesor { get; set; }
+        public string NombreAsignatura { get; set; }
+        public AulaSP4()
         {
             InitializeComponent();
-            this.ClientSize = new Size(750, 580);
+            this.ClientSize = new Size(850, 620);
         }
 
-        private void AulaPb3_Load(object sender, EventArgs e)
+        private void AulaSP4_Load(object sender, EventArgs e)
         {
-            
             comboBoxPictureBoxMap = new Dictionary<ComboBox, PictureBox>
             {
                 { comboBox1, ptbF1C1 },
@@ -67,7 +66,7 @@ namespace WindowsFormsApp1
 
         private void ptbF1C1_Click(object sender, EventArgs e)
         {
-            nombreMesa = "ptbF1C1"; 
+            nombreMesa = "ptbF1C1";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
@@ -83,28 +82,6 @@ namespace WindowsFormsApp1
                 }
                 helper.materialesSeleccionados.AddRange(materialesSeleccionados);
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // ya no necesario si usas el helper
-        }
-
-        private void txNombreAsignatura_TextChanged(object sender, EventArgs e)
-        {
-            // opcional
-        }
-
-        private void btGuardarAula_Click(object sender, EventArgs e)
-        {
-            helper.GuardarAula_Click(idAula);
-            
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void ptbF1C2_Click(object sender, EventArgs e)
@@ -247,9 +224,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void txNombreApellidoProfesor_TextChanged(object sender, EventArgs e)
+        private void btGuardarAula_Click(object sender, EventArgs e)
         {
-
+            helper.GuardarAula_Click(idAula);
         }
     }
 }

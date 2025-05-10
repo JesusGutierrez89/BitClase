@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ClosedXML.Excel;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text;
 
 namespace WindowsFormsApp1
 {
@@ -662,12 +663,12 @@ namespace WindowsFormsApp1
         }
 
         public void GuardarYExportarJson(
-        string profesorNombre,
-        string profesorApellidos,
-        string asignaturaNombre,
-        List<AsistenciaAlumno> listaAlumnos,
-        List<EquipoMesa> estadoAula,
-        string rutaJson)
+     string profesorNombre,
+     string profesorApellidos,
+     string asignaturaNombre,
+     List<AsistenciaAlumno> listaAlumnos,
+     List<EquipoMesa> estadoAula,
+     string rutaJson)
         {
             try
             {
@@ -747,7 +748,8 @@ namespace WindowsFormsApp1
                 };
 
                 var jsonString = JsonSerializer.Serialize(jsonData, options);
-                File.WriteAllText(rutaJson, jsonString);
+
+                File.WriteAllText(rutaJson, jsonString, Encoding.UTF8);
 
                 MessageBox.Show($"Archivo JSON guardado en: {rutaJson}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -756,6 +758,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show($"Error al generar el archivo JSON: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private AsistenciaAlumno RecuperarInformacionAlumno(string nombreCompleto, int idAula)
         {

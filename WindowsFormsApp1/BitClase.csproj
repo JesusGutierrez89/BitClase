@@ -143,6 +143,42 @@
     <Compile Include="AulaPP2.Designer.cs">
       <DependentUpon>AulaPP2.cs</DependentUpon>
     </Compile>
+    <Compile Include="AulaPP3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaPP3.Designer.cs">
+      <DependentUpon>AulaPP3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AulaPP4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaPP4.Designer.cs">
+      <DependentUpon>AulaPP4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AulaSP1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaSP1.Designer.cs">
+      <DependentUpon>AulaSP1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AulaSP2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaSP2.Designer.cs">
+      <DependentUpon>AulaSP2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AulaSP3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaSP3.Designer.cs">
+      <DependentUpon>AulaSP3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AulaSP4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaSP4.Designer.cs">
+      <DependentUpon>AulaSP4.cs</DependentUpon>
+    </Compile>
     <Compile Include="BitClase.cs">
       <DependentUpon>BitClase.xsd</DependentUpon>
     </Compile>
@@ -209,6 +245,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AulaPP2.resx">
       <DependentUpon>AulaPP2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaPP3.resx">
+      <DependentUpon>AulaPP3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaPP4.resx">
+      <DependentUpon>AulaPP4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaSP1.resx">
+      <DependentUpon>AulaSP1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaSP2.resx">
+      <DependentUpon>AulaSP2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaSP3.resx">
+      <DependentUpon>AulaSP3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaSP4.resx">
+      <DependentUpon>AulaSP4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreacionAula.resx">
       <DependentUpon>CreacionAula.cs</DependentUpon>

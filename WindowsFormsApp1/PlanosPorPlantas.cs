@@ -126,12 +126,26 @@ namespace WindowsFormsApp1
 
         private void btAulaSegundaPlanta3_Click(object sender, EventArgs e)
         {
-
+            AulaSP3 aulaSP3 = new AulaSP3
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
+            aulaSP3.Show();
+            this.Hide();
         }
 
         private void btAulaSegundaPlanta1_Click(object sender, EventArgs e)
         {
-
+            AulaSP1 aulaSP1 = new AulaSP1
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
+            aulaSP1.Show();
+            this.Hide();
         }
 
         private void btAulaPlantaBj3_Click(object sender, EventArgs e)
@@ -191,6 +205,54 @@ namespace WindowsFormsApp1
                 NombreAsignatura = this.NombreAsignatura
             };
             aulaPP2.Show();
+            this.Hide();
+        }
+
+        private void btAulaPrimeraPlanta3_Click(object sender, EventArgs e)
+        {
+            AulaPP3 aulaPP3 = new AulaPP3
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
+            aulaPP3.Show();
+            this.Hide();
+        }
+
+        private void btAulaPrimeraPlanta4_Click(object sender, EventArgs e)
+        {
+            AulaPP4 aulaPP4 = new AulaPP4
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
+            aulaPP4.Show();
+            this.Hide();
+        }
+
+        private void btAulaSegundaPlanta2_Click(object sender, EventArgs e)
+        {
+            AulaSP2 aulaSP2 = new AulaSP2
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
+            aulaSP2.Show();
+            this.Hide();
+        }
+
+        private void btAulaSegundaPlanta4_Click(object sender, EventArgs e)
+        {
+            AulaSP4 aulaSP4 = new AulaSP4
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
+            aulaSP4.Show();
             this.Hide();
         }
     }

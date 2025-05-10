@@ -159,6 +159,7 @@
             this.btAulaPrimeraPlanta3.TabIndex = 8;
             this.btAulaPrimeraPlanta3.Text = "Aula PP 3";
             this.btAulaPrimeraPlanta3.UseVisualStyleBackColor = false;
+            this.btAulaPrimeraPlanta3.Click += new System.EventHandler(this.btAulaPrimeraPlanta3_Click);
             // 
             // btAulaPrimeraPlanta4
             // 
@@ -171,6 +172,7 @@
             this.btAulaPrimeraPlanta4.TabIndex = 9;
             this.btAulaPrimeraPlanta4.Text = "Aula PP 4";
             this.btAulaPrimeraPlanta4.UseVisualStyleBackColor = false;
+            this.btAulaPrimeraPlanta4.Click += new System.EventHandler(this.btAulaPrimeraPlanta4_Click);
             // 
             // btAulaSegundaPlanta1
             // 
@@ -196,6 +198,7 @@
             this.btAulaSegundaPlanta2.TabIndex = 11;
             this.btAulaSegundaPlanta2.Text = "Aula SP 2";
             this.btAulaSegundaPlanta2.UseVisualStyleBackColor = false;
+            this.btAulaSegundaPlanta2.Click += new System.EventHandler(this.btAulaSegundaPlanta2_Click);
             // 
             // btAulaSegundaPlanta4
             // 
@@ -208,6 +211,7 @@
             this.btAulaSegundaPlanta4.TabIndex = 13;
             this.btAulaSegundaPlanta4.Text = "Aula SP 4";
             this.btAulaSegundaPlanta4.UseVisualStyleBackColor = false;
+            this.btAulaSegundaPlanta4.Click += new System.EventHandler(this.btAulaSegundaPlanta4_Click);
             // 
             // btAulaSegundaPlanta3
             // 

@@ -2,35 +2,34 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using ClosedXML.Excel;
 
 namespace WindowsFormsApp1
 {
-    public partial class AulaPb3 : Form
+    public partial class AulaPP3 : Form
     {
         private Dictionary<ComboBox, PictureBox> comboBoxPictureBoxMap;
         public List<MaterialAlumno> materialesSeleccionados;
         private AulaBaseHelper helper;
-        
+
         public string nombreMesa = "";
 
-        private int idAula = 2;//Recordar poner esto en todas las aulas
-        public  string NombreProfesor { get; set; }
-        public  string ApellidosProfesor { get; set; }
-        public  string NombreAsignatura { get; set; }
-
-        public AulaPb3()
+        private int idAula = 6;//Recordar poner esto en todas las aulas
+        public string NombreProfesor { get; set; }
+        public string ApellidosProfesor { get; set; }
+        public string NombreAsignatura { get; set; }
+        public AulaPP3()
         {
             InitializeComponent();
             this.ClientSize = new Size(750, 580);
         }
 
-        private void AulaPb3_Load(object sender, EventArgs e)
+        private void AulaPP3_Load(object sender, EventArgs e)
         {
-            
             comboBoxPictureBoxMap = new Dictionary<ComboBox, PictureBox>
             {
                 { comboBox1, ptbF1C1 },
@@ -42,7 +41,6 @@ namespace WindowsFormsApp1
                 { comboBox7, ptbF2C3 },
                 { comboBox8, ptbF2C4 }
             };
-
             // Inicializa el helper y pásale los datos necesarios
             helper = new AulaBaseHelper
             {
@@ -63,11 +61,12 @@ namespace WindowsFormsApp1
             // Mostrar los datos del profesor y la asignatura
             txNombreApellidoProfesor.Text = $"{NombreProfesor} {ApellidosProfesor}";
             txNombreAsignatura.Text = $"Asignatura: {NombreAsignatura}";
+
         }
 
-        private void ptbF1C1_Click(object sender, EventArgs e)
+        private void pictureBox6_Click(object sender, EventArgs e)
         {
-            nombreMesa = "ptbF1C1"; 
+            nombreMesa = "ptbF2C2";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
@@ -85,26 +84,24 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ptbF1C1_Click(object sender, EventArgs e)
         {
-            // ya no necesario si usas el helper
-        }
-
-        private void txNombreAsignatura_TextChanged(object sender, EventArgs e)
-        {
-            // opcional
-        }
-
-        private void btGuardarAula_Click(object sender, EventArgs e)
-        {
-            helper.GuardarAula_Click(idAula);
-            
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            nombreMesa = "ptbF1C1";
+            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
+            formularioMaterial.ShowDialog();
+            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
+            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
+            {
+                foreach (var material in formularioMaterial.MaterialesSeleccionados)
+                {
+                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                }
+                if (helper.materialesSeleccionados == null)
+                {
+                    helper.materialesSeleccionados = new List<MaterialAlumno>();
+                }
+                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
+            }
         }
 
         private void ptbF1C2_Click(object sender, EventArgs e)
@@ -187,26 +184,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void ptbF2C2_Click(object sender, EventArgs e)
-        {
-            nombreMesa = "ptbF2C2";
-            FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
-            formularioMaterial.ShowDialog();
-            materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
-            if (materialesSeleccionados != null && materialesSeleccionados.Count > 0)
-            {
-                foreach (var material in formularioMaterial.MaterialesSeleccionados)
-                {
-                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
-                }
-                if (helper.materialesSeleccionados == null)
-                {
-                    helper.materialesSeleccionados = new List<MaterialAlumno>();
-                }
-                helper.materialesSeleccionados.AddRange(materialesSeleccionados);
-            }
-        }
-
         private void ptbF2C3_Click(object sender, EventArgs e)
         {
             nombreMesa = "ptbF2C3";
@@ -247,9 +224,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void txNombreApellidoProfesor_TextChanged(object sender, EventArgs e)
+        private void btGuardarAula_Click(object sender, EventArgs e)
         {
-
+            helper.GuardarAula_Click(idAula);
         }
     }
 }
