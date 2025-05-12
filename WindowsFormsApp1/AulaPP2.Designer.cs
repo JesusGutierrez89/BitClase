@@ -48,6 +48,7 @@
             this.ptbF2C2 = new System.Windows.Forms.PictureBox();
             this.ptbF2C3 = new System.Windows.Forms.PictureBox();
             this.ptbF2C4 = new System.Windows.Forms.PictureBox();
+            this.btSalida = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C4)).BeginInit();
@@ -56,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btSalida)).BeginInit();
             this.SuspendLayout();
             // 
             // txNombreApellidoProfesor
@@ -76,11 +78,12 @@
             // 
             // btGuardarAula
             // 
-            this.btGuardarAula.Location = new System.Drawing.Point(783, 477);
+            this.btGuardarAula.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btGuardarAula.BackgroundImage")));
+            this.btGuardarAula.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btGuardarAula.Location = new System.Drawing.Point(733, 468);
             this.btGuardarAula.Name = "btGuardarAula";
-            this.btGuardarAula.Size = new System.Drawing.Size(123, 63);
+            this.btGuardarAula.Size = new System.Drawing.Size(149, 84);
             this.btGuardarAula.TabIndex = 2;
-            this.btGuardarAula.Text = "GUARDAR AULA";
             this.btGuardarAula.UseVisualStyleBackColor = true;
             this.btGuardarAula.Click += new System.EventHandler(this.btGuardarAula_Click);
             // 
@@ -236,6 +239,18 @@
             this.ptbF2C4.TabStop = false;
             this.ptbF2C4.Click += new System.EventHandler(this.ptbF2C4_Click);
             // 
+            // btSalida
+            // 
+            this.btSalida.BackColor = System.Drawing.Color.Transparent;
+            this.btSalida.Image = ((System.Drawing.Image)(resources.GetObject("btSalida.Image")));
+            this.btSalida.Location = new System.Drawing.Point(820, 615);
+            this.btSalida.Name = "btSalida";
+            this.btSalida.Size = new System.Drawing.Size(135, 90);
+            this.btSalida.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btSalida.TabIndex = 19;
+            this.btSalida.TabStop = false;
+            this.btSalida.Click += new System.EventHandler(this.btSalida_Click);
+            // 
             // AulaPP2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -243,6 +258,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(944, 760);
+            this.Controls.Add(this.btSalida);
             this.Controls.Add(this.ptbF2C4);
             this.Controls.Add(this.ptbF2C3);
             this.Controls.Add(this.ptbF2C2);
@@ -274,6 +290,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btSalida)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,5 +317,6 @@
         private System.Windows.Forms.PictureBox ptbF2C2;
         private System.Windows.Forms.PictureBox ptbF2C3;
         private System.Windows.Forms.PictureBox ptbF2C4;
+        private System.Windows.Forms.PictureBox btSalida;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.PictureBox btSalida;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AulaPb4));
             this.txNombreApellidoProfesor = new System.Windows.Forms.TextBox();
             this.txNombreAsignatura = new System.Windows.Forms.TextBox();
@@ -48,6 +49,8 @@
             this.ptbF2C2 = new System.Windows.Forms.PictureBox();
             this.ptbF2C3 = new System.Windows.Forms.PictureBox();
             this.ptbF2C4 = new System.Windows.Forms.PictureBox();
+            btSalida = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(btSalida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C3)).BeginInit();
@@ -57,6 +60,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C4)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btSalida
+            // 
+            btSalida.Image = ((System.Drawing.Image)(resources.GetObject("btSalida.Image")));
+            btSalida.Location = new System.Drawing.Point(446, 1);
+            btSalida.Name = "btSalida";
+            btSalida.Size = new System.Drawing.Size(116, 99);
+            btSalida.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            btSalida.TabIndex = 26;
+            btSalida.TabStop = false;
+            btSalida.Click += new System.EventHandler(this.btSalida_Click);
             // 
             // txNombreApellidoProfesor
             // 
@@ -140,11 +154,12 @@
             // 
             // btGuardarAula
             // 
-            this.btGuardarAula.Location = new System.Drawing.Point(446, 562);
+            this.btGuardarAula.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btGuardarAula.BackgroundImage")));
+            this.btGuardarAula.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btGuardarAula.Location = new System.Drawing.Point(424, 594);
             this.btGuardarAula.Name = "btGuardarAula";
-            this.btGuardarAula.Size = new System.Drawing.Size(159, 74);
+            this.btGuardarAula.Size = new System.Drawing.Size(163, 105);
             this.btGuardarAula.TabIndex = 17;
-            this.btGuardarAula.Text = "GUARDAR AULA";
             this.btGuardarAula.UseVisualStyleBackColor = true;
             this.btGuardarAula.Click += new System.EventHandler(this.btGuardarAula_Click);
             // 
@@ -243,6 +258,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1021, 692);
+            this.Controls.Add(btSalida);
             this.Controls.Add(this.ptbF2C4);
             this.Controls.Add(this.ptbF2C3);
             this.Controls.Add(this.ptbF2C2);
@@ -266,6 +282,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AulaPb4";
             this.Load += new System.EventHandler(this.AulaPb4_Load);
+            ((System.ComponentModel.ISupportInitialize)(btSalida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C3)).EndInit();

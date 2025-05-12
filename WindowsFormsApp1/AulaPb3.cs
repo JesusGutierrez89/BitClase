@@ -251,5 +251,19 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void btSalida_Click(object sender, EventArgs e)
+        {
+            PlanosPorPlantas planosPorPlantas = new PlanosPorPlantas
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura
+            };
+
+            planosPorPlantas.Show();
+
+            this.Close();
+        }
     }
 }

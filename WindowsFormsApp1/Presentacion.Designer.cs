@@ -36,6 +36,8 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.btInicioSesion = new System.Windows.Forms.Button();
             this.btRegistro = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +74,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(98, 154);
+            this.label2.Location = new System.Drawing.Point(98, 135);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 29);
             this.label2.TabIndex = 3;
@@ -80,7 +82,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(269, 161);
+            this.tbPassword.Location = new System.Drawing.Point(269, 142);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(129, 22);
@@ -88,29 +90,53 @@
             // 
             // btInicioSesion
             // 
-            this.btInicioSesion.Location = new System.Drawing.Point(272, 218);
+            this.btInicioSesion.BackColor = System.Drawing.Color.Transparent;
+            this.btInicioSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btInicioSesion.Image = ((System.Drawing.Image)(resources.GetObject("btInicioSesion.Image")));
+            this.btInicioSesion.Location = new System.Drawing.Point(269, 170);
             this.btInicioSesion.Name = "btInicioSesion";
-            this.btInicioSesion.Size = new System.Drawing.Size(126, 34);
+            this.btInicioSesion.Size = new System.Drawing.Size(129, 112);
             this.btInicioSesion.TabIndex = 5;
-            this.btInicioSesion.Text = "INICIO";
-            this.btInicioSesion.UseVisualStyleBackColor = true;
+            this.btInicioSesion.UseVisualStyleBackColor = false;
             this.btInicioSesion.Click += new System.EventHandler(this.btInicioSesion_Click);
             // 
             // btRegistro
             // 
-            this.btRegistro.Location = new System.Drawing.Point(272, 290);
+            this.btRegistro.Image = ((System.Drawing.Image)(resources.GetObject("btRegistro.Image")));
+            this.btRegistro.Location = new System.Drawing.Point(269, 288);
             this.btRegistro.Name = "btRegistro";
-            this.btRegistro.Size = new System.Drawing.Size(125, 31);
+            this.btRegistro.Size = new System.Drawing.Size(129, 124);
             this.btRegistro.TabIndex = 6;
-            this.btRegistro.Text = "REGISTRO";
             this.btRegistro.UseVisualStyleBackColor = true;
             this.btRegistro.Click += new System.EventHandler(this.btRegistro_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(200, 215);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "INICIO";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(166, 339);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "REGISTRO";
             // 
             // Presentacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 415);
+            this.ClientSize = new System.Drawing.Size(791, 486);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btRegistro);
             this.Controls.Add(this.btInicioSesion);
             this.Controls.Add(this.tbPassword);
@@ -137,6 +163,8 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button btInicioSesion;
         private System.Windows.Forms.Button btRegistro;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

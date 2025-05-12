@@ -48,6 +48,7 @@
             this.ptbF1C1 = new System.Windows.Forms.PictureBox();
             this.ptbF1C2 = new System.Windows.Forms.PictureBox();
             this.ptbF1C3 = new System.Windows.Forms.PictureBox();
+            this.btSalida = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF2C2)).BeginInit();
@@ -56,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btSalida)).BeginInit();
             this.SuspendLayout();
             // 
             // txNombreApellidoProfesor
@@ -69,7 +71,7 @@
             // txNombreAsignatura
             // 
             this.txNombreAsignatura.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txNombreAsignatura.Location = new System.Drawing.Point(706, 353);
+            this.txNombreAsignatura.Location = new System.Drawing.Point(706, 325);
             this.txNombreAsignatura.Name = "txNombreAsignatura";
             this.txNombreAsignatura.Size = new System.Drawing.Size(304, 31);
             this.txNombreAsignatura.TabIndex = 11;
@@ -141,12 +143,14 @@
             // 
             // btGuardarAula
             // 
-            this.btGuardarAula.Location = new System.Drawing.Point(789, 208);
+            this.btGuardarAula.BackColor = System.Drawing.Color.Transparent;
+            this.btGuardarAula.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btGuardarAula.BackgroundImage")));
+            this.btGuardarAula.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btGuardarAula.Location = new System.Drawing.Point(803, 161);
             this.btGuardarAula.Name = "btGuardarAula";
-            this.btGuardarAula.Size = new System.Drawing.Size(132, 57);
+            this.btGuardarAula.Size = new System.Drawing.Size(132, 103);
             this.btGuardarAula.TabIndex = 20;
-            this.btGuardarAula.Text = "GUARDAR AULA";
-            this.btGuardarAula.UseVisualStyleBackColor = true;
+            this.btGuardarAula.UseVisualStyleBackColor = false;
             this.btGuardarAula.Click += new System.EventHandler(this.btGuardarAula_Click);
             // 
             // ptbF1C4
@@ -237,13 +241,25 @@
             this.ptbF1C3.TabStop = false;
             this.ptbF1C3.Click += new System.EventHandler(this.ptbF1C3_Click);
             // 
+            // btSalida
+            // 
+            this.btSalida.Image = ((System.Drawing.Image)(resources.GetObject("btSalida.Image")));
+            this.btSalida.Location = new System.Drawing.Point(84, 628);
+            this.btSalida.Name = "btSalida";
+            this.btSalida.Size = new System.Drawing.Size(87, 78);
+            this.btSalida.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btSalida.TabIndex = 29;
+            this.btSalida.TabStop = false;
+            this.btSalida.Click += new System.EventHandler(this.btSalida_Click);
+            // 
             // AulaPb2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1022, 655);
+            this.ClientSize = new System.Drawing.Size(1022, 718);
+            this.Controls.Add(this.btSalida);
             this.Controls.Add(this.ptbF1C3);
             this.Controls.Add(this.ptbF1C2);
             this.Controls.Add(this.ptbF1C1);
@@ -275,6 +291,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btSalida)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,5 +317,6 @@
         private System.Windows.Forms.PictureBox ptbF1C1;
         private System.Windows.Forms.PictureBox ptbF1C2;
         private System.Windows.Forms.PictureBox ptbF1C3;
+        private System.Windows.Forms.PictureBox btSalida;
     }
 }

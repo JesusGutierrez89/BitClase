@@ -46,6 +46,7 @@
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.btRegistro = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btVolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,11 +170,23 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btVolver
+            // 
+            this.btVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btVolver.Location = new System.Drawing.Point(323, 475);
+            this.btVolver.Name = "btVolver";
+            this.btVolver.Size = new System.Drawing.Size(175, 31);
+            this.btVolver.TabIndex = 14;
+            this.btVolver.Text = "VOLVER";
+            this.btVolver.UseVisualStyleBackColor = true;
+            this.btVolver.Click += new System.EventHandler(this.btVolver_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 599);
+            this.Controls.Add(this.btVolver);
             this.Controls.Add(this.btRegistro);
             this.Controls.Add(this.txtpassword);
             this.Controls.Add(this.label7);
@@ -211,5 +224,6 @@
         private System.Windows.Forms.TextBox txtpassword;
         private System.Windows.Forms.Button btRegistro;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btVolver;
     }
 }

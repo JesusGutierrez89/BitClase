@@ -181,5 +181,12 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void btVolver_Click(object sender, EventArgs e)
+        {
+            Presentacion menupresentacion = new Presentacion();
+            menupresentacion.Show();
+            this.Close();
+
+        }
     }
 }
