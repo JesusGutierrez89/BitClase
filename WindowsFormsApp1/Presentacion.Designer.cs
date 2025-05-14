@@ -74,7 +74,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(98, 135);
+            this.label2.Location = new System.Drawing.Point(98, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 29);
             this.label2.TabIndex = 3;
@@ -82,7 +82,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(269, 142);
+            this.tbPassword.Location = new System.Drawing.Point(269, 124);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(129, 22);
@@ -92,6 +92,7 @@
             // 
             this.btInicioSesion.BackColor = System.Drawing.Color.Transparent;
             this.btInicioSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btInicioSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btInicioSesion.Image = ((System.Drawing.Image)(resources.GetObject("btInicioSesion.Image")));
             this.btInicioSesion.Location = new System.Drawing.Point(269, 170);
             this.btInicioSesion.Name = "btInicioSesion";
@@ -102,6 +103,7 @@
             // 
             // btRegistro
             // 
+            this.btRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btRegistro.Image = ((System.Drawing.Image)(resources.GetObject("btRegistro.Image")));
             this.btRegistro.Location = new System.Drawing.Point(269, 288);
             this.btRegistro.Name = "btRegistro";
@@ -114,7 +116,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(200, 215);
+            this.label3.Location = new System.Drawing.Point(189, 215);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 20);
             this.label3.TabIndex = 7;
@@ -124,7 +126,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(166, 339);
+            this.label4.Location = new System.Drawing.Point(155, 339);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 20);
             this.label4.TabIndex = 8;

@@ -193,6 +193,12 @@
     <Compile Include="CreacionAula.Designer.cs">
       <DependentUpon>CreacionAula.cs</DependentUpon>
     </Compile>
+    <Compile Include="EleccionAsignatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EleccionAsignatura.Designer.cs">
+      <DependentUpon>EleccionAsignatura.cs</DependentUpon>
+    </Compile>
     <Compile Include="EquipoMesa.cs" />
     <Compile Include="FormularioMaterial.cs">
       <SubType>Form</SubType>
@@ -266,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreacionAula.resx">
       <DependentUpon>CreacionAula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EleccionAsignatura.resx">
+      <DependentUpon>EleccionAsignatura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>

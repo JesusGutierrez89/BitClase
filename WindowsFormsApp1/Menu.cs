@@ -16,6 +16,8 @@ namespace WindowsFormsApp1
         public string ApellidosProfesor { get; set; }
         public string NombreAsignatura { get; set; }
 
+        public string Rol { get; set; }
+
         public Menu()
         {
             InitializeComponent();
@@ -30,7 +32,8 @@ namespace WindowsFormsApp1
             {
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
-                NombreAsignatura = this.NombreAsignatura
+                NombreAsignatura = this.NombreAsignatura,
+                Rol = this.Rol
             };
             planos.Show();
             this.Hide();
@@ -38,9 +41,22 @@ namespace WindowsFormsApp1
 
         private void btCreacion_Click(object sender, EventArgs e)
         {
-            CreacionAula creacionAulas = new CreacionAula();
-            creacionAulas.Show();
-            this.Hide();
+            if (Rol.Equals("admin")) {
+                CreacionAula creacionAulas = new CreacionAula();
+                creacionAulas.Show();
+                this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show(
+                                "No tienes permisos para acceder a esta sección.",
+                                 "Error",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Error
+                                );
+            }
+            
         }
 
         private void Menu_Load(object sender, EventArgs e)

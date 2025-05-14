@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
         public string NombreAsignatura { get; set; }
+         public string Rol { get; set; }
 
         public PlanosPorPlantas()
         {

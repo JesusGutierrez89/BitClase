@@ -46,7 +46,8 @@ namespace WindowsFormsApp1
                 p.nombre AS NombreProfesor,
                 p.apellidos AS ApellidosProfesor,
                 a.Nombre AS NombreAsignatura,
-                p.password AS contraseña
+                p.password AS contraseña,
+                p.rol
             FROM Profesores p
             INNER JOIN Asignatura a ON p.Id = a.id_profesor
             WHERE p.nrp = @nrp";
@@ -60,19 +61,21 @@ namespace WindowsFormsApp1
                     string nombreProfesor = reader["NombreProfesor"].ToString();
                     string apellidosProfesor = reader["ApellidosProfesor"].ToString();
                     string nombreAsignatura = reader["NombreAsignatura"].ToString();
+                    string rol = reader["rol"].ToString(); 
                     reader.Close();
 
                     if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
                     {
                         MessageBox.Show("Inicio de sesión exitoso.");
                         // Pasar los datos al formulario Menu
-                        Menu menu = new Menu
+                        EleccionAsignatura eleccionAsignatura = new EleccionAsignatura
                         {
                             NombreProfesor = nombreProfesor,
                             ApellidosProfesor = apellidosProfesor,
-                            NombreAsignatura = nombreAsignatura
+                            NombreAsignatura = nombreAsignatura,
+                            Rol = rol
                         };
-                        menu.Show();
+                        eleccionAsignatura.Show();
                         this.Hide();
                     }
                     else
@@ -109,9 +112,6 @@ namespace WindowsFormsApp1
             form2.Show();
             this.Hide();
         }
-        public static string EncriptarPassword(string password)
-        {
-            return BCrypt.Net.BCrypt.HashPassword(password);
-        }
+      
     }
 }
