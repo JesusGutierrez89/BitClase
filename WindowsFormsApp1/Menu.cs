@@ -28,21 +28,35 @@ namespace WindowsFormsApp1
 
         private void btPlanos_Click(object sender, EventArgs e)
         {
-            PlanosPorPlantas planos = new PlanosPorPlantas
+            if (Rol.Equals("user"))
             {
-                NombreProfesor = this.NombreProfesor,
-                ApellidosProfesor = this.ApellidosProfesor,
-                NombreAsignatura = this.NombreAsignatura,
-                Rol = this.Rol
-            };
-            planos.Show();
-            this.Hide();
+                PlanosPorPlantas planos = new PlanosPorPlantas
+                {
+                    NombreProfesor = this.NombreProfesor,
+                    ApellidosProfesor = this.ApellidosProfesor,
+                    NombreAsignatura = this.NombreAsignatura,
+                    Rol = this.Rol
+                };
+                planos.Show();
+                this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show(
+                                "No tienes permisos para acceder a esta sección. Solo puede un Usuario.",
+                                 "Error",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Error
+                                );
+            }
+           
         }
 
         private void btCreacion_Click(object sender, EventArgs e)
         {
             if (Rol.Equals("admin")) {
-                CreacionAula creacionAulas = new CreacionAula();
+                ActualizacionMaterial creacionAulas = new ActualizacionMaterial();
                 creacionAulas.Show();
                 this.Hide();
 
@@ -50,7 +64,7 @@ namespace WindowsFormsApp1
             else
             {
                 MessageBox.Show(
-                                "No tienes permisos para acceder a esta sección.",
+                                "No tienes permisos para acceder a esta sección. Solo puede el administrador.",
                                  "Error",
                                  MessageBoxButtons.OK,
                                  MessageBoxIcon.Error

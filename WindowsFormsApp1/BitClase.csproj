@@ -187,11 +187,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BitClase.xsd</DependentUpon>
     </Compile>
-    <Compile Include="CreacionAula.cs">
+    <Compile Include="ActualizacionMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreacionAula.Designer.cs">
-      <DependentUpon>CreacionAula.cs</DependentUpon>
+    <Compile Include="ActualizacionMaterial.Designer.cs">
+      <DependentUpon>ActualizacionMaterial.cs</DependentUpon>
     </Compile>
     <Compile Include="EleccionAsignatura.cs">
       <SubType>Form</SubType>
@@ -200,6 +200,12 @@
       <DependentUpon>EleccionAsignatura.cs</DependentUpon>
     </Compile>
     <Compile Include="EquipoMesa.cs" />
+    <Compile Include="FormularioCambioPerifericos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioCambioPerifericos.Designer.cs">
+      <DependentUpon>FormularioCambioPerifericos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormularioMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,14 +276,17 @@
     <EmbeddedResource Include="AulaSP4.resx">
       <DependentUpon>AulaSP4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreacionAula.resx">
-      <DependentUpon>CreacionAula.cs</DependentUpon>
+    <EmbeddedResource Include="ActualizacionMaterial.resx">
+      <DependentUpon>ActualizacionMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EleccionAsignatura.resx">
       <DependentUpon>EleccionAsignatura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioCambioPerifericos.resx">
+      <DependentUpon>FormularioCambioPerifericos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioMaterial.resx">
       <DependentUpon>FormularioMaterial.cs</DependentUpon>
