@@ -10,114 +10,104 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormularioCambioPerifericos : Form
+    public partial class FormularioEquipoOrdenador : Form
     {
         private string nuevaDescripcion = "";
-        public FormularioCambioPerifericos()
+        private string nuevoNombre = "";
+        public FormularioEquipoOrdenador()
         {
             InitializeComponent();
-            this.ClientSize = new System.Drawing.Size(550, 350);
+            this.ClientSize = new System.Drawing.Size(550, 380);
             CargarAulas();
         }
 
-        private void cbAulas_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbAula_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if (cbAulas.SelectedItem != null)
+            if (cbAula.SelectedItem != null)
             {
-                var row = cbAulas.SelectedItem as DataRowView;
+                var row = cbAula.SelectedItem as DataRowView;
                 if (row != null)
                 {
-                    string nombreAula = row["NombreAula"].ToString();
-                    string planta = row["Planta"].ToString();
-                    string pabellon = row["Pabellon"].ToString();
                     int idAula = Convert.ToInt32(row["IdAula"]);
-
                     CargarMesasPorAula(idAula);
+                    CargarTiposEquipo();
                 }
             }
         }
 
-        private void cbMesas_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbMesa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbMesas.SelectedItem != null)
+            if (cbMesa.SelectedItem != null)
             {
-                var row = cbMesas.SelectedItem as DataRowView;
+                var row = cbMesa.SelectedItem as DataRowView;
                 if (row != null)
                 {
-                   
-                    string nombreMesa = row["NombreMesa"].ToString();
-                    int aulaId = Convert.ToInt32(row["AulaId"]);
                     int idMesa = Convert.ToInt32(row["IdMesa"]);
-                    CargarPerifericosPorMesa(idMesa);
-
+                    CargarEquiposPorMesa(idMesa);
                 }
             }
         }
 
-        private void cbPerifericos_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (cbPerifericos.SelectedItem != null)
+            if (cbTipo.SelectedItem != null)
             {
-                var row = cbPerifericos.SelectedItem as DataRowView;
-                if (row != null)
-                {
-                    int idMaterial = Convert.ToInt32(row["IdMaterial"]);
-                    string tipo = row["Tipo"].ToString();
-                    string descripcion = row["Descripcion"].ToString();
-                    int mesaId = Convert.ToInt32(row["MesaId"]);
-                   
-                }
+                string tipoSeleccionado = cbTipo.SelectedItem.ToString();
+              
             }
         }
 
-        private void txNombreComponente_TextChanged(object sender, EventArgs e)
+        private void txNombre_TextChanged(object sender, EventArgs e)
         {
-            nuevaDescripcion = txNombreComponente.Text;
+            nuevoNombre = txNombre.Text;
         }
 
-        private void btModificacion_Click(object sender, EventArgs e)
+        private void txDescripcion_TextChanged(object sender, EventArgs e)
         {
-            
-            if (cbAulas.SelectedItem == null || cbMesas.SelectedItem == null || cbPerifericos.SelectedItem == null || string.IsNullOrWhiteSpace(nuevaDescripcion))
+            nuevaDescripcion = txDescripcion.Text;
+        }
+
+        private void btActualizar_Click(object sender, EventArgs e)
+        {
+            if (cbAula.SelectedItem == null || cbMesa.SelectedItem == null || cbTipo.SelectedItem == null || string.IsNullOrWhiteSpace(nuevaDescripcion))
             {
-                MessageBox.Show("Debes seleccionar un aula, una mesa, un periférico y escribir la nueva descripción.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debes seleccionar un aula, una mesa, un equipo y escribir la nueva descripción.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            
-            var rowMaterial = cbPerifericos.SelectedItem as DataRowView;
-            if (rowMaterial == null)
+            var rowEquipo = cbTipo.SelectedItem as DataRowView;
+            if (rowEquipo == null)
             {
-                MessageBox.Show("Error al obtener el periférico seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al obtener el equipo seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            int idMaterial = Convert.ToInt32(rowMaterial["IdMaterial"]);
+            int idEquipo = Convert.ToInt32(rowEquipo["IdEquipo"]);
 
-           
             string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
-            string query = "UPDATE Material SET descripcion = @descripcion WHERE id = @idMaterial";
+            string query = "UPDATE Equipo_Ordenador SET nombre = @nombre, descripcion = @descripcion WHERE id = @idEquipo";
+
 
             try
             {
                 using (var connection = new System.Data.SqlClient.SqlConnection(connectionString))
                 using (var command = new System.Data.SqlClient.SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@nombre", nuevoNombre);
                     command.Parameters.AddWithValue("@descripcion", nuevaDescripcion);
-                    command.Parameters.AddWithValue("@idMaterial", idMaterial);
+                    command.Parameters.AddWithValue("@idEquipo", idEquipo);
                     connection.Open();
                     int filasAfectadas = command.ExecuteNonQuery();
 
                     if (filasAfectadas > 0)
                     {
                         MessageBox.Show("Descripción actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
-                        var rowMesa = cbMesas.SelectedItem as DataRowView;
+                        var rowMesa = cbMesa.SelectedItem as DataRowView;
                         if (rowMesa != null)
                         {
                             int idMesa = Convert.ToInt32(rowMesa["IdMesa"]);
-                            CargarPerifericosPorMesa(idMesa);
+                            CargarEquiposPorMesa(idMesa);
+                            
                         }
                     }
                     else
@@ -132,6 +122,10 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void FormularioEquipoOrdenador_Load(object sender, EventArgs e)
+        {
+
+        }
         private void CargarAulas()
         {
             string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
@@ -148,16 +142,15 @@ namespace WindowsFormsApp1
                         var dt = new DataTable();
                         dt.Load(reader);
 
-                        // Crear columna combinada para mostrar en el ComboBox
                         dt.Columns.Add("DescripcionAula", typeof(string));
                         foreach (DataRow row in dt.Rows)
                         {
                             row["DescripcionAula"] = $"{row["NombreAula"]} - Planta {row["Planta"]} - Pabellón {row["Pabellon"]}";
                         }
 
-                        cbAulas.DataSource = dt;
-                        cbAulas.DisplayMember = "DescripcionAula";
-                        cbAulas.ValueMember = "IdAula";
+                        cbAula.DataSource = dt;
+                        cbAula.DisplayMember = "DescripcionAula";
+                        cbAula.ValueMember = "IdAula";
                     }
                 }
             }
@@ -189,9 +182,9 @@ namespace WindowsFormsApp1
                             row["DescripcionMesa"] = $"Mesa {row["NombreMesa"]}";
                         }
 
-                        cbMesas.DataSource = dt;
-                        cbMesas.DisplayMember = "DescripcionMesa";
-                        cbMesas.ValueMember = "IdMesa";
+                        cbMesa.DataSource = dt;
+                        cbMesa.DisplayMember = "DescripcionMesa";
+                        cbMesa.ValueMember = "IdMesa";
                     }
                 }
             }
@@ -199,12 +192,11 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Error al cargar las mesas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-        private void CargarPerifericosPorMesa(int idMesa)
+        private void CargarEquiposPorMesa(int idMesa)
         {
             string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
-            string query = "SELECT Id AS IdMaterial, tipo AS Tipo, descripcion AS Descripcion, mesa_id AS MesaId FROM Material WHERE mesa_id = @mesaId";
+            string query = "SELECT id AS IdEquipo, tipo AS Tipo, descripcion AS Descripcion, nombre AS NombreEquipo, mesa_id AS MesaId FROM Equipo_Ordenador WHERE mesa_id = @mesaId";
 
             try
             {
@@ -218,34 +210,52 @@ namespace WindowsFormsApp1
                         var dt = new DataTable();
                         dt.Load(reader);
 
-                        dt.Columns.Add("DescripcionPeriferico", typeof(string));
+                        dt.Columns.Add("DescripcionEquipo", typeof(string));
                         foreach (DataRow row in dt.Rows)
                         {
-                            row["DescripcionPeriferico"] = $"{row["Tipo"]} - {row["Descripcion"]}";
+                            row["DescripcionEquipo"] = $"{row["Tipo"]}";
                         }
 
-                        cbPerifericos.DataSource = dt;
-                        cbPerifericos.DisplayMember = "DescripcionPeriferico";
-                        cbPerifericos.ValueMember = "IdMaterial";
+                        cbTipo.DataSource = dt;
+                        cbTipo.DisplayMember = "DescripcionEquipo";
+                        cbTipo.ValueMember = "IdEquipo";
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los periféricos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar los equipos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void btVolver_Click(object sender, EventArgs e)
+        private void CargarTiposEquipo()
         {
-            ActualizacionMaterial actualizacionMaterial = new ActualizacionMaterial();
-            actualizacionMaterial.Show();
-            this.Close();
-        }
+            string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
+            string query = @"
+        SELECT DISTINCT tipo 
+        FROM Equipo_Ordenador
+        WHERE tipo IN ('Fuente Alimentacion', 'Procesador', 'Tarjeta grafica', 'Memoria ram')";
 
-        private void FormularioCambioPerifericos_Load(object sender, EventArgs e)
-        {
-
+            try
+            {
+                using (var connection = new System.Data.SqlClient.SqlConnection(connectionString))
+                using (var command = new System.Data.SqlClient.SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var tipos = new List<string>();
+                        while (reader.Read())
+                        {
+                            tipos.Add(reader["tipo"].ToString());
+                        }
+                        cbTipo.DataSource = tipos;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los tipos de equipo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

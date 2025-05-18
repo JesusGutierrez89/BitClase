@@ -49,6 +49,7 @@
             this.ptbF2C3 = new System.Windows.Forms.PictureBox();
             this.ptbF2C4 = new System.Windows.Forms.PictureBox();
             this.btSalida = new System.Windows.Forms.PictureBox();
+            this.cbHorario = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbF1C3)).BeginInit();
@@ -254,6 +255,22 @@
             this.btSalida.TabStop = false;
             this.btSalida.Click += new System.EventHandler(this.btSalida_Click);
             // 
+            // cbHorario
+            // 
+            this.cbHorario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbHorario.FormattingEnabled = true;
+            this.cbHorario.Items.AddRange(new object[] {
+            "1ª HORA(8:15-9:10)",
+            "2ª HORA(9:10-10:05)",
+            "3ªHORA(10:05-11:00)",
+            "4ªHORA(11:30-12:25)",
+            "5ªHORA(12:25-13:20)",
+            "6ªHORA(13:20-14:15)"});
+            this.cbHorario.Location = new System.Drawing.Point(432, 128);
+            this.cbHorario.Name = "cbHorario";
+            this.cbHorario.Size = new System.Drawing.Size(300, 31);
+            this.cbHorario.TabIndex = 28;
+            // 
             // AulaPb3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -261,6 +278,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(929, 593);
+            this.Controls.Add(this.cbHorario);
             this.Controls.Add(this.btSalida);
             this.Controls.Add(this.ptbF2C4);
             this.Controls.Add(this.ptbF2C3);
@@ -321,5 +339,6 @@
         private System.Windows.Forms.PictureBox ptbF2C3;
         private System.Windows.Forms.PictureBox ptbF2C4;
         private System.Windows.Forms.PictureBox btSalida;
+        public System.Windows.Forms.ComboBox cbHorario;
     }
 }

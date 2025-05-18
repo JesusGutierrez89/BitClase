@@ -61,6 +61,7 @@
             this.btPiezasOrdenador.TabIndex = 2;
             this.btPiezasOrdenador.Text = "CAMBIO PIEZAS ORDENADOR";
             this.btPiezasOrdenador.UseVisualStyleBackColor = true;
+            this.btPiezasOrdenador.Click += new System.EventHandler(this.btPiezasOrdenador_Click);
             // 
             // ActualizacionMaterial
             // 

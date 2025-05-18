@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
     public class AulaBaseHelper
     {
         string[] numExpediente;
+        public int idAula { get; set; }
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
         public string NombreAsignatura { get; set; }
@@ -127,7 +128,7 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
+       
         public void GuardarAula_Click(int idAula)
         {
             //Depurar si viene la misma informacion
@@ -240,6 +241,7 @@ namespace WindowsFormsApp1
 
             try
             {
+               
                 GuardarYExportarExcel(
                     profesorNombre,
                     profesorApellidos,
@@ -334,7 +336,8 @@ namespace WindowsFormsApp1
             eq.nombre AS Equipo
         FROM 
             Mesas me
-        LEFT JOIN Equipo_Ordenador eq ON eq.mesa_id = me.id;";
+        LEFT JOIN Equipo_Ordenador eq ON eq.mesa_id = me.id
+        WHERE me.aula_id = @idAula;";
 
             var estadoAula = new List<EquipoMesa>();
 
@@ -345,22 +348,23 @@ namespace WindowsFormsApp1
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@idAula", idAula); // Usa la variable de entorno
+
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                // Buscar si ya existe una mesa con la misma fila y columna
                                 var mesaExistente = estadoAula.Find(m =>
                                     m.FilaMesa == Convert.ToInt32(reader["FilaMesa"]) &&
                                     m.ColumnaMesa == Convert.ToInt32(reader["ColumnaMesa"]));
 
                                 if (mesaExistente == null)
                                 {
-                                    // Crear una nueva mesa si no existe
                                     var nuevaMesa = new EquipoMesa
                                     {
                                         FilaMesa = Convert.ToInt32(reader["FilaMesa"]),
                                         ColumnaMesa = Convert.ToInt32(reader["ColumnaMesa"]),
+                                        Equipo = new List<string>()
                                     };
 
                                     if (reader["Equipo"] != DBNull.Value)
@@ -372,7 +376,6 @@ namespace WindowsFormsApp1
                                 }
                                 else
                                 {
-                                    // Agregar el equipo a la mesa existente
                                     if (reader["Equipo"] != DBNull.Value)
                                     {
                                         mesaExistente.Equipo.Add(reader["Equipo"].ToString());
@@ -398,12 +401,14 @@ namespace WindowsFormsApp1
             al.nombre AS NombreAlumno,
             al.apellidos AS ApellidosAlumno,
             mat.tipo AS TipoMaterial,
-            mat.descripcion AS DescripcionMaterial
+            mat.descripcion AS DescripcionMaterial,
+            me.nombre AS NombreM
         FROM 
             Alumnos al
         INNER JOIN Asistencias asi ON asi.alumno_id = al.id
         INNER JOIN Mesas me ON asi.mesa_id = me.id
-        LEFT JOIN Material mat ON mat.mesa_id = me.id;";
+        LEFT JOIN Material mat ON mat.mesa_id = me.id AND mat.mesa_id IN (SELECT id FROM Mesas WHERE aula_id = @idAula)
+        WHERE me.aula_id = @idAula;";
 
             var materialesAlumnos = new List<MaterialAlumno>();
 
@@ -414,6 +419,8 @@ namespace WindowsFormsApp1
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@idAula", idAula);
+
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -421,10 +428,15 @@ namespace WindowsFormsApp1
                                 var materialAlumno = new MaterialAlumno
                                 {
                                     TipoMaterial = reader["TipoMaterial"]?.ToString(),
-                                    DescripcionMaterial = reader["DescripcionMaterial"]?.ToString()
+                                    DescripcionMaterial = reader["DescripcionMaterial"]?.ToString(),
+                                    NombreM = reader["NombreM"]?.ToString()
                                 };
 
-                                materialesAlumnos.Add(materialAlumno);
+                                // Solo añadir si hay material asociado
+                                if (!string.IsNullOrEmpty(materialAlumno.TipoMaterial) || !string.IsNullOrEmpty(materialAlumno.DescripcionMaterial))
+                                {
+                                    materialesAlumnos.Add(materialAlumno);
+                                }
                             }
                         }
                     }
@@ -663,12 +675,12 @@ namespace WindowsFormsApp1
         }
 
         public void GuardarYExportarJson(
-     string profesorNombre,
-     string profesorApellidos,
-     string asignaturaNombre,
-     List<AsistenciaAlumno> listaAlumnos,
-     List<EquipoMesa> estadoAula,
-     string rutaJson)
+    string profesorNombre,
+    string profesorApellidos,
+    string asignaturaNombre,
+    List<AsistenciaAlumno> listaAlumnos,
+    List<EquipoMesa> estadoAula,
+    string rutaJson)
         {
             try
             {
@@ -683,6 +695,38 @@ namespace WindowsFormsApp1
                     MessageBox.Show("No hay materiales seleccionados para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
+                // 1. Obtener los nombres de mesa asignados a los alumnos seleccionados
+                var mesasAsignadas = listaAlumnos
+                    .Where(a => !string.IsNullOrEmpty(a.NombreMesa))
+                    .Select(a => a.NombreMesa)
+                    .Distinct()
+                    .ToList();
+
+                // 2. Filtrar materiales SOLO de esas mesas
+                var materialesPantallas = materialesSeleccionados
+                    .Where(m => m.TipoMaterial != null
+                        && m.TipoMaterial.Equals("Pantalla", StringComparison.OrdinalIgnoreCase)
+                        && m.NombreM != null
+                        && mesasAsignadas.Contains(m.NombreM))
+                    .Select(m => new { NombreMesa = m.NombreM, m.DescripcionMaterial })
+                    .ToList();
+
+                var materialesRatones = materialesSeleccionados
+                    .Where(m => m.TipoMaterial != null
+                        && m.TipoMaterial.Equals("Raton", StringComparison.OrdinalIgnoreCase)
+                        && m.NombreM != null
+                        && mesasAsignadas.Contains(m.NombreM))
+                    .Select(m => new { NombreMesa = m.NombreM, m.DescripcionMaterial })
+                    .ToList();
+
+                var materialesTeclados = materialesSeleccionados
+                    .Where(m => m.TipoMaterial != null
+                        && m.TipoMaterial.Equals("Teclado", StringComparison.OrdinalIgnoreCase)
+                        && m.NombreM != null
+                        && mesasAsignadas.Contains(m.NombreM))
+                    .Select(m => new { NombreMesa = m.NombreM, m.DescripcionMaterial })
+                    .ToList();
 
                 var jsonData = new
                 {
@@ -702,10 +746,8 @@ namespace WindowsFormsApp1
                         var pictureBox = ComboBoxPictureBoxMap.Values
                             .OfType<PictureBox>()
                             .FirstOrDefault(pb => pb.Tag != null &&
-                                                  pb.Tag.ToString().Trim().Equals(nombreCompleto, StringComparison.OrdinalIgnoreCase));
-
+                                pb.Tag.ToString().Trim().Equals(nombreCompleto, StringComparison.OrdinalIgnoreCase));
                         var mesa = pictureBox?.Name ?? "Sin mesa";
-
                         return new
                         {
                             a.Nombre,
@@ -716,18 +758,9 @@ namespace WindowsFormsApp1
                     }).ToList(),
                     Materiales = new
                     {
-                        Pantallas = materialesSeleccionados
-                            .Where(m => m.TipoMaterial.Equals("Pantalla", StringComparison.OrdinalIgnoreCase))
-                            .Select(m => new { m.NombreM, m.DescripcionMaterial })
-                            .ToList(),
-                        Ratones = materialesSeleccionados
-                            .Where(m => m.TipoMaterial.Equals("Raton", StringComparison.OrdinalIgnoreCase))
-                            .Select(m => new { m.NombreM, m.DescripcionMaterial })
-                            .ToList(),
-                        Teclados = materialesSeleccionados
-                            .Where(m => m.TipoMaterial.Equals("Teclado", StringComparison.OrdinalIgnoreCase))
-                            .Select(m => new { m.NombreM, m.DescripcionMaterial })
-                            .ToList()
+                        Pantallas = materialesPantallas,
+                        Ratones = materialesRatones,
+                        Teclados = materialesTeclados
                     },
                     Aula = new
                     {
@@ -758,6 +791,8 @@ namespace WindowsFormsApp1
                 MessageBox.Show($"Error al generar el archivo JSON: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
         private AsistenciaAlumno RecuperarInformacionAlumno(string nombreCompleto, int idAula)

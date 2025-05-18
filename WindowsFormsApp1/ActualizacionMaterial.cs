@@ -33,5 +33,13 @@ namespace WindowsFormsApp1
             perifericos.Show();
             this.Hide();
         }
+
+        private void btPiezasOrdenador_Click(object sender, EventArgs e)
+        {
+            FormularioEquipoOrdenador ordenador = new FormularioEquipoOrdenador();
+            ordenador.Show();
+            this.Hide();
+
+        }
     }
 }

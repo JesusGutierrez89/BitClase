@@ -46,6 +46,7 @@ namespace WindowsFormsApp1
             // Inicializa el helper y pásale los datos necesarios
             helper = new AulaBaseHelper
             {
+                idAula = this.idAula, //Pasar este dato en todas las aulas
                 NombreProfesor = NombreProfesor,
                 ApellidosProfesor = ApellidosProfesor,
                 NombreAsignatura = NombreAsignatura,

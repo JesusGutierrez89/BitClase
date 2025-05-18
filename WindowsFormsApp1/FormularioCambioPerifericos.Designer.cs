@@ -178,6 +178,7 @@
             this.Name = "FormularioCambioPerifericos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormularioCambioPerifericos";
+            this.Load += new System.EventHandler(this.FormularioCambioPerifericos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
