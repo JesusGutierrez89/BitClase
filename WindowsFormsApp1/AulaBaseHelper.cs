@@ -11,6 +11,7 @@ using ClosedXML.Excel;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsApp1
 {
@@ -18,6 +19,7 @@ namespace WindowsFormsApp1
     {
         string[] numExpediente;
         public int idAula { get; set; }
+
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
         public string NombreAsignatura { get; set; }
@@ -28,7 +30,7 @@ namespace WindowsFormsApp1
         public AulaBaseHelper()
         {
             materialesSeleccionados = new List<MaterialAlumno>();
-            
+
         }
         public void LlenarComboBox()
         {
@@ -64,7 +66,7 @@ namespace WindowsFormsApp1
                                 foreach (var comboBox in ComboBoxPictureBoxMap.Keys)
                                 {
                                     comboBox.Items.Add(nombreCompleto);
-                                   
+
                                 }
                             }
                         }
@@ -104,7 +106,7 @@ namespace WindowsFormsApp1
                     string nombreAlumno = comboBox.SelectedItem.ToString();
                     pictureBox.Tag = nombreAlumno; // Asociar el nombre del alumno al PictureBox
                     MessageBox.Show($"El PictureBox {pictureBox.Name} está relacionado con el alumno: {nombreAlumno}");
-                    
+
                     string pcRojo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "Imagenes", "pcCasa.jpg");
                     string pcVerde = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "Imagenes", "pcInstituto.jpg");
                     // Verificar si el valor seleccionado ya está en otro ComboBox
@@ -128,7 +130,7 @@ namespace WindowsFormsApp1
                 }
             }
         }
-       
+
         public void GuardarAula_Click(int idAula)
         {
             //Depurar si viene la misma informacion
@@ -137,7 +139,7 @@ namespace WindowsFormsApp1
                 if (comboBox.SelectedItem != null)
                 {
                     string nombreCompleto = comboBox.SelectedItem.ToString();
-                   
+
                 }
             }
             // 1) Lógica actual: asignar imágenes si no hay selección
@@ -241,7 +243,7 @@ namespace WindowsFormsApp1
 
             try
             {
-               
+
                 GuardarYExportarExcel(
                     profesorNombre,
                     profesorApellidos,
@@ -254,6 +256,7 @@ namespace WindowsFormsApp1
                     profesorNombre,
                     profesorApellidos,
                     asignaturaNombre,
+                    idAula,
                     listaAlumnos,
                     estadoAula,
                     rutaJson);
@@ -519,7 +522,7 @@ namespace WindowsFormsApp1
                     MessageBox.Show("No hay alumnos seleccionados para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                var rowAux = row; 
+                var rowAux = row;
                 // Datos de los alumnos
                 foreach (var a in listaAlumnos)
                 {
@@ -582,10 +585,10 @@ namespace WindowsFormsApp1
                                 if (pantallas[j].NombreM.Equals(nombreMesaCelda, StringComparison.OrdinalIgnoreCase))
                                 {
                                     ws.Cell(row, 5).Value = pantallas[j].DescripcionMaterial;
-                                   
+
                                 }
                             }
-                                
+
                         }
 
                         // Comprobar en la lista de ratones
@@ -596,10 +599,10 @@ namespace WindowsFormsApp1
                                 if (ratones[j].NombreM.Equals(nombreMesaCelda, StringComparison.OrdinalIgnoreCase))
                                 {
                                     ws.Cell(row, 6).Value = ratones[j].DescripcionMaterial;
-                                   
+
                                 }
                             }
-                               
+
                         }
 
                         // Comprobar en la lista de teclados
@@ -610,10 +613,10 @@ namespace WindowsFormsApp1
                                 if (teclados[j].NombreM.Equals(nombreMesaCelda, StringComparison.OrdinalIgnoreCase))
                                 {
                                     ws.Cell(row, 7).Value = teclados[j].DescripcionMaterial;
-                                    
+
                                 }
                             }
-                                
+
                         }
 
                         row++;
@@ -674,14 +677,18 @@ namespace WindowsFormsApp1
             }
         }
 
+
+
         public void GuardarYExportarJson(
-    string profesorNombre,
-    string profesorApellidos,
-    string asignaturaNombre,
-    List<AsistenciaAlumno> listaAlumnos,
-    List<EquipoMesa> estadoAula,
-    string rutaJson)
+     string profesorNombre,
+     string profesorApellidos,
+     string asignaturaNombre,
+     int idAula,
+     List<AsistenciaAlumno> listaAlumnos,
+     List<EquipoMesa> estadoAula,
+     string rutaJson)
         {
+
             try
             {
                 if (listaAlumnos == null || listaAlumnos.Count == 0)
@@ -696,36 +703,36 @@ namespace WindowsFormsApp1
                     return;
                 }
 
-                // 1. Obtener los nombres de mesa asignados a los alumnos seleccionados
+                // 1. Obtener los nombres de mesa asignados a los alumnos seleccionados (normalizados)
                 var mesasAsignadas = listaAlumnos
                     .Where(a => !string.IsNullOrEmpty(a.NombreMesa))
-                    .Select(a => a.NombreMesa)
+                    .Select(a => NormalizarNombreMesa(a.NombreMesa, idAula))
                     .Distinct()
                     .ToList();
 
-                // 2. Filtrar materiales SOLO de esas mesas
+                // 2. Filtrar materiales SOLO de esas mesas (normalizando m.NombreM)
                 var materialesPantallas = materialesSeleccionados
                     .Where(m => m.TipoMaterial != null
                         && m.TipoMaterial.Equals("Pantalla", StringComparison.OrdinalIgnoreCase)
                         && m.NombreM != null
-                        && mesasAsignadas.Contains(m.NombreM))
-                    .Select(m => new { NombreMesa = m.NombreM, m.DescripcionMaterial })
+                        && mesasAsignadas.Contains(NormalizarNombreMesa(m.NombreM, idAula)))
+                    .Select(m => new { NombreMesa = NormalizarNombreMesa(m.NombreM, idAula), m.DescripcionMaterial })
                     .ToList();
 
                 var materialesRatones = materialesSeleccionados
                     .Where(m => m.TipoMaterial != null
                         && m.TipoMaterial.Equals("Raton", StringComparison.OrdinalIgnoreCase)
                         && m.NombreM != null
-                        && mesasAsignadas.Contains(m.NombreM))
-                    .Select(m => new { NombreMesa = m.NombreM, m.DescripcionMaterial })
+                        && mesasAsignadas.Contains(NormalizarNombreMesa(m.NombreM, idAula)))
+                    .Select(m => new { NombreMesa = NormalizarNombreMesa(m.NombreM, idAula), m.DescripcionMaterial })
                     .ToList();
 
                 var materialesTeclados = materialesSeleccionados
                     .Where(m => m.TipoMaterial != null
                         && m.TipoMaterial.Equals("Teclado", StringComparison.OrdinalIgnoreCase)
                         && m.NombreM != null
-                        && mesasAsignadas.Contains(m.NombreM))
-                    .Select(m => new { NombreMesa = m.NombreM, m.DescripcionMaterial })
+                        && mesasAsignadas.Contains(NormalizarNombreMesa(m.NombreM, idAula)))
+                    .Select(m => new { NombreMesa = NormalizarNombreMesa(m.NombreM, idAula), m.DescripcionMaterial })
                     .ToList();
 
                 var jsonData = new
@@ -775,9 +782,20 @@ namespace WindowsFormsApp1
                     }
                 };
 
+                foreach (var m in materialesSeleccionados)
+                {
+                    MessageBox.Show($"Material: {m.TipoMaterial} - {m.DescripcionMaterial} - {NormalizarNombreMesa(m.NombreM, idAula)}");
+                }
+                foreach (var mesa in mesasAsignadas)
+                {
+                    MessageBox.Show($"Mesa asignada: {mesa}");
+                }
+
+
                 var options = new JsonSerializerOptions
                 {
-                    WriteIndented = true
+                    WriteIndented = true,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
                 };
 
                 var jsonString = JsonSerializer.Serialize(jsonData, options);
@@ -791,6 +809,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show($"Error al generar el archivo JSON: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 
@@ -840,7 +859,7 @@ namespace WindowsFormsApp1
                                 Pabellon = reader["Pabellon"].ToString(),
                                 FilaMesa = Convert.ToInt32(reader["FilaMesa"]),
                                 ColumnaMesa = Convert.ToInt32(reader["ColumnaMesa"]),
-                               NombreMesa = reader["NombreMesa"].ToString()
+                                NombreMesa = reader["NombreMesa"].ToString()
                             };
                         }
                         else
@@ -856,6 +875,27 @@ namespace WindowsFormsApp1
             }
 
             return null;
+        }
+        private string NormalizarNombreMesa(string nombreMesa, int idAula)
+        {
+            if (string.IsNullOrWhiteSpace(nombreMesa))
+                return string.Empty;
+
+            nombreMesa = nombreMesa.Trim();
+
+            // Si ya contiene el prefijo (como ptb2), no hacer nada
+            if (nombreMesa.StartsWith($"ptb{idAula}", StringComparison.OrdinalIgnoreCase))
+                return nombreMesa;
+
+            // Si es algo como F1C1, añade el prefijo
+            if (Regex.IsMatch(nombreMesa, @"^F\d+C\d+$", RegexOptions.IgnoreCase))
+                return $"ptb{idAula}{nombreMesa}";
+
+            // Si es como 2F1C1, quitar el aula (2) y añadirlo como prefijo ptb2
+            if (Regex.IsMatch(nombreMesa, @"^\dF\d+C\d+$", RegexOptions.IgnoreCase))
+                return $"ptb{idAula}{nombreMesa.Substring(1)}";
+
+            return nombreMesa;
         }
 
     }

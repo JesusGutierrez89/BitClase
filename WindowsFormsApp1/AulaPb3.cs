@@ -33,14 +33,14 @@ namespace WindowsFormsApp1
             
             comboBoxPictureBoxMap = new Dictionary<ComboBox, PictureBox>
             {
-                { comboBox1, ptbF1C1 },
-                { comboBox2, ptbF1C2 },
-                { comboBox3, ptbF1C3 },
-                { comboBox4, ptbF1C4 },
-                { comboBox5, ptbF2C1 },
-                { comboBox6, ptbF2C2 },
-                { comboBox7, ptbF2C3 },
-                { comboBox8, ptbF2C4 }
+                { comboBox1, ptb2F1C1 },
+                { comboBox2, ptb2F1C2 },
+                { comboBox3, ptb2F1C3 },
+                { comboBox4, ptb2F1C4 },
+                { comboBox5, ptb2F2C1 },
+                { comboBox6, ptb2F2C2 },
+                { comboBox7, ptb2F2C3 },
+                { comboBox8, ptb2F2C4 }
             };
 
             // Inicializa el helper y pásale los datos necesarios
@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
 
         private void ptbF1C1_Click(object sender, EventArgs e)
         {
-            nombreMesa = "ptbF1C1"; 
+            nombreMesa = "ptb2F1C1"; 
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
@@ -110,7 +110,7 @@ namespace WindowsFormsApp1
 
         private void ptbF1C2_Click(object sender, EventArgs e)
         {
-            nombreMesa = "ptbF1C2";
+            nombreMesa = "ptb2F1C2";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
@@ -130,7 +130,7 @@ namespace WindowsFormsApp1
 
         private void ptbF1C3_Click(object sender, EventArgs e)
         {
-            nombreMesa = "ptbF1C3";
+            nombreMesa = "ptb2F1C3";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
@@ -150,7 +150,7 @@ namespace WindowsFormsApp1
 
         private void ptbF1C4_Click(object sender, EventArgs e)
         {
-            nombreMesa = "ptbF1C4";
+            nombreMesa = "ptb2F1C4";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
@@ -170,7 +170,7 @@ namespace WindowsFormsApp1
 
         private void ptbF2C1_Click(object sender, EventArgs e)
         {
-            nombreMesa = "ptbF2C1";
+            nombreMesa = "ptb2F2C1";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
@@ -190,7 +190,7 @@ namespace WindowsFormsApp1
 
         private void ptbF2C2_Click(object sender, EventArgs e)
         {
-            nombreMesa = "ptbF2C2";
+            nombreMesa = "ptb2F2C2";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
@@ -210,7 +210,7 @@ namespace WindowsFormsApp1
 
         private void ptbF2C3_Click(object sender, EventArgs e)
         {
-            nombreMesa = "ptbF2C3";
+            nombreMesa = "ptb2F2C3";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
@@ -230,7 +230,7 @@ namespace WindowsFormsApp1
 
         private void ptbF2C4_Click(object sender, EventArgs e)
         {
-            nombreMesa = "ptbF2C4";
+            nombreMesa = "ptb2F2C4";
             FormularioMaterial formularioMaterial = new FormularioMaterial(nombreMesa);
             formularioMaterial.ShowDialog();
             materialesSeleccionados = formularioMaterial.MaterialesSeleccionados;
