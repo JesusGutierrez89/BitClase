@@ -62,29 +62,8 @@ Exportación de archivos: Excel (.xlsx) y JSON (.json)
 Seguridad: Hashing/encriptación de contraseñas
 
 📁 Estructura del Proyecto
-/ProyectoGestionAulas
-│
-├── Formularios
-│   ├── RegistroProfesor.cs
-│   ├── LoginProfesor.cs
-│   ├── VistaAulas.cs
-│   ├── GestionAsistencia.cs
-│   └── AdministradorForm.cs
-│
-├── Helpers
-│   └── AulaBaseHelper.cs
-│
-├── Models
-│   └── Profesor.cs
-│   └── Alumno.cs
-│   └── Material.cs
-│
-├── Exportadores
-│   └── ExcelExporter.cs
-│   └── JsonExporter.cs
-│
-└── BaseDatos
-    └── ScriptsSQL.sql
+![Captura de pantalla 2025-05-22 131458](https://github.com/user-attachments/assets/8219b962-1414-40e4-8793-0b8e7dc90729)
+
 
 🔐 Seguridad
 Las contraseñas de los profesores se almacenan encriptadas en la base de datos, impidiendo su visualización directa y asegurando una autenticación segura.
