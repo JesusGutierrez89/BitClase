@@ -62,9 +62,6 @@ Exportación de archivos: Excel (.xlsx) y JSON (.json)
 Seguridad: Hashing/encriptación de contraseñas
 
 📁 Estructura del Proyecto
-markdown
-Copiar
-Editar
 /ProyectoGestionAulas
 │
 ├── Formularios
@@ -88,6 +85,7 @@ Editar
 │
 └── BaseDatos
     └── ScriptsSQL.sql
+
 🔐 Seguridad
 Las contraseñas de los profesores se almacenan encriptadas en la base de datos, impidiendo su visualización directa y asegurando una autenticación segura.
 
