@@ -218,6 +218,12 @@
     <Compile Include="FormularioMaterial.Designer.cs">
       <DependentUpon>FormularioMaterial.cs</DependentUpon>
     </Compile>
+    <Compile Include="GuardadoBD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GuardadoBD.Designer.cs">
+      <DependentUpon>GuardadoBD.cs</DependentUpon>
+    </Compile>
     <Compile Include="MaterialAlumno.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -299,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioMaterial.resx">
       <DependentUpon>FormularioMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuardadoBD.resx">
+      <DependentUpon>GuardadoBD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>

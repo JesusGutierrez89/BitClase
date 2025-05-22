@@ -21,6 +21,9 @@ namespace WindowsFormsApp1
         public  string NombreProfesor { get; set; }
         public  string ApellidosProfesor { get; set; }
         public  string NombreAsignatura { get; set; }
+        public string Rol { get; set; } //pasar el rol en todas las aulas
+
+
 
         public AulaPb3()
         {
@@ -98,8 +101,22 @@ namespace WindowsFormsApp1
 
         private void btGuardarAula_Click(object sender, EventArgs e)
         {
-            helper.GuardarAula_Click(idAula);
-            
+            // Crear instancia del formulario de confirmación
+            GuardadoBD guardadoBD = new GuardadoBD
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura,
+                IdAula = this.idAula,
+                Rol = this.Rol,
+                GuardarAulaAccion = () =>
+                {
+                    helper.GuardarAula_Click(idAula);
+                }
+            };
+
+            guardadoBD.Show();
+            this.Hide();
 
         }
 
