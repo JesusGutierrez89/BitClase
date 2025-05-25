@@ -87,6 +87,7 @@
             this.btInforme.Size = new System.Drawing.Size(151, 128);
             this.btInforme.TabIndex = 3;
             this.btInforme.UseVisualStyleBackColor = false;
+            this.btInforme.Click += new System.EventHandler(this.btInforme_Click);
             // 
             // label1
             // 

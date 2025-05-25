@@ -31,8 +31,9 @@ namespace WindowsFormsApp1
             // Ejecuta la acción si está definida
             GuardarAulaAccion?.Invoke();
             // Irse al formulario de los informes
-            this.Close(); // Cierra el formulario
-            Application.Exit();//ESTO QUITAR Y PONER EN EL FORMULARIO DE INFORMES
+            //IRSE AL FORMULARIO DE INFORMES
+            this.Hide(); // Cierra el formulario actual
+            //Application.Exit(); ESTO QUITAR Y PONER EN EL FORMULARIO DE INFORMES
 
         }
 

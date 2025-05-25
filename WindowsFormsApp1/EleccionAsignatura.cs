@@ -70,7 +70,7 @@ namespace WindowsFormsApp1
 
         private void btEntrar_Click(object sender, EventArgs e)
         {
-            
+
             string asignaturaSeleccionada = comboBox1.SelectedItem?.ToString();
 
             if (string.IsNullOrEmpty(asignaturaSeleccionada))
@@ -79,18 +79,10 @@ namespace WindowsFormsApp1
                 return;
             }
             MessageBox.Show("Asignatura Elegida");
-            // Crear el formulario de destino y pasar los datos
-            Menu menu = new Menu
-            {
-                NombreProfesor = this.NombreProfesor,
-                ApellidosProfesor = this.ApellidosProfesor,
-                NombreAsignatura = asignaturaSeleccionada,
-                Rol = this.Rol
-            };
-
+            // Pasa la asignatura seleccionada al siguiente formulario
+            Menu menu = new Menu(Rol, NombreProfesor, ApellidosProfesor, asignaturaSeleccionada);
             menu.Show();
             this.Hide();
-
 
         }
     }

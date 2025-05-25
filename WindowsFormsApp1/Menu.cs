@@ -17,12 +17,17 @@ namespace WindowsFormsApp1
         public string NombreAsignatura { get; set; }
         public string Rol { get; set; }
 
-        public Menu()
+        public Menu(string Rol, string NombreProfesor, string ApellidosProfesor, string NombreAsignatura)
         {
             InitializeComponent();
             this.ClientSize = new System.Drawing.Size(898, 639); // Tamaño fijo del formulario
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // Evitar redimensionamiento
             this.MaximizeBox = false;
+            this.Rol = Rol;
+            this.NombreProfesor = NombreProfesor;
+            this.ApellidosProfesor = ApellidosProfesor;
+            this.NombreAsignatura = NombreAsignatura;
+
         }
 
         private void btPlanos_Click(object sender, EventArgs e)
@@ -82,6 +87,14 @@ namespace WindowsFormsApp1
 
             pictureBox1.Location = new Point(344, 135);
             pictureBox1.Size = new Size(183, 200);
+
+        }
+
+        private void btInforme_Click(object sender, EventArgs e)
+        {
+            Informe informe = new Informe();
+            informe.Show();
+            this.Hide();
 
         }
     }

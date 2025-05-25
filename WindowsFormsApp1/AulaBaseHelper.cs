@@ -131,7 +131,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        public void GuardarAula_Click(int idAula)
+        public void GuardarAula_Click(int idAula, string horario)
         {
             //Depurar si viene la misma informacion
             foreach (var comboBox in ComboBoxPictureBoxMap.Keys)
@@ -782,16 +782,6 @@ namespace WindowsFormsApp1
                     }
                 };
 
-                foreach (var m in materialesSeleccionados)
-                {
-                    MessageBox.Show($"Material: {m.TipoMaterial} - {m.DescripcionMaterial} - {NormalizarNombreMesa(m.NombreM, idAula)}");
-                }
-                foreach (var mesa in mesasAsignadas)
-                {
-                    MessageBox.Show($"Mesa asignada: {mesa}");
-                }
-
-
                 var options = new JsonSerializerOptions
                 {
                     WriteIndented = true,
@@ -898,6 +888,86 @@ namespace WindowsFormsApp1
             return nombreMesa;
         }
 
-    }
 
+        public void InsertarEnRegistro(
+      string horario,
+      DateTime fecha,
+      string pabellon,
+      string planta,
+      string aula,
+      string profesor,
+      string asignatura,
+      string alumno,
+      string mesa,
+      string periferico,
+      string material)
+        {
+            string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
+            string query = @"
+        INSERT INTO Registro (Horario, Fecha, Pabellon, Planta, Aula, Profesor, Asignatura, Alumno, Mesa, Periferico, Material)
+        VALUES (@Horario, @Fecha, @Pabellon, @Planta, @Aula, @Profesor, @Asignatura, @Alumno, @Mesa, @Periferico, @Material);";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Horario", horario);
+                        command.Parameters.AddWithValue("@Fecha", fecha);
+                        command.Parameters.AddWithValue("@Pabellon", pabellon);
+                        command.Parameters.AddWithValue("@Planta", planta);
+                        command.Parameters.AddWithValue("@Aula", aula);
+                        command.Parameters.AddWithValue("@Profesor", profesor);
+                        command.Parameters.AddWithValue("@Asignatura", asignatura);
+                        command.Parameters.AddWithValue("@Alumno", alumno);
+                        command.Parameters.AddWithValue("@Mesa", mesa);
+                        command.Parameters.AddWithValue("@Periferico", periferico);
+                        command.Parameters.AddWithValue("@Material", material);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al insertar en la tabla Registro: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public List<string> ObtenerEquiposPorMesa(string nombreMesa)
+        {
+            var equipos = new List<string>();
+            string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
+            string query = @"
+        SELECT eq.nombre
+        FROM Equipo_Ordenador eq
+        INNER JOIN Mesas m ON eq.mesa_id = m.id
+        WHERE m.nombre = @NombreMesa;";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@NombreMesa", nombreMesa);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            equipos.Add(reader["nombre"].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al obtener los equipos de la mesa {nombreMesa}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return equipos;
+        }
+
+    }
 }
