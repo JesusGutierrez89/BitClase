@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         // Añade este campo en la clase AulaPb3
         private Dictionary<string, List<MaterialAlumno>> materialesPorMesa = new Dictionary<string, List<MaterialAlumno>>();
 
-
+        public string horario { get; set; } 
         public string nombreMesa = "";
 
         private int idAula = 2;//Recordar poner esto en todas las aulas
@@ -109,6 +109,7 @@ namespace WindowsFormsApp1
         private void btGuardarAula_Click(object sender, EventArgs e)
         {
             string horario = cbHorario.SelectedItem?.ToString();
+            this.horario = horario; 
             if (string.IsNullOrEmpty(horario))
             {
                 MessageBox.Show("Por favor, selecciona un horario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -152,8 +153,6 @@ namespace WindowsFormsApp1
             string profesor = $"{NombreProfesor} {ApellidosProfesor}";
             string asignatura = NombreAsignatura;
 
-            
-            helper.GuardarAula_Click(idAula, horario);
             foreach (var dato in datosARegistrar)
             {
                 helper.InsertarEnRegistro(
@@ -171,13 +170,19 @@ namespace WindowsFormsApp1
                 );
             }
 
+            //helper.GuardarAula_Click(idAula, horario);
             GuardadoBD guardadoBD = new GuardadoBD
             {
+
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
                 IdAula = this.idAula,
                 Rol = this.Rol,
+                Horario = this.horario,
+                Helper = this.helper
+
+
 
             };
 

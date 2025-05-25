@@ -516,12 +516,7 @@ namespace WindowsFormsApp1
                 if (materialesSeleccionados.Count > 2) ws.Cell(row, 7).Value = materialesSeleccionados[2].TipoMaterial;
                 row++;
 
-                // Validación
-                if (listaAlumnos == null || listaAlumnos.Count == 0)
-                {
-                    MessageBox.Show("No hay alumnos seleccionados para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+               
                 var rowAux = row;
                 // Datos de los alumnos
                 foreach (var a in listaAlumnos)
@@ -691,11 +686,6 @@ namespace WindowsFormsApp1
 
             try
             {
-                if (listaAlumnos == null || listaAlumnos.Count == 0)
-                {
-                    MessageBox.Show("No hay alumnos seleccionados para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
                 if (materialesSeleccionados == null || materialesSeleccionados.Count == 0)
                 {

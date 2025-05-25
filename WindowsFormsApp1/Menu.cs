@@ -92,7 +92,12 @@ namespace WindowsFormsApp1
 
         private void btInforme_Click(object sender, EventArgs e)
         {
-            Informe informe = new Informe();
+            Informe informe = new Informe
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor
+            };
+            
             informe.Show();
             this.Hide();
 

@@ -5,6 +5,8 @@ namespace WindowsFormsApp1
 {
     public partial class GuardadoBD : Form
     {
+        public string Horario { get; set; }
+        public AulaBaseHelper Helper { get; set; }
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
         public string NombreAsignatura { get; set; }
@@ -28,21 +30,32 @@ namespace WindowsFormsApp1
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
-            // Ejecuta la acción si está definida
-            GuardarAulaAccion?.Invoke();
-            // Irse al formulario de los informes
-            //IRSE AL FORMULARIO DE INFORMES
-            this.Hide(); // Cierra el formulario actual
-            //Application.Exit(); ESTO QUITAR Y PONER EN EL FORMULARIO DE INFORMES
+            // Llama a GuardarAula_Click si lo necesitas (por ejemplo, para refrescar imágenes o lógica extra)
+            Helper?.GuardarAula_Click(IdAula, Horario);
+            
+            Informe informe = new Informe
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                
+            };
+            informe.Show();
+            this.Hide();
 
         }
-
+        
         private void btNegativo_Click(object sender, EventArgs e)
         {
             // Lógica alternativa (por ejemplo: solo guardar en BD sin Excel/JSON)
             MessageBox.Show("Guardado solo en Base de Datos (sin Excel/JSON).");
-            // Irse al formulario de los informes
-            this.Close(); // Cierra el formulario
+            Informe informe = new Informe
+            {
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+
+            };
+            informe.Show();
+            this.Hide();
         }
     }
 }

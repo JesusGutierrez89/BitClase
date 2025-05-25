@@ -132,10 +132,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btInforme);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btCreacion);
             this.Controls.Add(this.btPlanos);
+            this.Controls.Add(this.btInforme);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Menu";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
