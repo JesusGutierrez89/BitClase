@@ -19,7 +19,9 @@ namespace WindowsFormsApp1
         private Dictionary<string, List<MaterialAlumno>> materialesPorMesa = new Dictionary<string, List<MaterialAlumno>>();
         public string nombreMesa = "";
 
-        private int idAula = 6;//Recordar poner esto en todas las aulas
+        public string horario { get; set; }
+
+        private int idAula = 6;
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
         public string NombreAsignatura { get; set; }
@@ -237,8 +239,8 @@ namespace WindowsFormsApp1
 
         private void btGuardarAula_Click(object sender, EventArgs e)
         {
-            // Obtener el horario seleccionado
             string horario = cbHorario.SelectedItem?.ToString();
+            this.horario = horario;
             if (string.IsNullOrEmpty(horario))
             {
                 MessageBox.Show("Por favor, selecciona un horario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -252,67 +254,71 @@ namespace WindowsFormsApp1
                 ComboBox comboBox = entry.Key;
                 PictureBox pictureBox = entry.Value;
 
-                if (comboBox.SelectedItem != null) // Verifica si hay un alumno seleccionado
+                if (comboBox.SelectedItem != null)
                 {
-                    string alumno = comboBox.SelectedItem.ToString(); // Nombre del alumno seleccionado
-                    string mesa = pictureBox.Name; // Nombre de la mesa asociada al PictureBox
-                    alumnosSeleccionados.Add((alumno, mesa)); // Agrega el alumno y la mesa a la lista
+                    string alumno = comboBox.SelectedItem.ToString();
+                    string mesa = pictureBox.Name;
+                    alumnosSeleccionados.Add((alumno, mesa));
                 }
             }
+
+            var datosARegistrar = new List<(string Alumno, string Mesa, string Periferico, string Material)>();
             foreach (var (alumno, mesa) in alumnosSeleccionados)
             {
-                string pabellon = ObtenerDato("pabellon", "Aulas", $"Id = {idAula}");
-                string planta = ObtenerDato("planta", "Aulas", $"Id = {idAula}");
-                string aula = ObtenerDato("nombre", "Aulas", $"Id = {idAula}");
-                string profesor = $"{NombreProfesor} {ApellidosProfesor}";
-                string asignatura = $"{NombreAsignatura}";
-                string periferico = "";
-                string material = "";
+                var equipos = helper.ObtenerEquiposPorMesa(mesa);
+                string periferico = equipos.Count > 0 ? string.Join(", ", equipos) : "Sin equipos asignados";
 
+                string material = "";
                 if (materialesPorMesa.ContainsKey(mesa))
                 {
                     var listaMateriales = materialesPorMesa[mesa];
-                    // Junta los periféricos (tipo y descripción) en un solo string
-                    periferico = string.Join(", ", listaMateriales.Select(m => $"{m.TipoMaterial}: {m.DescripcionMaterial}"));
-                    // Si quieres solo las descripciones:
                     material = string.Join(", ", listaMateriales.Select(m => m.DescripcionMaterial));
                 }
-                else
-                {
-                    periferico = "Sin periféricos asignados";
-                    material = "";
-                }
 
-                GuardadoBD guardadoBD = new GuardadoBD
-                {
-                    NombreProfesor = this.NombreProfesor,
-                    ApellidosProfesor = this.ApellidosProfesor,
-                    NombreAsignatura = this.NombreAsignatura,
-                    IdAula = this.idAula,
-                    Rol = this.Rol,
-                    GuardarAulaAccion = () =>
-                    {
-                        helper.GuardarAula_Click(idAula, horario);
-                        helper.InsertarEnRegistro(
-                                                horario,
-                                                DateTime.Now,
-                                                pabellon,
-                                                planta,
-                                                aula,
-                                                profesor,
-                                                asignatura,
-                                                alumno,
-                                                mesa,
-                                                periferico,
-                                                material
-                                                );
-                    }
-                };
-
-                guardadoBD.Show();
-                this.Hide();
-
+                datosARegistrar.Add((alumno, mesa, periferico, material));
             }
+
+            string pabellon = ObtenerDato("pabellon", "Aulas", $"Id = {idAula}");
+            string planta = ObtenerDato("planta", "Aulas", $"Id = {idAula}");
+            string aula = ObtenerDato("nombre", "Aulas", $"Id = {idAula}");
+            string profesor = $"{NombreProfesor} {ApellidosProfesor}";
+            string asignatura = NombreAsignatura;
+
+            foreach (var dato in datosARegistrar)
+            {
+                helper.InsertarEnRegistro(
+                    horario,
+                    DateTime.Now,
+                    pabellon,
+                    planta,
+                    aula,
+                    profesor,
+                    asignatura,
+                    dato.Alumno,
+                    dato.Mesa,
+                    dato.Material,
+                    dato.Periferico
+                );
+            }
+
+            //helper.GuardarAula_Click(idAula, horario);
+            GuardadoBD guardadoBD = new GuardadoBD
+            {
+
+                NombreProfesor = this.NombreProfesor,
+                ApellidosProfesor = this.ApellidosProfesor,
+                NombreAsignatura = this.NombreAsignatura,
+                IdAula = this.idAula,
+                Rol = this.Rol,
+                Horario = this.horario,
+                Helper = this.helper
+
+
+
+            };
+
+            guardadoBD.Show();
+            this.Hide();
         }
 
         public string ObtenerDato(string columna, string tabla, string condicion)

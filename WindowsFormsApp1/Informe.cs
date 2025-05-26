@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,15 +16,19 @@ namespace WindowsFormsApp1
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
 
+        public string Rol { get; set; }
+
 
 
         public Informe()
         {
            
             InitializeComponent();
-            this.ClientSize = new System.Drawing.Size(1250, 600);
+            this.ClientSize = new System.Drawing.Size(1250, 650);
             cbFiltradoAsignatura.SelectedIndexChanged += cbFiltradoAsignatura_SelectedIndexChanged;
             cbFiltradoAlumno.SelectedIndexChanged += cbFiltradoAlumno_SelectedIndexChanged;
+            cbFiltradoAula.SelectedIndexChanged += cbFiltradoAula_SelectedIndexChanged;
+
 
         }
 
@@ -45,6 +50,13 @@ namespace WindowsFormsApp1
             cbFiltradoAlumno.Items.AddRange(listaAlumnos.ToArray());
             if (cbFiltradoAlumno.Items.Count > 0)
                 cbFiltradoAlumno.SelectedIndex = 0;
+
+            // Llenar el ComboBox de aulas filtrado por profesor
+            cbFiltradoAula.Items.Clear();
+            var listaAulas = ObtenerAulasPorProfesor(NombreProfesor, ApellidosProfesor);
+            cbFiltradoAula.Items.AddRange(listaAulas.ToArray());
+            if (cbFiltradoAula.Items.Count > 0)
+                cbFiltradoAula.SelectedIndex = 0;
 
             lvInforme.View = View.Details;
             lvInforme.FullRowSelect = true;
@@ -311,6 +323,43 @@ namespace WindowsFormsApp1
             return alumnos;
         }
 
+        private List<string> ObtenerAulasPorProfesor(string nombreProfesor, string apellidosProfesor)
+        {
+            var aulas = new List<string>();
+            string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
+            string query = @"
+        SELECT DISTINCT Pabellon, Planta, Aula
+        FROM Registro
+        WHERE Profesor = @Profesor";
+
+            try
+            {
+                using (var connection = new System.Data.SqlClient.SqlConnection(connectionString))
+                using (var command = new System.Data.SqlClient.SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Profesor", $"{nombreProfesor} {apellidosProfesor}");
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Puedes mostrarlo como "Pabellon - Planta - Aula"
+                            string pabellon = reader["Pabellon"].ToString();
+                            string planta = reader["Planta"].ToString();
+                            string aula = reader["Aula"].ToString();
+                            aulas.Add($"{pabellon} - {planta} - {aula}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las aulas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return aulas;
+        }
+
         private void lvInforme_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -349,6 +398,88 @@ namespace WindowsFormsApp1
             {
                 lvInforme.AutoResizeColumn(i, ColumnHeaderAutoResizeStyle.ColumnContent);
             }
+        }
+
+        private void cbFiltradoAula_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string aulaSeleccionada = cbFiltradoAula.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(aulaSeleccionada))
+                return;
+
+            // Separar los datos
+            var partes = aulaSeleccionada.Split(new[] { " - " }, StringSplitOptions.None);
+            if (partes.Length != 3)
+                return;
+
+            string pabellon = partes[0];
+            string planta = partes[1];
+            string aula = partes[2];
+
+            var dt = ObtenerRegistrosPorProfesorYAula(NombreProfesor, ApellidosProfesor, pabellon, planta, aula);
+
+            lvInforme.Items.Clear();
+            foreach (DataRow row in dt.Rows)
+            {
+                var item = new ListViewItem(row["Horario"].ToString());
+                item.SubItems.Add(Convert.ToDateTime(row["Fecha"]).ToString("dd/MM/yyyy HH:mm"));
+                item.SubItems.Add(row["Pabellon"].ToString());
+                item.SubItems.Add(row["Planta"].ToString());
+                item.SubItems.Add(row["Aula"].ToString());
+                item.SubItems.Add(row["Profesor"].ToString());
+                item.SubItems.Add(row["Asignatura"].ToString());
+                item.SubItems.Add(row["Alumno"].ToString());
+                item.SubItems.Add(row["Mesa"].ToString());
+                item.SubItems.Add(row["Periferico"].ToString());
+                item.SubItems.Add(row["Material"].ToString());
+                lvInforme.Items.Add(item);
+            }
+            for (int i = 0; i < lvInforme.Columns.Count; i++)
+            {
+                lvInforme.AutoResizeColumn(i, ColumnHeaderAutoResizeStyle.ColumnContent);
+            }
+        }
+        private DataTable ObtenerRegistrosPorProfesorYAula(string nombre, string apellidos, string pabellon, string planta, string aula)
+        {
+            var dt = new DataTable();
+            string connectionString = "Server=(local)\\SQLEXPRESS;Database=master;Integrated Security=SSPI;";
+            string query = @"
+        SELECT *
+        FROM Registro
+        WHERE Profesor = @Profesor AND Pabellon = @Pabellon AND Planta = @Planta AND Aula = @Aula";
+
+            try
+            {
+                using (var connection = new System.Data.SqlClient.SqlConnection(connectionString))
+                using (var command = new System.Data.SqlClient.SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Profesor", $"{nombre} {apellidos}");
+                    command.Parameters.AddWithValue("@Pabellon", pabellon);
+                    command.Parameters.AddWithValue("@Planta", planta);
+                    command.Parameters.AddWithValue("@Aula", aula);
+                    connection.Open();
+                    using (var adapter = new System.Data.SqlClient.SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los registros: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dt;
+        }
+
+        private void btSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void cbVolver_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu(Rol, NombreProfesor, ApellidosProfesor, null); 
+            menu.Show();
+            this.Close();
         }
     }
 }

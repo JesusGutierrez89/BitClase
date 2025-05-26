@@ -95,7 +95,8 @@ namespace WindowsFormsApp1
             Informe informe = new Informe
             {
                 NombreProfesor = this.NombreProfesor,
-                ApellidosProfesor = this.ApellidosProfesor
+                ApellidosProfesor = this.ApellidosProfesor,
+                Rol = this.Rol
             };
             
             informe.Show();

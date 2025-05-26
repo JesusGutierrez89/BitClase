@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Informe));
             this.lvInforme = new System.Windows.Forms.ListView();
             this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Horario = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,6 +48,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btReinicio = new System.Windows.Forms.Button();
+            this.cbFiltradoAula = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btSalir = new System.Windows.Forms.Button();
+            this.cbVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvInforme
@@ -181,20 +186,69 @@
             // 
             // btReinicio
             // 
+            this.btReinicio.BackColor = System.Drawing.Color.Lime;
+            this.btReinicio.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btReinicio.Location = new System.Drawing.Point(111, 597);
             this.btReinicio.Name = "btReinicio";
-            this.btReinicio.Size = new System.Drawing.Size(119, 59);
+            this.btReinicio.Size = new System.Drawing.Size(151, 42);
             this.btReinicio.TabIndex = 8;
             this.btReinicio.Text = "Mostrar Todo";
-            this.btReinicio.UseVisualStyleBackColor = true;
+            this.btReinicio.UseVisualStyleBackColor = false;
             this.btReinicio.Click += new System.EventHandler(this.btReinicio_Click);
+            // 
+            // cbFiltradoAula
+            // 
+            this.cbFiltradoAula.FormattingEnabled = true;
+            this.cbFiltradoAula.Location = new System.Drawing.Point(1055, 615);
+            this.cbFiltradoAula.Name = "cbFiltradoAula";
+            this.cbFiltradoAula.Size = new System.Drawing.Size(229, 24);
+            this.cbFiltradoAula.TabIndex = 9;
+            this.cbFiltradoAula.SelectedIndexChanged += new System.EventHandler(this.cbFiltradoAula_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(958, 589);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(326, 23);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Filtrado de Pabellon/Planta/Aula:";
+            // 
+            // btSalir
+            // 
+            this.btSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btSalir.BackgroundImage")));
+            this.btSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSalir.Location = new System.Drawing.Point(409, 667);
+            this.btSalir.Name = "btSalir";
+            this.btSalir.Size = new System.Drawing.Size(151, 99);
+            this.btSalir.TabIndex = 11;
+            this.btSalir.UseVisualStyleBackColor = true;
+            this.btSalir.Click += new System.EventHandler(this.btSalir_Click);
+            // 
+            // cbVolver
+            // 
+            this.cbVolver.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cbVolver.BackgroundImage")));
+            this.cbVolver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cbVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbVolver.Location = new System.Drawing.Point(771, 667);
+            this.cbVolver.Name = "cbVolver";
+            this.cbVolver.Size = new System.Drawing.Size(151, 99);
+            this.cbVolver.TabIndex = 12;
+            this.cbVolver.UseVisualStyleBackColor = true;
+            this.cbVolver.Click += new System.EventHandler(this.cbVolver_Click);
             // 
             // Informe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1629, 756);
+            this.ClientSize = new System.Drawing.Size(1629, 804);
+            this.Controls.Add(this.cbVolver);
+            this.Controls.Add(this.btSalir);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbFiltradoAula);
             this.Controls.Add(this.btReinicio);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -232,5 +286,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btReinicio;
+        private System.Windows.Forms.ComboBox cbFiltradoAula;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btSalir;
+        private System.Windows.Forms.Button cbVolver;
     }
 }
