@@ -26,6 +26,7 @@ namespace WindowsFormsApp1
             txtApellidos.TextChanged += txtApellidos_TextChanged;
             txtEmail.TextChanged += txtEmail_TextChanged;
             txtpassword.TextChanged += txtpassword_TextChanged;
+            this.FormClosing += Presentacion_FormClosing;
 
         }
 
@@ -187,6 +188,11 @@ namespace WindowsFormsApp1
             menupresentacion.Show();
             this.Close();
 
+        }
+
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

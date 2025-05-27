@@ -105,78 +105,78 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsistenciaAlumno.cs" />
-    <Compile Include="AulaBaseHelper.cs" />
-    <Compile Include="AulaPb1.cs">
+    <Compile Include="Clases\AsistenciaAlumno.cs" />
+    <Compile Include="Clases\AulaBaseHelper.cs" />
+    <Compile Include="Aulas\AulaPb1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaPb1.Designer.cs">
+    <Compile Include="Aulas\AulaPb1.Designer.cs">
       <DependentUpon>AulaPb1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaPb2.cs">
+    <Compile Include="Aulas\AulaPb2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaPb2.Designer.cs">
+    <Compile Include="Aulas\AulaPb2.Designer.cs">
       <DependentUpon>AulaPb2.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaPb3.cs">
+    <Compile Include="Aulas\AulaPb3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaPb3.Designer.cs">
+    <Compile Include="Aulas\AulaPb3.Designer.cs">
       <DependentUpon>AulaPb3.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaPb4.cs">
+    <Compile Include="Aulas\AulaPb4.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaPb4.Designer.cs">
+    <Compile Include="Aulas\AulaPb4.Designer.cs">
       <DependentUpon>AulaPb4.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaPP1.cs">
+    <Compile Include="Aulas\AulaPP1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaPP1.Designer.cs">
+    <Compile Include="Aulas\AulaPP1.Designer.cs">
       <DependentUpon>AulaPP1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaPP2.cs">
+    <Compile Include="Aulas\AulaPP2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaPP2.Designer.cs">
+    <Compile Include="Aulas\AulaPP2.Designer.cs">
       <DependentUpon>AulaPP2.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaPP3.cs">
+    <Compile Include="Aulas\AulaPP3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaPP3.Designer.cs">
+    <Compile Include="Aulas\AulaPP3.Designer.cs">
       <DependentUpon>AulaPP3.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaPP4.cs">
+    <Compile Include="Aulas\AulaPP4.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaPP4.Designer.cs">
+    <Compile Include="Aulas\AulaPP4.Designer.cs">
       <DependentUpon>AulaPP4.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaSP1.cs">
+    <Compile Include="Aulas\AulaSP1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaSP1.Designer.cs">
+    <Compile Include="Aulas\AulaSP1.Designer.cs">
       <DependentUpon>AulaSP1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaSP2.cs">
+    <Compile Include="Aulas\AulaSP2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaSP2.Designer.cs">
+    <Compile Include="Aulas\AulaSP2.Designer.cs">
       <DependentUpon>AulaSP2.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaSP3.cs">
+    <Compile Include="Aulas\AulaSP3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaSP3.Designer.cs">
+    <Compile Include="Aulas\AulaSP3.Designer.cs">
       <DependentUpon>AulaSP3.cs</DependentUpon>
     </Compile>
-    <Compile Include="AulaSP4.cs">
+    <Compile Include="Aulas\AulaSP4.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AulaSP4.Designer.cs">
+    <Compile Include="Aulas\AulaSP4.Designer.cs">
       <DependentUpon>AulaSP4.cs</DependentUpon>
     </Compile>
     <Compile Include="BitClase.cs">
@@ -199,7 +199,7 @@
     <Compile Include="EleccionAsignatura.Designer.cs">
       <DependentUpon>EleccionAsignatura.cs</DependentUpon>
     </Compile>
-    <Compile Include="EquipoMesa.cs" />
+    <Compile Include="Clases\EquipoMesa.cs" />
     <Compile Include="FormularioCambioPerifericos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,7 +230,7 @@
     <Compile Include="Informe.Designer.cs">
       <DependentUpon>Informe.cs</DependentUpon>
     </Compile>
-    <Compile Include="MaterialAlumno.cs" />
+    <Compile Include="Clases\MaterialAlumno.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,7 +243,7 @@
     <Compile Include="PlanosPorPlantas.Designer.cs">
       <DependentUpon>PlanosPorPlantas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profesor.cs" />
+    <Compile Include="Clases\Profesor.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,40 +258,40 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AulaPb1.resx">
+    <EmbeddedResource Include="Aulas\AulaPb1.resx">
       <DependentUpon>AulaPb1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaPb2.resx">
+    <EmbeddedResource Include="Aulas\AulaPb2.resx">
       <DependentUpon>AulaPb2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaPb3.resx">
+    <EmbeddedResource Include="Aulas\AulaPb3.resx">
       <DependentUpon>AulaPb3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaPb4.resx">
+    <EmbeddedResource Include="Aulas\AulaPb4.resx">
       <DependentUpon>AulaPb4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaPP1.resx">
+    <EmbeddedResource Include="Aulas\AulaPP1.resx">
       <DependentUpon>AulaPP1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaPP2.resx">
+    <EmbeddedResource Include="Aulas\AulaPP2.resx">
       <DependentUpon>AulaPP2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaPP3.resx">
+    <EmbeddedResource Include="Aulas\AulaPP3.resx">
       <DependentUpon>AulaPP3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaPP4.resx">
+    <EmbeddedResource Include="Aulas\AulaPP4.resx">
       <DependentUpon>AulaPP4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaSP1.resx">
+    <EmbeddedResource Include="Aulas\AulaSP1.resx">
       <DependentUpon>AulaSP1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaSP2.resx">
+    <EmbeddedResource Include="Aulas\AulaSP2.resx">
       <DependentUpon>AulaSP2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaSP3.resx">
+    <EmbeddedResource Include="Aulas\AulaSP3.resx">
       <DependentUpon>AulaSP3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AulaSP4.resx">
+    <EmbeddedResource Include="Aulas\AulaSP4.resx">
       <DependentUpon>AulaSP4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ActualizacionMaterial.resx">

@@ -257,5 +257,14 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error al cargar los tipos de equipo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btVolver_Click(object sender, EventArgs e)
+        {
+            {
+                ActualizacionMaterial actualizacionMaterial = new ActualizacionMaterial();
+                actualizacionMaterial.Show();
+                this.Close();
+            }
+        }
     }
 }

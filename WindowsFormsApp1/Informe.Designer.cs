@@ -52,6 +52,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btSalir = new System.Windows.Forms.Button();
             this.cbVolver = new System.Windows.Forms.Button();
+            this.btGuardarInfor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvInforme
@@ -239,12 +240,25 @@
             this.cbVolver.UseVisualStyleBackColor = true;
             this.cbVolver.Click += new System.EventHandler(this.cbVolver_Click);
             // 
+            // btGuardarInfor
+            // 
+            this.btGuardarInfor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btGuardarInfor.BackgroundImage")));
+            this.btGuardarInfor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btGuardarInfor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btGuardarInfor.Location = new System.Drawing.Point(1096, 667);
+            this.btGuardarInfor.Name = "btGuardarInfor";
+            this.btGuardarInfor.Size = new System.Drawing.Size(151, 99);
+            this.btGuardarInfor.TabIndex = 14;
+            this.btGuardarInfor.UseVisualStyleBackColor = true;
+            this.btGuardarInfor.Click += new System.EventHandler(this.btGuardarInfor_Click);
+            // 
             // Informe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1629, 804);
+            this.Controls.Add(this.btGuardarInfor);
             this.Controls.Add(this.cbVolver);
             this.Controls.Add(this.btSalir);
             this.Controls.Add(this.label4);
@@ -290,5 +304,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btSalir;
         private System.Windows.Forms.Button cbVolver;
+        private System.Windows.Forms.Button btGuardarInfor;
     }
 }

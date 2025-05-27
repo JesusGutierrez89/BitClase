@@ -33,6 +33,7 @@ namespace WindowsFormsApp1
             this.ClientSize = new System.Drawing.Size(908, 573); // Tamaño fijo del formulario
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // Evitar redimensionamiento
             this.MaximizeBox = false; // Desactivar el botón de maximizar
+            this.FormClosing += Presentacion_FormClosing;
         }
 
         private void Plano1_Load(object sender, EventArgs e)
@@ -266,6 +267,11 @@ namespace WindowsFormsApp1
             };
             aulaSP4.Show();
             this.Hide();
+        }
+
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

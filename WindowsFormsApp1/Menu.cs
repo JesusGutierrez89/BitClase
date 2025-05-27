@@ -27,6 +27,7 @@ namespace WindowsFormsApp1
             this.NombreProfesor = NombreProfesor;
             this.ApellidosProfesor = ApellidosProfesor;
             this.NombreAsignatura = NombreAsignatura;
+            this.FormClosing += Presentacion_FormClosing;
 
         }
 
@@ -103,5 +104,11 @@ namespace WindowsFormsApp1
             this.Hide();
 
         }
+
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }

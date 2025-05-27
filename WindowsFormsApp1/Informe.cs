@@ -481,5 +481,60 @@ namespace WindowsFormsApp1
             menu.Show();
             this.Close();
         }
+
+
+        private void btGuardarInfor_Click(object sender, EventArgs e)
+        {
+            if (lvInforme.Items.Count == 0)
+            {
+                MessageBox.Show("No hay datos para guardar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Archivo CSV (*.csv)|*.csv";
+                sfd.Title = "Guardar informe como CSV";
+                sfd.FileName = $"Informe_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        StringBuilder sb = new StringBuilder();
+
+                        
+                        for (int i = 0; i < lvInforme.Columns.Count; i++)
+                        {
+                            sb.Append(lvInforme.Columns[i].Text);
+                            if (i < lvInforme.Columns.Count - 1)
+                                sb.Append(";");
+                        }
+                        sb.AppendLine();
+
+                        
+                        foreach (ListViewItem item in lvInforme.Items)
+                        {
+                            for (int i = 0; i < item.SubItems.Count; i++)
+                            {
+                                
+                                string text = item.SubItems[i].Text.Replace("\"", "\"\"");
+                                sb.Append($"\"{text}\"");
+                                if (i < item.SubItems.Count - 1)
+                                    sb.Append(";");
+                            }
+                            sb.AppendLine();
+                        }
+
+                        System.IO.File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
+                        MessageBox.Show("Informe guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al guardar el archivo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

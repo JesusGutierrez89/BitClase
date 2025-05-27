@@ -41,6 +41,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btActualizar = new System.Windows.Forms.Button();
+            this.btVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -162,6 +163,17 @@
             this.btActualizar.UseVisualStyleBackColor = true;
             this.btActualizar.Click += new System.EventHandler(this.btActualizar_Click);
             // 
+            // btVolver
+            // 
+            this.btVolver.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btVolver.BackgroundImage")));
+            this.btVolver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btVolver.Location = new System.Drawing.Point(145, 362);
+            this.btVolver.Name = "btVolver";
+            this.btVolver.Size = new System.Drawing.Size(88, 68);
+            this.btVolver.TabIndex = 12;
+            this.btVolver.UseVisualStyleBackColor = true;
+            this.btVolver.Click += new System.EventHandler(this.btVolver_Click);
+            // 
             // FormularioEquipoOrdenador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -169,6 +181,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(677, 491);
+            this.Controls.Add(this.btVolver);
             this.Controls.Add(this.btActualizar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -204,5 +217,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btActualizar;
+        private System.Windows.Forms.Button btVolver;
     }
 }

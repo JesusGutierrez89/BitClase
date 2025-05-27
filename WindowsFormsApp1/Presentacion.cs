@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
         public Presentacion()
         {
             InitializeComponent();
+            this.FormClosing += Presentacion_FormClosing;
         }
 
         private void Presentacion_Load(object sender, EventArgs e)
@@ -112,6 +113,11 @@ namespace WindowsFormsApp1
             form2.Show();
             this.Hide();
         }
-      
+
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }
