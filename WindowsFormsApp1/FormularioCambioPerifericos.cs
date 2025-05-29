@@ -13,9 +13,11 @@ namespace WindowsFormsApp1
     public partial class FormularioCambioPerifericos : Form
     {
         private string nuevaDescripcion = "";
+        private bool volverAlMenu = false;
         public FormularioCambioPerifericos()
         {
             InitializeComponent();
+            this.FormClosing += Presentacion_FormClosing;
             this.ClientSize = new System.Drawing.Size(550, 350);
             CargarAulas();
         }
@@ -238,6 +240,7 @@ namespace WindowsFormsApp1
 
         private void btVolver_Click(object sender, EventArgs e)
         {
+            volverAlMenu = true;
             ActualizacionMaterial actualizacionMaterial = new ActualizacionMaterial();
             actualizacionMaterial.Show();
             this.Close();
@@ -246,6 +249,13 @@ namespace WindowsFormsApp1
         private void FormularioCambioPerifericos_Load(object sender, EventArgs e)
         {
 
+        }
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!volverAlMenu)
+            {
+                Application.Exit();
+            }
         }
     }
 }

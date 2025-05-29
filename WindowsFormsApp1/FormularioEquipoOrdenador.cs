@@ -14,9 +14,11 @@ namespace WindowsFormsApp1
     {
         private string nuevaDescripcion = "";
         private string nuevoNombre = "";
+        private bool volverAlMenu = false;
         public FormularioEquipoOrdenador()
         {
             InitializeComponent();
+            this.FormClosing += Presentacion_FormClosing;
             this.ClientSize = new System.Drawing.Size(550, 380);
             CargarAulas();
         }
@@ -260,10 +262,19 @@ namespace WindowsFormsApp1
 
         private void btVolver_Click(object sender, EventArgs e)
         {
+            volverAlMenu = true;
             {
                 ActualizacionMaterial actualizacionMaterial = new ActualizacionMaterial();
                 actualizacionMaterial.Show();
                 this.Close();
+            }
+        }
+
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!volverAlMenu)
+            {
+                Application.Exit();
             }
         }
     }

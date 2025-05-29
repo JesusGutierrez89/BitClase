@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         private AulaBaseHelper helper;
         // Añade este campo en la clase AulaPb3
         private Dictionary<string, List<MaterialAlumno>> materialesPorMesa = new Dictionary<string, List<MaterialAlumno>>();
-
+        private bool volverAlMenu = false;
         public string horario { get; set; } 
         public string nombreMesa = "";
 
@@ -33,6 +33,7 @@ namespace WindowsFormsApp1
         public AulaPb3()
         {
             InitializeComponent();
+            this.FormClosing += Presentacion_FormClosing;
             this.ClientSize = new Size(750, 580);
         }
 
@@ -372,6 +373,7 @@ namespace WindowsFormsApp1
 
         private void btSalida_Click(object sender, EventArgs e)
         {
+            volverAlMenu = true;
             PlanosPorPlantas planosPorPlantas = new PlanosPorPlantas
             {
                 NombreProfesor = this.NombreProfesor,
@@ -387,6 +389,14 @@ namespace WindowsFormsApp1
         private void cbHorario_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!volverAlMenu)
+            {
+                Application.Exit();
+            }
         }
     }
 }

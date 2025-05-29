@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
         public GuardadoBD()
         {
             InitializeComponent();
+            this.FormClosing += Presentacion_FormClosing;
         }
 
         private void GuardadoBD_Load(object sender, EventArgs e)
@@ -57,5 +58,10 @@ namespace WindowsFormsApp1
             informe.Show();
             this.Hide();
         }
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }

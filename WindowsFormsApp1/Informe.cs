@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Informe : Form
     {
+        private bool volverAlMenu = false;
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
 
@@ -28,7 +29,7 @@ namespace WindowsFormsApp1
             cbFiltradoAsignatura.SelectedIndexChanged += cbFiltradoAsignatura_SelectedIndexChanged;
             cbFiltradoAlumno.SelectedIndexChanged += cbFiltradoAlumno_SelectedIndexChanged;
             cbFiltradoAula.SelectedIndexChanged += cbFiltradoAula_SelectedIndexChanged;
-
+            this.FormClosing += Presentacion_FormClosing;
 
         }
 
@@ -477,7 +478,8 @@ namespace WindowsFormsApp1
 
         private void cbVolver_Click(object sender, EventArgs e)
         {
-            Menu menu = new Menu(Rol, NombreProfesor, ApellidosProfesor, null); 
+            volverAlMenu = true;
+            Menu menu = new Menu(Rol, NombreProfesor, ApellidosProfesor, null);
             menu.Show();
             this.Close();
         }
@@ -491,11 +493,16 @@ namespace WindowsFormsApp1
                 return;
             }
 
+            // Limpiar caracteres no válidos para nombres de archivo
+            string nombreLimpio = string.Concat(NombreProfesor.Where(c => !System.IO.Path.GetInvalidFileNameChars().Contains(c)));
+            string apellidosLimpio = string.Concat(ApellidosProfesor.Where(c => !System.IO.Path.GetInvalidFileNameChars().Contains(c)));
+            string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = "Archivo CSV (*.csv)|*.csv";
                 sfd.Title = "Guardar informe como CSV";
-                sfd.FileName = $"Informe_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+                sfd.FileName = $"Informe_{nombreLimpio}_{apellidosLimpio}_{fecha}.csv";
 
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -503,7 +510,6 @@ namespace WindowsFormsApp1
                     {
                         StringBuilder sb = new StringBuilder();
 
-                        
                         for (int i = 0; i < lvInforme.Columns.Count; i++)
                         {
                             sb.Append(lvInforme.Columns[i].Text);
@@ -512,12 +518,10 @@ namespace WindowsFormsApp1
                         }
                         sb.AppendLine();
 
-                        
                         foreach (ListViewItem item in lvInforme.Items)
                         {
                             for (int i = 0; i < item.SubItems.Count; i++)
                             {
-                                
                                 string text = item.SubItems[i].Text.Replace("\"", "\"\"");
                                 sb.Append($"\"{text}\"");
                                 if (i < item.SubItems.Count - 1)
@@ -534,6 +538,15 @@ namespace WindowsFormsApp1
                         MessageBox.Show("Error al guardar el archivo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!volverAlMenu)
+            {
+                Application.Exit();
             }
         }
     }

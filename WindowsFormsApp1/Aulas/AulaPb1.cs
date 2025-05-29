@@ -18,6 +18,8 @@ namespace WindowsFormsApp1
         private int idAula = 3;
         private string nombreMesa = "";
 
+        private bool volverAlMenu = false;
+
         public string horario { get; set; }
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
@@ -27,6 +29,7 @@ namespace WindowsFormsApp1
         public AulaPb1()
         {
             InitializeComponent();
+            this.FormClosing += Presentacion_FormClosing;
             this.ClientSize = new Size(750, 580);
         }
 
@@ -388,6 +391,7 @@ namespace WindowsFormsApp1
 
         private void pbSalida_Click(object sender, EventArgs e)
         {
+            volverAlMenu = true;
             PlanosPorPlantas planosPorPlantas = new PlanosPorPlantas
             {
                 NombreProfesor = this.NombreProfesor,
@@ -403,6 +407,13 @@ namespace WindowsFormsApp1
         private void cbHorario_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!volverAlMenu)
+            {
+                Application.Exit();
+            }
         }
     }
 }

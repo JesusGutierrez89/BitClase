@@ -15,6 +15,8 @@ namespace WindowsFormsApp1
         public ActualizacionMaterial()
         {
             InitializeComponent();
+            this.FormClosing += Presentacion_FormClosing;
+
         }
 
         private void ActualizacionMaterial_Load(object sender, EventArgs e)
@@ -40,6 +42,10 @@ namespace WindowsFormsApp1
             ordenador.Show();
             this.Hide();
 
+        }
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

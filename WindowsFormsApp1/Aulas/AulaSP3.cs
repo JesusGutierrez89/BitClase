@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         private Dictionary<string, List<MaterialAlumno>> materialesPorMesa = new Dictionary<string, List<MaterialAlumno>>();
 
         public string nombreMesa = "";
-
+        private bool volverAlMenu = false;
         public string horario { get; set; }
 
         private int idAula = 14;
@@ -30,6 +30,7 @@ namespace WindowsFormsApp1
         public AulaSP3()
         {
             InitializeComponent();
+            this.FormClosing += Presentacion_FormClosing;
             this.ClientSize = new Size(750, 580);
         }
 
@@ -348,6 +349,7 @@ namespace WindowsFormsApp1
 
         private void btSalida_Click(object sender, EventArgs e)
         {
+            volverAlMenu = true;
             PlanosPorPlantas planosPorPlantas = new PlanosPorPlantas
             {
                 NombreProfesor = this.NombreProfesor,
@@ -358,6 +360,13 @@ namespace WindowsFormsApp1
             planosPorPlantas.Show();
 
             this.Close();
+        }
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!volverAlMenu)
+            {
+                Application.Exit();
+            }
         }
     }
 }

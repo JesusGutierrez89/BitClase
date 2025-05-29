@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         public FormularioMaterial(string nombreMesa)
         {
             InitializeComponent();
+            this.FormClosing += Presentacion_FormClosing;
             MaterialesSeleccionados = new List<MaterialAlumno>();
             if (string.IsNullOrEmpty(nombreMesa))
             {
@@ -158,6 +159,10 @@ namespace WindowsFormsApp1
                 MessageBox.Show($"Error al consultar los materiales: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close(); 
+        }
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

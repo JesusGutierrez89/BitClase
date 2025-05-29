@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
         public EleccionAsignatura()
         {
             InitializeComponent();
+            this.FormClosing += Presentacion_FormClosing;
             this.ClientSize = new System.Drawing.Size(550, 450);
         }
 
@@ -85,7 +86,10 @@ namespace WindowsFormsApp1
             this.Hide();
 
         }
+        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
-
 
 }
