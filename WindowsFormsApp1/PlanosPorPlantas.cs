@@ -30,19 +30,17 @@ namespace WindowsFormsApp1
             btAulaSegundaPlanta2.Visible = false;
             btAulaSegundaPlanta4.Visible = false;
             btAulaSegundaPlanta3.Visible = false;
-            this.ClientSize = new System.Drawing.Size(908, 573); // Tamaño fijo del formulario
-            this.FormBorderStyle = FormBorderStyle.FixedSingle; // Evitar redimensionamiento
-            this.MaximizeBox = false; // Desactivar el botón de maximizar
+            this.ClientSize = new System.Drawing.Size(908, 573); 
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false; 
             this.FormClosing += Presentacion_FormClosing;
         }
 
         private void Plano1_Load(object sender, EventArgs e)
         {
-            // Configurar la posición y tamaño del ComboBox
+           
             comboBox1.Location = new Point(564, 39);
             comboBox1.Size = new Size(253, 24);
-
-            // Configurar la posición del Label
             label1.Location = new Point(591, 9);
         }
 
@@ -104,12 +102,11 @@ namespace WindowsFormsApp1
                     break;
 
                 default:
-                    this.BackgroundImage = null; // Sin fondo si no se selecciona una opción válida
+                    this.BackgroundImage = null; 
                     break;
 
             }
 
-            // Mantener visibles el Label y el ComboBox
             label1.Visible = true;
             comboBox1.Visible = true;
         }
@@ -121,7 +118,6 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
             };
             aulaPb1.Show();
             this.Hide();
@@ -134,7 +130,7 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
+                
             };
             aulaSP3.Show();
             this.Hide();
@@ -147,7 +143,7 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
+               
             };
             aulaSP1.Show();
             this.Hide();
@@ -160,7 +156,7 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
+               
             };
             aulaPb3.Show();
             this.Hide();
@@ -185,7 +181,7 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
+                
             };
             aulaPb4.Show();
             this.Hide();
@@ -198,7 +194,7 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
+               
             };
             aulaPP1.Show();
             this.Hide();
@@ -211,7 +207,7 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
+               
             };
             aulaPP2.Show();
             this.Hide();
@@ -224,7 +220,7 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
+               
             };
             aulaPP3.Show();
             this.Hide();
@@ -237,7 +233,7 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
+                
             };
             aulaPP4.Show();
             this.Hide();
@@ -250,7 +246,7 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
+                
             };
             aulaSP2.Show();
             this.Hide();
@@ -263,7 +259,7 @@ namespace WindowsFormsApp1
                 NombreProfesor = this.NombreProfesor,
                 ApellidosProfesor = this.ApellidosProfesor,
                 NombreAsignatura = this.NombreAsignatura,
-                //Rol = this.Rol
+                
             };
             aulaSP4.Show();
             this.Hide();

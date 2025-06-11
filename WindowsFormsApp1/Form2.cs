@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
     {
         SqlConnection conection = new SqlConnection("Server=(local)\\SQLEXPRESS;Database=master;Integrated Security = SSPI;");
         SqlCommand comando = new SqlCommand();
+        private bool volverAlMenu = false;
 
         public Form2()
         {
@@ -76,7 +77,6 @@ namespace WindowsFormsApp1
                     else
                     {
                         readerDentro.Close();
-                        // Actualizar el usuario existente con los nuevos datos
                         comando.CommandText = "UPDATE Profesores SET nombre = @nombre, apellidos = @apellidos, email = @email, password = @password WHERE nrp = @nrp";
                         comando.Parameters.Clear();
                         comando.Parameters.AddWithValue("@nombre", nombre);
@@ -100,7 +100,6 @@ namespace WindowsFormsApp1
                     conection.Close();
                 }
             }
-            // Regresar al formulario Presentacion
             Presentacion presentacion = new Presentacion();
             presentacion.Show();
             this.Hide();
@@ -118,7 +117,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                errorProvider1.SetError(txtNRP, string.Empty); // Elimina el error si es válido
+                errorProvider1.SetError(txtNRP, string.Empty); 
             }
         }
 
@@ -130,7 +129,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                errorProvider1.SetError(txtNombre, string.Empty); // Elimina el error si es válido
+                errorProvider1.SetError(txtNombre, string.Empty); 
             }
         }
 
@@ -142,7 +141,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                errorProvider1.SetError(txtApellidos, string.Empty); // Elimina el error si es válido
+                errorProvider1.SetError(txtApellidos, string.Empty); 
             }
         }
 
@@ -154,7 +153,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                errorProvider1.SetError(txtEmail, string.Empty); // Elimina el error si es válido
+                errorProvider1.SetError(txtEmail, string.Empty);
             }
         }
 
@@ -166,7 +165,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                errorProvider1.SetError(txtpassword, string.Empty); // Elimina el error si es válido
+                errorProvider1.SetError(txtpassword, string.Empty); 
             }
         }
         private bool EsCorreoValido(string email)
@@ -184,6 +183,7 @@ namespace WindowsFormsApp1
 
         private void btVolver_Click(object sender, EventArgs e)
         {
+            volverAlMenu = true;
             Presentacion menupresentacion = new Presentacion();
             menupresentacion.Show();
             this.Close();
@@ -192,7 +192,11 @@ namespace WindowsFormsApp1
 
         private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (!volverAlMenu)
+            {
+                Application.Exit();
+            }
+          
         }
     }
 }

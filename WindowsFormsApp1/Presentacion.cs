@@ -68,7 +68,6 @@ namespace WindowsFormsApp1
                     if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
                     {
                         MessageBox.Show("Inicio de sesión exitoso.");
-                        // Pasar los datos al formulario Menu
                         EleccionAsignatura eleccionAsignatura = new EleccionAsignatura
                         {
                             NombreProfesor = nombreProfesor,

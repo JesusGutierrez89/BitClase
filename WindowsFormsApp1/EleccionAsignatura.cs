@@ -80,7 +80,6 @@ namespace WindowsFormsApp1
                 return;
             }
             MessageBox.Show("Asignatura Elegida");
-            // Pasa la asignatura seleccionada al siguiente formulario
             Menu menu = new Menu(Rol, NombreProfesor, ApellidosProfesor, asignaturaSeleccionada);
             menu.Show();
             this.Hide();

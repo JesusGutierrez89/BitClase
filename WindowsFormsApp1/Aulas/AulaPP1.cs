@@ -70,12 +70,12 @@ namespace WindowsFormsApp1
 
         private void txNombreApellidoProfesor_TextChanged(object sender, EventArgs e)
         {
-            // opcional: validaciones al cambiar texto
+            
         }
 
         private void txNombreAsignatura_TextChanged(object sender, EventArgs e)
         {
-            // opcional: validaciones al cambiar texto
+           
         }
 
         private void btGuardarAula_Click(object sender, EventArgs e)
@@ -142,7 +142,6 @@ namespace WindowsFormsApp1
                 );
             }
 
-            //helper.GuardarAula_Click(idAula, horario);
             GuardadoBD guardadoBD = new GuardadoBD
             {
 
@@ -196,7 +195,7 @@ namespace WindowsFormsApp1
             {
                 foreach (var material in formularioMaterial.MaterialesSeleccionados)
                 {
-                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                    material.NombreM = nombreMesa; 
                 }
                 materialesPorMesa[nombreMesa] = new List<MaterialAlumno>(materialesSeleccionados);
                 if (helper.materialesSeleccionados == null)
@@ -217,7 +216,7 @@ namespace WindowsFormsApp1
             {
                 foreach (var material in formularioMaterial.MaterialesSeleccionados)
                 {
-                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                    material.NombreM = nombreMesa;
                 }
                 materialesPorMesa[nombreMesa] = new List<MaterialAlumno>(materialesSeleccionados);
                 if (helper.materialesSeleccionados == null)
@@ -238,7 +237,7 @@ namespace WindowsFormsApp1
             {
                 foreach (var material in formularioMaterial.MaterialesSeleccionados)
                 {
-                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                    material.NombreM = nombreMesa; 
                 }
                 materialesPorMesa[nombreMesa] = new List<MaterialAlumno>(materialesSeleccionados);
                 if (helper.materialesSeleccionados == null)
@@ -259,7 +258,7 @@ namespace WindowsFormsApp1
             {
                 foreach (var material in formularioMaterial.MaterialesSeleccionados)
                 {
-                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                    material.NombreM = nombreMesa; 
                 }
                 materialesPorMesa[nombreMesa] = new List<MaterialAlumno>(materialesSeleccionados);
                 if (helper.materialesSeleccionados == null)
@@ -280,7 +279,7 @@ namespace WindowsFormsApp1
             {
                 foreach (var material in formularioMaterial.MaterialesSeleccionados)
                 {
-                    material.NombreM = nombreMesa; // Asocia el material con el nombre de la mesa
+                    material.NombreM = nombreMesa; 
                 }
                 materialesPorMesa[nombreMesa] = new List<MaterialAlumno>(materialesSeleccionados);
                 if (helper.materialesSeleccionados == null)

@@ -20,8 +20,8 @@ namespace WindowsFormsApp1
         public Menu(string Rol, string NombreProfesor, string ApellidosProfesor, string NombreAsignatura)
         {
             InitializeComponent();
-            this.ClientSize = new System.Drawing.Size(898, 639); // Tamaño fijo del formulario
-            this.FormBorderStyle = FormBorderStyle.FixedSingle; // Evitar redimensionamiento
+            this.ClientSize = new System.Drawing.Size(898, 639);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; 
             this.MaximizeBox = false;
             this.Rol = Rol;
             this.NombreProfesor = NombreProfesor;

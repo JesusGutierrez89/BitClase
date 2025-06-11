@@ -8,13 +8,13 @@ namespace WindowsFormsApp1
 {
     public class EquipoMesa
     {
-        public int FilaMesa { get; set; } // Fila de la mesa
-        public int ColumnaMesa { get; set; } // Columna de la mesa
-        public List<string> Equipo { get; set; } // Lista de equipos en la mesa
+        public int FilaMesa { get; set; } 
+        public int ColumnaMesa { get; set; } 
+        public List<string> Equipo { get; set; } 
 
         public EquipoMesa()
         {
-            Equipo = new List<string>(); // Inicializar la lista de equipos
+            Equipo = new List<string>(); 
         }
     }
 }

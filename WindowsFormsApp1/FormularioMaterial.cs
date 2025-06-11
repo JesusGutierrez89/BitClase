@@ -13,30 +13,29 @@ namespace WindowsFormsApp1
 {
     public partial class FormularioMaterial : Form
     {
-        public List<MaterialAlumno> MaterialesSeleccionados { get; private set; } //cambio aqui para probar
+        public List<MaterialAlumno> MaterialesSeleccionados { get; private set; } 
         private string nombreMesa;
         public FormularioMaterial(string nombreMesa)
         {
             InitializeComponent();
-            this.FormClosing += Presentacion_FormClosing;
             MaterialesSeleccionados = new List<MaterialAlumno>();
             if (string.IsNullOrEmpty(nombreMesa))
             {
                 MessageBox.Show("El nombre de la mesa no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close(); // Cerrar el formulario si el valor es inválido
+                this.Close(); 
                 return;
             }
             this.nombreMesa = nombreMesa;
             this.ClientSize = new System.Drawing.Size(550, 450);
 
-            // Crear los paneles
+          
             Panel panel1 = new Panel();
             Panel panel2 = new Panel();
             Panel panel3 = new Panel();
 
-            // Configurar los paneles
+           
             panel1.Location = new Point(50, 100);
-            panel1.Size = new Size(550, 100); // Ajustar el tamaño del panel para que los RadioButton sean visibles
+            panel1.Size = new Size(550, 100); 
 
             panel2.Location = new Point(50, 200);
             panel2.Size = new Size(550, 100);
@@ -44,8 +43,8 @@ namespace WindowsFormsApp1
             panel3.Location = new Point(50, 300);
             panel3.Size = new Size(550, 100);
 
-            // Agregar los RadioButton a los paneles y ajustar sus posiciones
-            rbPantallaCasa.Location = new Point(10, 12); // Posición relativa dentro del panel
+           
+            rbPantallaCasa.Location = new Point(10, 12); 
             rbPantallaAula.Location = new Point(400,12);
             panel1.Controls.Add(rbPantallaCasa);
             panel1.Controls.Add(rbPantallaAula);
@@ -60,7 +59,6 @@ namespace WindowsFormsApp1
             panel3.Controls.Add(rbTecladoCasa);
             panel3.Controls.Add(rbTecladoAula);
 
-            // Agregar los paneles al formulario
             this.Controls.Add(panel1);
             this.Controls.Add(panel2);
             this.Controls.Add(panel3);
@@ -68,7 +66,7 @@ namespace WindowsFormsApp1
 
         private void FormularioMaterial_Load(object sender, EventArgs e)
         {
-            // Activar los RadioButton por defecto
+           
             rbPantallaAula.Checked = true;
             rbRatonAula.Checked = true;
             rbTecladoAula.Checked = true;
@@ -86,7 +84,7 @@ namespace WindowsFormsApp1
             bool tecladoResul = !rbTecladoCasa.Checked;
 
 
-            // Limpiar la lista antes de agregar nuevos materiales
+          
             MaterialesSeleccionados.Clear();
 
             // 2. Realizar la consulta a la tabla de materiales
@@ -119,7 +117,7 @@ namespace WindowsFormsApp1
                             string tipoMaterial = reader["TipoMaterial"].ToString();
                             string descripcionMaterial = reader["DescripcionMaterial"].ToString();
 
-                            // Crear el objeto MaterialAlumno según el tipo
+                           
                             if (tipoMaterial == "Pantalla")
                             {
                                 MaterialesSeleccionados.Add(new MaterialAlumno
@@ -151,7 +149,6 @@ namespace WindowsFormsApp1
                     }
                 }
 
-                // (Opcional) Mostrar confirmación
                 MessageBox.Show("Materiales guardados en la lista.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -159,10 +156,6 @@ namespace WindowsFormsApp1
                 MessageBox.Show($"Error al consultar los materiales: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close(); 
-        }
-        private void Presentacion_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

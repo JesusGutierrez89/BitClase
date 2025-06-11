@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
         private bool volverAlMenu = false;
         public string NombreProfesor { get; set; }
         public string ApellidosProfesor { get; set; }
+        public string NombreAsignatura { get; set; }
 
         public string Rol { get; set; }
 
@@ -135,7 +136,6 @@ namespace WindowsFormsApp1
             if (string.IsNullOrEmpty(asignaturaSeleccionada))
                 return;
 
-            // Filtra la consulta por profesor y asignatura
             var dt = ObtenerRegistrosPorProfesorYAsignatura(NombreProfesor, ApellidosProfesor, asignaturaSeleccionada);
 
             lvInforme.Items.Clear();
@@ -305,7 +305,6 @@ namespace WindowsFormsApp1
                 {
                     command.Parameters.AddWithValue("@nombre", nombreProfesor);
                     command.Parameters.AddWithValue("@apellidos", apellidosProfesor);
-                    //command.Parameters.AddWithValue("@asignatura", asignatura);
                     connection.Open();
                     using (var reader = command.ExecuteReader())
                     {
@@ -344,7 +343,6 @@ namespace WindowsFormsApp1
                     {
                         while (reader.Read())
                         {
-                            // Puedes mostrarlo como "Pabellon - Planta - Aula"
                             string pabellon = reader["Pabellon"].ToString();
                             string planta = reader["Planta"].ToString();
                             string aula = reader["Aula"].ToString();
@@ -368,14 +366,11 @@ namespace WindowsFormsApp1
 
         private void btReinicio_Click(object sender, EventArgs e)
         {
-            // Limpia la selección de los ComboBox de filtro
             cbFiltradoAsignatura.SelectedIndex = -1;
             cbFiltradoAlumno.SelectedIndex = -1;
 
-            // Limpia el ListView
             lvInforme.Items.Clear();
 
-            // Obtiene todos los registros filtrados solo por el profesor
             var dt = ObtenerRegistrosPorProfesor(NombreProfesor, ApellidosProfesor);
 
             foreach (DataRow row in dt.Rows)
@@ -394,7 +389,6 @@ namespace WindowsFormsApp1
                 lvInforme.Items.Add(item);
             }
 
-            // Ajusta el ancho de las columnas al contenido
             for (int i = 0; i < lvInforme.Columns.Count; i++)
             {
                 lvInforme.AutoResizeColumn(i, ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -407,7 +401,6 @@ namespace WindowsFormsApp1
             if (string.IsNullOrEmpty(aulaSeleccionada))
                 return;
 
-            // Separar los datos
             var partes = aulaSeleccionada.Split(new[] { " - " }, StringSplitOptions.None);
             if (partes.Length != 3)
                 return;
@@ -479,7 +472,7 @@ namespace WindowsFormsApp1
         private void cbVolver_Click(object sender, EventArgs e)
         {
             volverAlMenu = true;
-            Menu menu = new Menu(Rol, NombreProfesor, ApellidosProfesor, null);
+            Menu menu = new Menu(Rol, NombreProfesor, ApellidosProfesor, NombreAsignatura);
             menu.Show();
             this.Close();
         }

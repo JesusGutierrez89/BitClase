@@ -104,8 +104,8 @@ namespace WindowsFormsApp1
                 {
                     // Guardar el nombre del alumno en la propiedad Tag del PictureBox
                     string nombreAlumno = comboBox.SelectedItem.ToString();
-                    pictureBox.Tag = nombreAlumno; // Asociar el nombre del alumno al PictureBox
-                    MessageBox.Show($"El PictureBox {pictureBox.Name} está relacionado con el alumno: {nombreAlumno}");
+                    pictureBox.Tag = nombreAlumno; 
+                    
 
                     string pcRojo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "Imagenes", "pcCasa.jpg");
                     string pcVerde = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "Imagenes", "pcInstituto.jpg");
@@ -187,14 +187,10 @@ namespace WindowsFormsApp1
                 MessageBoxIcon.Information);
 
             // 3) Ahora recogemos los datos para el Excel
-            // (aquí debes sustituir estos ejemplos por tu acceso real a la BD)
-
-            // Ejemplo: datos del profesor y asignatura
             string profesorNombre = NombreProfesor;
             string profesorApellidos = ApellidosProfesor;
             string asignaturaNombre = NombreAsignatura;
 
-            // Ejemplo: lista de alumnos asistentes
             foreach (var alumno in RecuperarAlumnosAsistentes())
             {
                 listaAlumnos.Add(new AsistenciaAlumno
@@ -211,7 +207,6 @@ namespace WindowsFormsApp1
                 });
             }
 
-            // Ejemplo: estado del aula (equipos por mesa)
             var estadoAula = new List<EquipoMesa>();
             foreach (var mesa in RecuperarEstadoAula())
             {
@@ -219,7 +214,7 @@ namespace WindowsFormsApp1
                 {
                     FilaMesa = mesa.FilaMesa,
                     ColumnaMesa = mesa.ColumnaMesa,
-                    Equipo = mesa.Equipo // List<string>
+                    Equipo = mesa.Equipo 
                 });
             }
 
@@ -351,7 +346,7 @@ namespace WindowsFormsApp1
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@idAula", idAula); // Usa la variable de entorno
+                        command.Parameters.AddWithValue("@idAula", idAula); 
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -435,7 +430,6 @@ namespace WindowsFormsApp1
                                     NombreM = reader["NombreM"]?.ToString()
                                 };
 
-                                // Solo añadir si hay material asociado
                                 if (!string.IsNullOrEmpty(materialAlumno.TipoMaterial) || !string.IsNullOrEmpty(materialAlumno.DescripcionMaterial))
                                 {
                                     materialesAlumnos.Add(materialAlumno);
@@ -617,7 +611,7 @@ namespace WindowsFormsApp1
                         row++;
                     }
 
-                    row += 2; // Salto de espacio
+                    row += 2; 
                 }
                 else
                 {
